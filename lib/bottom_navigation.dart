@@ -58,7 +58,7 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                   },
                   child: Center(
                     heightFactor: .6,
-                    child: SvgPicture.asset('assets/images/toast_icon.svg'),
+                    child: SvgPicture.asset('assets/images/bottom_navigation/toast_icon.svg'),
                   ),
                 ),
                 Container(
@@ -72,7 +72,7 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                           provider.changeIndex(0);
                         },
                         icon: SvgPicture.asset(
-                          'assets/images/home_icon.svg',
+                          'assets/images/bottom_navigation/home_icon.svg',
                           color: provider.getCurrentIndex == 0
                               ? Colors.brown
                               : Color(0xffFFE1CF),
@@ -82,11 +82,11 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                         onPressed: () {
                           provider.changeIndex(1);
                         },
-                        icon: Icon(
-                          Icons.add_location,
+                        icon: SvgPicture.asset(
+                          'assets/images/bottom_navigation/social_media.svg',
                           color: provider.getCurrentIndex == 1
-                              ? Colors.green
-                              : Colors.black,
+                              ? Colors.brown
+                              : Color(0xffFFE1CF),
                         ),
                       ),
                       SizedBox(width: size.width * .2),
@@ -94,22 +94,22 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                         onPressed: () {
                           provider.changeIndex(2);
                         },
-                        icon: Icon(
-                          Icons.star,
+                        icon: SvgPicture.asset(
+                          'assets/images/bottom_navigation/toast_coin.svg',
                           color: provider.getCurrentIndex == 2
-                              ? Colors.green
-                              : Colors.black,
+                              ? Colors.brown
+                              : Color(0xffFFE1CF),
                         ),
                       ),
                       IconButton(
                         onPressed: () {
                           provider.changeIndex(3);
                         },
-                        icon: Icon(
-                          Icons.android,
+                        icon: SvgPicture.asset(
+                          'assets/images/bottom_navigation/more.svg',
                           color: provider.getCurrentIndex == 3
-                              ? Colors.green
-                              : Colors.black,
+                              ? Colors.brown
+                              : Color(0xffFFE1CF),
                         ),
                       ),
                     ],

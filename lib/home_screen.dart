@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
-            leading: SvgPicture.asset('assets/images/delivery_icon.svg'),
+            leading: SvgPicture.asset('assets/images/home/delivery_icon.svg'),
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,13 +40,13 @@ class HomeScreen extends StatelessWidget {
                 Text('Current location', style: TextStyle(color: Colors.brown)),
               ],
             ),
-            trailing: SvgPicture.asset('assets/images/person_profile_icon.svg'),
+            trailing: SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
           ),
           ListTile(
             leading: SizedBox(
                 width: MediaQuery.of(context).size.width * .8,
                 child: TextField(decoration: kHomeSearchDecoration)),
-            trailing: SvgPicture.asset('assets/images/filter_icon.svg'),
+            trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
           CustomAutoSwiper(),
           Container(
