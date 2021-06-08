@@ -25,7 +25,7 @@ class _MenuPageState extends State<MenuPage> {
               leading: SizedBox(
                 width: res.getWidth(80),
                 child: TextField(
-                    decoration: CustomStyle().kHomeSearchInputDecoration),
+                    decoration: CustomStyle.homeSearchInputDecoration),
               ),
               trailing: Stack(
                 children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toast_app/modules/models/category_model.dart';
+import 'package:toast_app/src/routes.dart';
 import '../widgets/categories_widget.dart';
 import '../../../src/styles.dart';
 import '../widgets/custom_auto_swiper_widget.dart';
@@ -30,8 +31,8 @@ class HomeScreen extends StatelessWidget {
           ListTile(
             leading: SizedBox(
                 width: res.getWidth(80),
-                child:
-                    TextField(decoration: CustomStyle.kHomeSearchDecoration)),
+                child: TextField(
+                    decoration: CustomStyle.homeSearchInputDecoration)),
             trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
           CustomAutoSwiperWidget(),
@@ -98,25 +99,16 @@ class HomeScreen extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return HomeItemWidget();
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Top Rated',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
-          ),
-          SizedBox(
-            height: res.getHeight(33),
-            child: ListView.builder(
-              itemCount: 5,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return HomeItemWidget();
+                return HomeItemWidget(
+                  rate: '4.8 Good (500+) - Burgers - Chicken ',
+                  distance: '1.5',
+                  name: 'I\'m Hungry',
+                  deliveryTime: '10-20',
+                  img: 'assets/test/banner_three.png',
+                  itemWidth: 90,
+                  itemPadding: 8,
+                  onTap: () => Navigator.pushNamed(context, Routes.menuRoute),
+                );
               },
             ),
           ),
