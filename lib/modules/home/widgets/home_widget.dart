@@ -1,31 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/src/routes.dart';
+import 'package:toast_app/src/styles.dart';
 import 'category_item_widget.dart';
 import 'custom_auto_swiper_widget.dart';
 import 'home_item_widget.dart';
 
-InputDecoration kHomeSearchDecoration = InputDecoration(
-  hintText: 'Search...',
-  fillColor: Color(0xFFFFF3C2),
-  filled: true,
-  hintStyle: TextStyle(fontSize: 12),
-  contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.transparent, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-  ),
-  focusedBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.transparent, width: 2.0),
-    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-  ),
-);
-
 class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Responsive res = Responsive(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
@@ -44,8 +29,10 @@ class HomeWidget extends StatelessWidget {
           ),
           ListTile(
             leading: SizedBox(
-                width: MediaQuery.of(context).size.width * .8,
-                child: TextField(decoration: kHomeSearchDecoration)),
+              width: MediaQuery.of(context).size.width * .8,
+              child: TextField(
+                  decoration: CustomStyle().kHomeSearchInputDecoration),
+            ),
             trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
           CustomAutoSwiperWidget(),
@@ -112,31 +99,22 @@ class HomeWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .33,
+            height: res.getHeight(33),
             child: ListView.builder(
               itemCount: 5,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return HomeItemWidget();
-              },
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Top Rated',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * .33,
-            child: ListView.builder(
-              itemCount: 5,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return HomeItemWidget();
+                return HomeItemWidget(
+                  rate: '4.8 Good (500+) - Burgers - Chicken ',
+                  distance: '1.5',
+                  name: 'I\'m Hungry',
+                  deliveryTime: '10-20',
+                  img: 'assets/test/banner_three.png',
+                  itemWidth: 90,
+                  itemPadding: 8,
+                  onTap: () => Navigator.pushNamed(context, Routes.menuRoute),
+                );
               },
             ),
           ),

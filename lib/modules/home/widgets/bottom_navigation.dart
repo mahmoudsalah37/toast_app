@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/classes/resposive.dart';
 import '../provider/bottom_navigation_provider.dart';
 
 class CurvedBottomNavigation extends StatefulWidget {
@@ -34,12 +35,13 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
   Widget build(BuildContext context) {
     var provider = Provider.of<BottomNavigationProvider>(context);
     Size size = MediaQuery.of(context).size;
+    Responsive res = Responsive(context);
     return Stack(
       children: [
         Positioned(
-          bottom: -20,
           left: 4,
           right: 4,
+          top: res.getHeight(91),
           child: Container(
             width: size.width,
             height: size.height * .12,
