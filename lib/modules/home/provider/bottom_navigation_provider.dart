@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'bottom_navigation_container.dart';
-import 'home_screen.dart';
+import '../widgets/cart_widget.dart';
+import '../widgets/notification_widget.dart';
+import '../widgets/profile_widget.dart';
+import '../widgets/home_widget.dart';
 
 class BottomNavigationProvider extends ChangeNotifier {
   int _currentIndex = 0;
@@ -24,13 +25,13 @@ class BottomNavigationProvider extends ChangeNotifier {
   Widget onTabChange(int index) {
     switch (index) {
       case 0:
-        return HomeScreen();
+        return HomeWidget();
       case 1:
-        return CartScreen();
+        return CartWidget();
       case 2:
-        return NotificationScreen();
+        return NotificationWidget();
       default:
-        return ProfileScreen();
+        return ProfileWidget();
     }
   }
 }
