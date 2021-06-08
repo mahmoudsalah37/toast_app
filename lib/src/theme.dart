@@ -47,12 +47,12 @@ class CustomsThemes {
         headline6: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w300,
-          color: CustomColors.accentColor,
+          color: CustomColors.primaryColor,
         ),
         bodyText1: TextStyle(
           fontSize: 15,
           fontWeight: FontWeight.w600,
-          color: CustomColors.accentColor,
+          color: CustomColors.primaryColor,
         ),
         bodyText2: TextStyle(
           fontSize: 14,
@@ -62,8 +62,14 @@ class CustomsThemes {
         subtitle1: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w400,
-          color: Color.fromRGBO(227, 227, 227, 1),
-        )),
+          color: CustomColors.greyColor,
+        ),
+        subtitle2: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: CustomColors.blueColor,
+        ),
+    ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         textStyle: MaterialStateProperty.all(

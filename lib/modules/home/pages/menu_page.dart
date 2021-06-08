@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/modules/home/widgets/home_item_widget.dart';
+import 'package:toast_app/modules/home/widgets/menu_item_widget.dart';
 import 'package:toast_app/src/styles.dart';
+import 'package:toast_app/src/theme.dart';
 
 class MenuPage extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
+    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(top: res.getHeight(5)),
@@ -29,15 +32,18 @@ class _MenuPageState extends State<MenuPage> {
               ),
               trailing: Stack(
                 children: [
-                  Icon(Icons.shopping_basket,
-                      color: Colors.blue, size: res.getWidth(10)),
+                  Padding(
+                    padding: EdgeInsets.all(4),
+                    child: Icon(Icons.shopping_basket,
+                        color: Colors.blue, size: res.getWidth(10)),
+                  ),
                   Positioned(
                     top: 0,
                     right: 0,
                     child: CircleAvatar(
                       backgroundColor: Colors.blue,
                       child: Text('2'),
-                      maxRadius: 8,
+                      maxRadius: 10,
                     ),
                   )
                 ],
@@ -64,7 +70,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
               child: DropdownButton<String>(
                 value: dropdownValue,
-                hint: Text('All', style: TextStyle(color: Colors.brown)),
+                hint: Text('All'),
                 underline: SizedBox(),
                 icon: Icon(Icons.keyboard_arrow_down, color: Colors.brown),
                 iconSize: res.getWidth(8),
@@ -80,26 +86,25 @@ class _MenuPageState extends State<MenuPage> {
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(
-                      value,
-                      style: TextStyle(
-                          color: Colors.brown,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    child: Text(value, style: textTheme.bodyText1),
                   );
                 }).toList(),
               ),
             ),
-            Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              shadowColor: Colors.black45,
-              elevation: 5,
-              borderOnForeground: true,
-              margin: EdgeInsets.all(12),
-              child: Container(height: 100),
-            ),
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.zero,
+                itemCount: 8,
+                itemBuilder: (context, index) {
+                  return MenuItemWidget(
+                    img: 'assets/test/banner_three.png',
+                    title: 'Chesse Single Burger',
+                    description: 'Fresh slice beef burger, lattuce,',
+                    price: '20.00',
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),

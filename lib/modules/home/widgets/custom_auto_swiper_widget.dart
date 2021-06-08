@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
+import 'package:toast_app/classes/resposive.dart';
 
 class CustomAutoSwiperWidget extends StatelessWidget {
+  late List<String> swiperData;
+
+  CustomAutoSwiperWidget({required this.swiperData});
+
   @override
   Widget build(BuildContext context) {
+    Responsive res = Responsive(context);
     return SizedBox(
-      height: 200,
+      height: res.getHeight(25),
       child: Swiper(
-        onTap: (value) {},
+        // onTap: (value) {},
         // viewportFraction: 0.8,
         // scale: 0.85,
         itemBuilder: (BuildContext context, int index) {
@@ -15,19 +21,16 @@ class CustomAutoSwiperWidget extends StatelessWidget {
             padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20),
-                ),
                 image: DecorationImage(
-                    image: AssetImage('assets/test/home_food_bg.png'),
-                    fit: BoxFit.fill),
+                  image: AssetImage(swiperData[index]),
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
           );
         },
         autoplay: true,
-        itemCount: 3,
+        itemCount: swiperData.length,
         pagination: SwiperPagination(
           margin: EdgeInsets.all(0.0),
           builder: SwiperCustomPagination(

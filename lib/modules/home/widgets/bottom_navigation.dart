@@ -53,9 +53,13 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                     print('value = ${_controller.value}');
                   },
                   child: Center(
-                    heightFactor: .6,
-                    child: SvgPicture.asset(
-                        'assets/images/bottom_navigation/toast_icon.svg'),
+                    heightFactor: .9,
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: res.getHeight(3)),
+                      child: SvgPicture.asset(
+                        'assets/images/bottom_navigation/toast_icon.svg',
+                      ),
+                    ),
                   ),
                 ),
                 Container(

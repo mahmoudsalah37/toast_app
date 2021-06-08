@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/src/theme.dart';
 
 class HomeItemWidget extends StatelessWidget {
   late double itemPadding;
@@ -25,6 +26,7 @@ class HomeItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
+    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -62,7 +64,7 @@ class HomeItemWidget extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: TextStyle(fontSize: 17),
+                        style: textTheme.headline5,
                       ),
                       Row(
                         children: [
@@ -70,13 +72,13 @@ class HomeItemWidget extends StatelessWidget {
                           Text(
                             rate,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(color: Colors.blue),
+                            style: textTheme.subtitle2,
                           ),
                         ],
                       ),
                       Text(
                         '$distance miles away',
-                        style: TextStyle(color: Colors.brown),
+                        style: textTheme.bodyText2,
                       ),
                     ],
                   ),
@@ -97,8 +99,7 @@ class HomeItemWidget extends StatelessWidget {
                 child: Text(
                   'Delivery\n$deliveryTime min',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.brown[700], fontWeight: FontWeight.bold),
+                  style: textTheme.bodyText1,
                 ),
               ),
             ),

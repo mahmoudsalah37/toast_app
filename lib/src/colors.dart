@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomColors {
-  static const Color primaryColor = Color.fromRGBO(16, 227, 144, 1),
-      accentColor = Color.fromRGBO(54, 28, 92, 1),
-      greyColor = Color.fromRGBO(217, 217, 217, 1),
-      accentGreyColor = Color.fromRGBO(169, 169, 169, 1);
+  static const Color primaryColor = Color.fromRGBO(89, 46, 30, 1),
+      accentColor = Color.fromRGBO(244, 157, 97, 1),
+      yellowColor = Color.fromRGBO(255, 247, 213, 1),
+      yellowDeepColor = Color.fromRGBO(255, 225, 104, 1),
+      blueColor = Color.fromRGBO(78, 180, 255, 1),
+      // brownLightColor = Color.fromRGBO(255,225,207, 1),
+      greyColor = Color.fromRGBO(172, 172, 172, 1);
 }
