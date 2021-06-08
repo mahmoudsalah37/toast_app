@@ -33,9 +33,9 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
     return Stack(
       children: [
         Positioned(
-          top: res.getHeight(91),
           left: 4,
           right: 4,
+          top: res.getHeight(91),
           child: Container(
             width: size.width,
             height: size.height * .12,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomStyle {
-  static final InputDecoration kHomeSearchDecoration = InputDecoration(
+  static final InputDecoration homeSearchInputDecoration = InputDecoration(
     hintText: 'Search...',
     fillColor: Color(0xFFFFF3C2),
     filled: true,

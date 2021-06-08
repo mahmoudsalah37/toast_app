@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/src/routes.dart';
+import 'package:toast_app/src/theme.dart';
 import 'modules/home/provider/bottom_navigation_provider.dart';
 import 'modules/home/pages/home_page.dart';
 
@@ -15,9 +17,11 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BottomNavigationProvider()),
       ],
       child: MaterialApp(
+        theme: CustomsThemes.defaultThemeData,
         debugShowCheckedModeBanner: false,
         title: 'Toast',
-        home: HomePage(),
+        onGenerateRoute: Routes.generateRoute,
+        initialRoute: Routes.homeRoute,
       ),
     );
   }
