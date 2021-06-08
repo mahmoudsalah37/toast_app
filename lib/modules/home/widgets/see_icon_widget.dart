@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class SeeAllWidget extends StatelessWidget {
+class SeeIconWidget extends StatelessWidget {
   final void Function() onTap;
-  SeeAllWidget({required this.onTap});
+  final bool isShowAll;
+  SeeIconWidget({required this.onTap, required this.isShowAll});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +16,14 @@ class SeeAllWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SvgPicture.asset(
-            'assets/images/home/see_all_icon.svg',
+            changeSeeIcon(),
             height: 30,
             width: 30,
+            color: Color.fromRGBO(206, 98, 33, 1),
           ),
           SizedBox(height: 4),
           Text(
-            'See All',
+            changeText(),
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -32,4 +34,10 @@ class SeeAllWidget extends StatelessWidget {
       ),
     );
   }
+
+  String changeText() => isShowAll ? 'collapse' : 'See All';
+
+  String changeSeeIcon() => isShowAll
+      ? 'assets/images/home/collapse.svg'
+      : 'assets/images/home/see_all_icon.svg';
 }

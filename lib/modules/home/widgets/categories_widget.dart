@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/see_all_widget.dart';
+import 'see_icon_widget.dart';
 import '../../models/category_model.dart';
 
 import 'category_item_widget.dart';
@@ -19,7 +19,7 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
   @override
   Widget build(BuildContext context) {
     final int itemCount =
-        isShowAll ? widget.items.length : (widget.crossAxisCount * 2);
+        isShowAll ? widget.items.length + 1 : (widget.crossAxisCount * 2);
 
     return Scrollbar(
       controller: scrollController,
@@ -30,21 +30,24 @@ class _CategoriesWidgetState extends State<CategoriesWidget> {
             crossAxisCount: widget.crossAxisCount,
           ),
           itemBuilder: (_, index) {
-            final item = widget.items.elementAt(index);
-            if (!isShowAll && itemCount - 1 == index)
-              return SeeAllWidget(
+            if (itemCount - 1 == index)
+              return SeeIconWidget(
+                isShowAll: isShowAll,
                 onTap: () {
                   setState(() {
                     isShowAll = !isShowAll;
                   });
                 },
               );
-            else
+            else {
+              final item = widget.items.elementAt(index);
+
               return CategoryItemWidget(
                 onTap: () {},
                 title: item.title,
                 img: item.icon,
               );
+            }
           }),
     );
   }

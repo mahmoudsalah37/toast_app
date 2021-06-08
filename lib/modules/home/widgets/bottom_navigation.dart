@@ -12,7 +12,7 @@ class CurvedBottomNavigation extends StatefulWidget {
 class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
     with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-    duration: Duration(milliseconds: 500),
+    duration: Duration(seconds: 1),
     vsync: this,
   );
   late final Animation<Offset> _offsetAnimation = Tween<Offset>(
@@ -24,10 +24,19 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
       curve: Curves.ease,
     ),
   );
+  late final provider =
+      Provider.of<BottomNavigationProvider>(context, listen: false);
+  @override
+  void initState() {
+    super.initState();
+    _controller.addStatusListener((status) {
+      if (_controller.isDismissed)
+        provider.toggleSpecialOrderBtnVisibility(false);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<BottomNavigationProvider>(context);
     Size size = MediaQuery.of(context).size;
     Responsive res = Responsive(context);
     return Stack(
@@ -47,10 +56,14 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                 ),
                 GestureDetector(
                   onTap: () {
-                    provider.toggleSpecialOrderBtnVisibility();
-                    _controller.forward();
-                    if (_controller.isCompleted) _controller.value = 0;
-                    print('value = ${_controller.value}');
+                    if (!_controller.isAnimating) {
+                      provider.toggleSpecialOrderBtnVisibility(true);
+                      if (_controller.isCompleted)
+                        _controller.reverse();
+                      else
+                        _controller.forward();
+                      print('value = ${_controller.value}');
+                    }
                   },
                   child: Center(
                     heightFactor: .9,

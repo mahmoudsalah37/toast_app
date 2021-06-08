@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/modules/models/category_model.dart';
-import 'package:toast_app/src/routes.dart';
+import 'package:toast_app/modules/models/company_model.dart';
+import '../../../modules/models/category_model.dart';
 import '../widgets/categories_widget.dart';
 import '../../../src/styles.dart';
+import '../widgets/companies_list_widget.dart';
+
 import '../widgets/custom_auto_swiper_widget.dart';
-import '../widgets/home_item_widget.dart';
 import '../../../classes/resposive.dart';
 
 class HomeScreen extends StatelessWidget {
-  List<String> swiperData = [
-    'assets/test/home_food_bg.png',
-    'assets/test/banner_three.png',
-    'assets/test/home_food_bg.png',
-  ];
-
   @override
   Widget build(BuildContext context) {
     final res = Responsive(context);
@@ -41,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: CustomStyle.homeSearchInputDecoration)),
             trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
-          CustomAutoSwiperWidget(swiperData: swiperData),
+          CustomAutoSwiperWidget(),
           Container(
             height: res.getHeight(28),
             padding: EdgeInsets.all(8),
@@ -87,36 +82,35 @@ class HomeScreen extends StatelessWidget {
                 CategoryModel(icon: '', title: 'vfvfv fvfvf '),
                 CategoryModel(icon: '', title: 'vvv'),
                 CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'vvv'),
+                CategoryModel(icon: '', title: 'hi'),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Nearest',
-              style: TextStyle(fontSize: 20, color: Colors.black),
-            ),
-          ),
-          SizedBox(
-            height: res.getHeight(34),
-            child: ListView.builder(
-              itemCount: 5,
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return HomeItemWidget(
-                  rate: '4.8 Good (500+) - Burgers - Chicken ',
-                  distance: '1.5',
-                  name: 'I\'m Hungry',
-                  deliveryTime: '10-20',
-                  img: 'assets/test/banner_three.png',
-                  itemWidth: 90,
-                  itemPadding: 8,
-                  onTap: () => Navigator.pushNamed(context, Routes.menuRoute),
-                );
-              },
-            ),
+          CompaniesListWidget(
+            title: 'Nearest',
+            items: [
+              CompanyModel(
+                rate: '4.8 Good (500+) - Burgers - Chicken ',
+                distance: '1.5',
+                name: 'I\'m Hungry',
+                deliveryTime: '10-20',
+                img: 'assets/test/banner_three.png',
+              ),
+              CompanyModel(
+                rate: '4.8 Good (500+) - Burgers - Chicken ',
+                distance: '1.5',
+                name: 'I\'m Hungry',
+                deliveryTime: '10-20',
+                img: 'assets/test/banner_three.png',
+              ),
+              CompanyModel(
+                rate: '4.8 Good (500+) - Burgers - Chicken ',
+                distance: '1.5',
+                name: 'I\'m Hungry',
+                deliveryTime: '10-20',
+                img: 'assets/test/banner_three.png',
+              )
+            ],
           ),
           SizedBox(height: res.getHeight(8))
         ],
