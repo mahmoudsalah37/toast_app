@@ -42,7 +42,6 @@ flutter:
     - assets/images/home/
     - assets/images/bottom_navigation/
     - assets/test/
-    - assets/svg/
   # example:
   # fonts:
   #   - family: Schyler

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
 
-class HomeItemWidget extends StatelessWidget {
-  late double itemPadding;
-  late double itemWidth;
-  late VoidCallback onTap;
-  late String img;
-  late String name;
-  late String rate;
-  late String distance;
-  late String deliveryTime;
+import 'favorite_icon_widget.dart';
 
-  HomeItemWidget({
+class CompanyWidget extends StatelessWidget {
+  final double itemPadding;
+  final double itemWidth;
+  final VoidCallback onTap;
+  final String img, name, rate, distance, deliveryTime;
+
+  CompanyWidget({
     required this.itemPadding,
     required this.itemWidth,
     required this.onTap,
@@ -49,8 +47,8 @@ class HomeItemWidget extends StatelessWidget {
                     ),
                     Positioned(
                       right: 10,
-                      top: 20,
-                      child: Icon(Icons.favorite, color: Colors.blue),
+                      top: 10,
+                      child: FavoriteIconWidget(),
                     ),
                   ],
                 ),

@@ -17,8 +17,8 @@ class BottomNavigationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void toggleSpecialOrderBtnVisibility() {
-    _specialOrderBtnVisibility = !_specialOrderBtnVisibility;
+  void toggleSpecialOrderBtnVisibility(bool v) {
+    _specialOrderBtnVisibility = v;
     notifyListeners();
   }
 

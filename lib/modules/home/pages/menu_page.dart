@@ -43,7 +43,7 @@ class _MenuPageState extends State<MenuPage> {
                 ],
               ),
             ),
-            HomeItemWidget(
+            CompanyWidget(
               rate: '4.8 Good (500+) - Burgers - Chicken ',
               distance: '1.5',
               name: 'I\'m Hungry',
