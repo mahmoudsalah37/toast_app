@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import 'category_item.dart';
-import 'custom_auto_swiper.dart';
-import 'home_item.dart';
+import 'category_item_widget.dart';
+import 'custom_auto_swiper_widget.dart';
+import 'home_item_widget.dart';
 
 InputDecoration kHomeSearchDecoration = InputDecoration(
   hintText: 'Search...',
@@ -24,7 +23,7 @@ InputDecoration kHomeSearchDecoration = InputDecoration(
   ),
 );
 
-class HomeScreen extends StatelessWidget {
+class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +39,8 @@ class HomeScreen extends StatelessWidget {
                 Text('Current location', style: TextStyle(color: Colors.brown)),
               ],
             ),
-            trailing: SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
+            trailing:
+                SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
           ),
           ListTile(
             leading: SizedBox(
@@ -48,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                 child: TextField(decoration: kHomeSearchDecoration)),
             trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
-          CustomAutoSwiper(),
+          CustomAutoSwiperWidget(),
           Container(
             height: MediaQuery.of(context).size.height * .28,
             padding: EdgeInsets.all(8),
@@ -62,19 +62,19 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Burgers',
                       img: 'assets/images/home/burgers_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Break Fast',
                       img: 'assets/images/home/breakfast_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Grill',
                       img: 'assets/images/home/grill_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Pizza',
                       img: 'assets/images/home/pizza_icon.svg',
                     ),
@@ -83,19 +83,19 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Fast Food',
                       img: 'assets/images/home/fast_food_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Make-Up',
                       img: 'assets/images/home/make_up_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'Pharmacy',
                       img: 'assets/images/home/pharmacy_icon.svg',
                     ),
-                    CategoryItem(
+                    CategoryItemWidget(
                       title: 'See All',
                       img: 'assets/images/home/see_all_icon.svg',
                     ),
@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return HomeItem();
+                return HomeItemWidget();
               },
             ),
           ),
@@ -136,7 +136,7 @@ class HomeScreen extends StatelessWidget {
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                return HomeItem();
+                return HomeItemWidget();
               },
             ),
           ),
@@ -146,4 +146,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

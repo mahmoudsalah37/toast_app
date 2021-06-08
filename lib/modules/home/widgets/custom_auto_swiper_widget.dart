@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 
-class CustomAutoSwiper extends StatelessWidget {
-
+class CustomAutoSwiperWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -40,11 +39,11 @@ class CustomAutoSwiper extends StatelessWidget {
                       child: new Align(
                         alignment: Alignment.center,
                         child: new DotSwiperPaginationBuilder(
-                            color: Colors.yellowAccent.withOpacity(.8),
-                            activeColor: Colors.yellow,
-                            size: 8,
-                            space: 2,
-                            activeSize: 12)
+                                color: Colors.yellowAccent.withOpacity(.8),
+                                activeColor: Colors.yellow,
+                                size: 8,
+                                space: 2,
+                                activeSize: 12)
                             .build(context, config),
                       ),
                     )
