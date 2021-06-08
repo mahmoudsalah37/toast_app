@@ -100,7 +100,7 @@ class _MenuPageState extends State<MenuPage> {
                     img: 'assets/test/banner_three.png',
                     title: 'Chesse Single Burger',
                     description: 'Fresh slice beef burger, lattuce,',
-                    price: '20.00',
+                    price: '20.0',
                   );
                 },
               ),
