@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/classes/resposive.dart';
 import '../provider/bottom_navigation_provider.dart';
 
 class CurvedBottomNavigation extends StatefulWidget {
@@ -25,19 +26,14 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
   );
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     var provider = Provider.of<BottomNavigationProvider>(context);
     Size size = MediaQuery.of(context).size;
+    Responsive res = Responsive(context);
     return Stack(
       children: [
         Positioned(
-          bottom: -20,
+          top: res.getHeight(91),
           left: 4,
           right: 4,
           child: Container(
@@ -150,6 +146,12 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
         ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
 

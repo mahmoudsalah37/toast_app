@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ProfileWidget extends StatelessWidget {
+class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: Colors.yellow[900],
       body: Center(
         child: Text(
-          'profile_screen',
+          'notification_screen',
           style: TextStyle(fontSize: 30, color: Colors.black),
         ),
       ),

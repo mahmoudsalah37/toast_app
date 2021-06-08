@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../widgets/cart_widget.dart';
-import '../widgets/notification_widget.dart';
-import '../widgets/profile_widget.dart';
-import '../widgets/home_widget.dart';
+import '../screens/cart_screen.dart';
+import '../screens/notification_screen.dart';
+import '../screens/profile_screen.dart';
+import '../screens/home_screen.dart';
 
 class BottomNavigationProvider extends ChangeNotifier {
   int _currentIndex = 0;
@@ -12,12 +12,12 @@ class BottomNavigationProvider extends ChangeNotifier {
 
   bool get getSpecialOrderBtnVisibility => _specialOrderBtnVisibility;
 
-  changeIndex(int index) {
+  void changeIndex(int index) {
     _currentIndex = index;
     notifyListeners();
   }
 
-  toggleSpecialOrderBtnVisibility() {
+  void toggleSpecialOrderBtnVisibility() {
     _specialOrderBtnVisibility = !_specialOrderBtnVisibility;
     notifyListeners();
   }
@@ -25,13 +25,13 @@ class BottomNavigationProvider extends ChangeNotifier {
   Widget onTabChange(int index) {
     switch (index) {
       case 0:
-        return HomeWidget();
+        return HomeScreen();
       case 1:
-        return CartWidget();
+        return CartScreen();
       case 2:
-        return NotificationWidget();
+        return NotificationScreen();
       default:
-        return ProfileWidget();
+        return ProfileScreen();
     }
   }
 }

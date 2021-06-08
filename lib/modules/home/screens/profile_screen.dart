@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CartWidget extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[900],
+      backgroundColor: Colors.blue[900],
       body: Center(
         child: Text(
-          'cart_screen',
+          'profile_screen',
           style: TextStyle(fontSize: 30, color: Colors.black),
         ),
       ),

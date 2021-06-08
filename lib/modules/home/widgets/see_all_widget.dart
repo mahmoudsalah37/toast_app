@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CategoryItemWidget extends StatelessWidget {
-  final String img;
-  final String title;
+class SeeAllWidget extends StatelessWidget {
   final void Function() onTap;
-  CategoryItemWidget(
-      {required this.title, required this.img, required this.onTap});
+  SeeAllWidget({required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +15,13 @@ class CategoryItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SvgPicture.asset(
-            img,
+            'assets/images/home/see_all_icon.svg',
             height: 30,
             width: 30,
-            placeholderBuilder: (_) => SvgPicture.asset(
-              'assets/svg/sand-clock.svg',
-              height: 30,
-              width: 30,
-            ),
           ),
           SizedBox(height: 4),
           Text(
-            title,
+            'See All',
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
