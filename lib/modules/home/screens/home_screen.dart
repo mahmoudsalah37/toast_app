@@ -12,6 +12,11 @@ import '../../../classes/resposive.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    List<String> swiperData = [
+      'assets/test/banner_three.png',
+      'assets/test/home_food_bg.png',
+      'assets/test/banner_three.png',
+    ];
     final res = Responsive(context);
     return Scaffold(
       backgroundColor: Colors.white,
@@ -27,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             trailing:
-                SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
+            SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
           ),
           ListTile(
             leading: SizedBox(
@@ -36,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: CustomStyle.homeSearchInputDecoration)),
             trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
           ),
-          CustomAutoSwiperWidget(),
+          CustomAutoSwiperWidget(swiperData:swiperData),
           Container(
             height: res.getHeight(28),
             padding: EdgeInsets.all(8),
