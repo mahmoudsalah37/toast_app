@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/modules/home/widgets/home_item_widget.dart';
+import 'package:toast_app/modules/home/widgets/menu_item_bottom_sheet.dart';
 import 'package:toast_app/modules/home/widgets/menu_item_widget.dart';
+import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 import 'package:toast_app/src/theme.dart';
 
@@ -35,15 +37,15 @@ class _MenuPageState extends State<MenuPage> {
                   Padding(
                     padding: EdgeInsets.all(4),
                     child: Icon(Icons.shopping_basket,
-                        color: Colors.blue, size: res.getWidth(10)),
+                        color: CustomColors.blueColor, size: res.getWidth(10)),
                   ),
                   Positioned(
                     top: 0,
                     right: 0,
                     child: CircleAvatar(
-                      backgroundColor: Colors.blue,
-                      child: Text('2'),
-                      maxRadius: 10,
+                      backgroundColor: CustomColors.blueColor,
+                      child: Text('8', style: TextStyle(color: Colors.white)),
+                      maxRadius: 11,
                     ),
                   )
                 ],
@@ -86,7 +88,7 @@ class _MenuPageState extends State<MenuPage> {
                 ].map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value, style: textTheme.bodyText1),
+                    child: Text(value, style: textTheme.headline6),
                   );
                 }).toList(),
               ),
@@ -97,8 +99,26 @@ class _MenuPageState extends State<MenuPage> {
                 itemCount: 8,
                 itemBuilder: (context, index) {
                   return MenuItemWidget(
+                    onTap: () => showModalBottomSheet(
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          padding: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).viewInsets.bottom,
+                          ),
+                          child: MenuItemModalBottomSheet(),
+                        ),
+                      ),
+                    ),
                     img: 'assets/test/banner_three.png',
-                    title: 'Chesse Single Burger',
+                    title: 'Cheese Single Burger',
                     description: 'Fresh slice beef burger, lattuce,',
                     price: '20.0',
                   );
@@ -107,6 +127,60 @@ class _MenuPageState extends State<MenuPage> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AddAndWithOutCheckBoxWidget extends StatelessWidget {
+  final Function onChanged;
+  final String title;
+  final String price;
+  final bool value;
+  final bool hasPrice;
+
+  const AddAndWithOutCheckBoxWidget({
+    required this.title,
+    required this.value,
+    required this.onChanged,
+    required this.hasPrice,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Responsive res = Responsive(context);
+    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
+    return InkWell(
+      onTap: () {
+        onChanged(!value);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            height: res.getHeight(3.8),
+            child: Checkbox(
+              value: value,
+              // checkColor: CustomColors.primaryColor,
+              activeColor: CustomColors.primaryColor,
+              onChanged: (newValue) {
+                onChanged(newValue);
+              },
+            ),
+          ),
+          Expanded(child: Text(title, style: textTheme.headline2)),
+          Visibility(
+            visible: hasPrice ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                hasPrice ? '+$price.00' : '',
+                style: textTheme.headline3,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

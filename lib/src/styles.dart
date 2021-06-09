@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:toast_app/src/colors.dart';
 
 class CustomStyle {
   static final InputDecoration homeSearchInputDecoration = InputDecoration(
     hintText: 'Search...',
-    fillColor: Color(0xFFFFF3C2),
+    fillColor: CustomColors.yellowLightColor,
     filled: true,
     hintStyle: TextStyle(fontSize: 12),
-    contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+    contentPadding: EdgeInsets.all(10),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12.0)),
     ),

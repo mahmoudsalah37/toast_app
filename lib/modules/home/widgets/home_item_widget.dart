@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/theme.dart';
 
 import 'favorite_icon_widget.dart';
@@ -62,11 +63,11 @@ class CompanyWidget extends StatelessWidget {
                     children: [
                       Text(
                         name,
-                        style: textTheme.headline5,
+                        style: textTheme.headline2,
                       ),
                       Row(
                         children: [
-                          Icon(Icons.star, color: Colors.blue),
+                          Icon(Icons.star, color: CustomColors.blueColor),
                           Text(
                             rate,
                             overflow: TextOverflow.ellipsis,
@@ -76,7 +77,7 @@ class CompanyWidget extends StatelessWidget {
                       ),
                       Text(
                         '$distance miles away',
-                        style: textTheme.bodyText2,
+                        style: textTheme.headline3,
                       ),
                     ],
                   ),
@@ -97,7 +98,7 @@ class CompanyWidget extends StatelessWidget {
                 child: Text(
                   'Delivery\n$deliveryTime min',
                   textAlign: TextAlign.center,
-                  style: textTheme.bodyText1,
+                  style: textTheme.headline6,
                 ),
               ),
             ),
