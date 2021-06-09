@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Toast',
         onGenerateRoute: Routes.generateRoute,
-        initialRoute: Routes.homeRoute,
+        initialRoute: Routes.newSpecialOrder,
       ),
     );
   }
