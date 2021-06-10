@@ -9,13 +9,12 @@ import 'package:toast_app/modules/shopping_cart/widget/shopping_cart_item_widget
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 
-class PlaceOrderAll extends StatefulWidget {
+class CartPage extends StatefulWidget {
   @override
-  _PlaceOrderAllState createState() => _PlaceOrderAllState();
+  _CartPageState createState() => _CartPageState();
 }
 
-class _PlaceOrderAllState extends State<PlaceOrderAll>
-    with TickerProviderStateMixin {
+class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
   bool _couponBtnVisibility = false;
 
   late final AnimationController _controller = AnimationController(
@@ -183,7 +182,7 @@ class _PlaceOrderAllState extends State<PlaceOrderAll>
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(width: 8),
+                          SizedBox(width: res.getWidth(2)),
                           SizedBox(
                             width: res.getWidth(60),
                             child: TextField(
@@ -209,7 +208,8 @@ class _PlaceOrderAllState extends State<PlaceOrderAll>
                                 ),
                                 Text(
                                   'Enter',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
                                 )
                               ],
                             ),
