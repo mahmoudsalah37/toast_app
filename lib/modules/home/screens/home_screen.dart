@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toast_app/modules/models/company_model.dart';
+import 'package:toast_app/src/colors.dart';
 import '../../../modules/models/category_model.dart';
 import '../widgets/categories_widget.dart';
 import '../../../src/styles.dart';
@@ -22,26 +23,36 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: ListView(
         children: [
-          ListTile(
-            leading: SvgPicture.asset('assets/images/home/delivery_icon.svg'),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Now', style: TextStyle(color: Colors.yellow)),
-                Text('Current location', style: TextStyle(color: Colors.brown)),
-              ],
-            ),
-            trailing:
-            SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
+          Row(
+            children: [
+              Expanded(
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                  leading:
+                      SvgPicture.asset('assets/images/home/delivery_icon.svg'),
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Now', style: TextStyle(color: Colors.yellow)),
+                      Text('Current location',
+                          style: TextStyle(color: Colors.brown)),
+                    ],
+                  ),
+                  trailing: Icon(
+                    Icons.search,
+                    color: CustomColors.yellowDeepColor,
+                    size: 30,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+                    'assets/images/home/person_profile_icon.svg'),
+              )
+            ],
           ),
-          ListTile(
-            leading: SizedBox(
-                width: res.getWidth(80),
-                child: TextField(
-                    decoration: CustomStyle.homeSearchInputDecoration)),
-            trailing: SvgPicture.asset('assets/images/home/filter_icon.svg'),
-          ),
-          CustomAutoSwiperWidget(swiperData:swiperData),
+          CustomAutoSwiperWidget(swiperData: swiperData),
           Container(
             height: res.getHeight(28),
             padding: EdgeInsets.all(8),

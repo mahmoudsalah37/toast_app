@@ -97,8 +97,15 @@ class CustomsThemes {
       subtitle2: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w400,
-        color: CustomColors.blueColor,
+        color: CustomColors.blueLightColor,
       ),
+      ///color blue,size 12 , weight 500 (blue medium)
+      overline: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        color: CustomColors.blueLightColor,
+      ),
+
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(

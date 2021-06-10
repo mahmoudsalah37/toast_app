@@ -5,8 +5,20 @@ import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 import 'package:toast_app/src/theme.dart';
 
-class MenuItemModalBottomSheet extends StatelessWidget {
+class MenuItemModalBottomSheet extends StatefulWidget {
+  @override
+  _MenuItemModalBottomSheetState createState() =>
+      _MenuItemModalBottomSheetState();
+}
+
+class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
   bool addOnsValue = false;
+  Map<String, bool> addOnDataList = {
+    'Tomato': false,
+    'Lettuce': false,
+    'Cheese': false,
+    'Sauce': false,
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +40,7 @@ class MenuItemModalBottomSheet extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(height: res.getHeight(1)),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
             child: Column(
@@ -48,17 +61,22 @@ class MenuItemModalBottomSheet extends StatelessWidget {
                 Text('Add Ons:', style: textTheme.headline5),
                 SizedBox(
                   height: res.getHeight(14),
-                  child: ListView.builder(
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    itemCount: 10,
-                    itemBuilder: (context, index) =>
-                        AddAndWithOutCheckBoxWidget(
-                          title: 'Tomato',
-                          value: addOnsValue,
-                          onChanged: (value) {},
-                          hasPrice: true,
-                          price: '2',
-                        ),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: addOnDataList.keys.map((String key) {
+                      return AddAndWithOutCheckBoxWidget(
+                        title: key,
+                        value: addOnDataList[key] as bool,
+                        onChanged: (newValue) {
+                          setState(() {
+                            addOnDataList[key] = newValue;
+                            if (addOnDataList[key] = newValue)
+                              print('$key ${addOnDataList[key]}');
+                          });
+                        },
+                        hasPrice: false,
+                      );
+                    }).toList(),
                   ),
                 ),
                 SizedBox(height: res.getHeight(1)),
@@ -86,19 +104,25 @@ class MenuItemModalBottomSheet extends StatelessWidget {
                   maxLines: 4,
                 ),
                 Center(
-                  child: FlatButton(
+                  child: TextButton(
                     onPressed: () => Navigator.pop(context),
-                    textColor: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                      ),
+                      padding: MaterialStateProperty.all(
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                          CustomColors.yellowDeepColor),
+                      textStyle: MaterialStateProperty.all(textTheme.headline6),
                     ),
-                    color: CustomColors.yellowDeepColor,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         'Done',
-                        style: textTheme.headline6,
                       ),
                     ),
                   ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/modules/home/widgets/home_item_widget.dart';
 import 'package:toast_app/modules/home/widgets/menu_item_bottom_sheet.dart';
 import 'package:toast_app/modules/home/widgets/menu_item_widget.dart';
 import 'package:toast_app/src/colors.dart';
+import 'package:toast_app/src/routes.dart';
 import 'package:toast_app/src/styles.dart';
 import 'package:toast_app/src/theme.dart';
 
@@ -14,7 +16,6 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   late String dropdownValue = 'All';
-  String newDropDownValue = 'Gender';
 
   @override
   Widget build(BuildContext context) {
@@ -27,32 +28,43 @@ class _MenuPageState extends State<MenuPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 8),
               leading: SizedBox(
                 width: res.getWidth(80),
                 child: TextField(
                     decoration: CustomStyle.homeSearchInputDecoration),
               ),
-              trailing: Stack(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Icon(Icons.shopping_basket,
-                        color: CustomColors.blueColor, size: res.getWidth(10)),
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    child: CircleAvatar(
-                      backgroundColor: CustomColors.blueColor,
-                      child: Text('8', style: TextStyle(color: Colors.white)),
-                      maxRadius: 11,
+              trailing: GestureDetector(
+                onTap: () {
+                  print('pressed');
+                  Navigator.pushNamed(context, Routes.placeOrderAll);
+                  },
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(4),
+                      child: SvgPicture.asset(
+                        'assets/images/home/cart_icon.svg',
+                        color: CustomColors.blueColor,
+                        width: res.getWidth(10),
+                      ),
                     ),
-                  )
-                ],
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: CircleAvatar(
+                        backgroundColor: CustomColors.blueColor,
+                        child: Text('8', style: TextStyle(color: Colors.white)),
+                        maxRadius: 10,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
+            SizedBox(height: res.getHeight(2)),
             CompanyWidget(
-              rate: '4.8 Good (500+) - Burgers - Chicken ',
+              rate: '4.8 Good (500+) - Burgers - Chicken - Dessert',
               distance: '1.5',
               name: 'I\'m Hungry',
               deliveryTime: '10-20',
@@ -68,9 +80,10 @@ class _MenuPageState extends State<MenuPage> {
               margin: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.yellow[700],
+                color: CustomColors.yellowDeepColor,
               ),
               child: DropdownButton<String>(
+                dropdownColor: CustomColors.yellowDeepColor,
                 value: dropdownValue,
                 hint: Text('All'),
                 underline: SizedBox(),
@@ -135,7 +148,7 @@ class _MenuPageState extends State<MenuPage> {
 class AddAndWithOutCheckBoxWidget extends StatelessWidget {
   final Function onChanged;
   final String title;
-  final String price;
+  final String? price;
   final bool value;
   final bool hasPrice;
 
@@ -144,7 +157,7 @@ class AddAndWithOutCheckBoxWidget extends StatelessWidget {
     required this.value,
     required this.onChanged,
     required this.hasPrice,
-    required this.price,
+    this.price,
   });
 
   @override

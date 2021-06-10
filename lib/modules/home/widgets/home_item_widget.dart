@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/src/colors.dart';
@@ -65,15 +66,13 @@ class CompanyWidget extends StatelessWidget {
                         name,
                         style: textTheme.headline2,
                       ),
-                      Row(
-                        children: [
-                          Icon(Icons.star, color: CustomColors.blueColor),
-                          Text(
-                            rate,
-                            overflow: TextOverflow.ellipsis,
-                            style: textTheme.subtitle2,
-                          ),
-                        ],
+                      AutoSizeText(
+                        '★ $rate',
+                        style: textTheme.subtitle2,
+                        maxLines: 1,
+                        minFontSize: 14,
+                        maxFontSize: 20,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         '$distance miles away',
@@ -92,7 +91,7 @@ class CompanyWidget extends StatelessWidget {
                 height: 50,
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Color(0xffFFDD54),
+                  color: CustomColors.yellowDeepColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
