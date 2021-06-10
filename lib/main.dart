@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/modules/special_order/pages/new_special_order_page.dart';
 import 'package:toast_app/src/routes.dart';
 import 'package:toast_app/src/theme.dart';
 import 'modules/home/provider/bottom_navigation_provider.dart';
-import 'modules/home/pages/home_page.dart';
 
-Future<void> main() async {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -21,7 +19,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Toast',
         onGenerateRoute: Routes.generateRoute,
-        initialRoute: Routes.newSpecialOrder,
+        // initialRoute: Routes.newSpecialOrderPickStorePage,
+        home: NewSpecialOrderPage(),
       ),
     );
   }

@@ -30,32 +30,18 @@ class CustomsThemes {
         color: Colors.black,
       ),
 
-      ///color black ,size 16 , weight 500
-      headline2: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
-        color: CustomColors.black,
-      ),
-
-      ///color brown,size 12 , weight 400 (brown small)
-      headline3: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        color: CustomColors.primaryColor,
-      ),
-
-      ///color brown,size 12 , weight 800 (brown small bold)
-      headline4: TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w800,
-        color: CustomColors.primaryColor,
-      ),
-
       ///color brown,size 18 , weight 400 (brown medium)
       headline5: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w400,
         color: CustomColors.primaryColor,
+      ),
+
+      ///color black ,size 16 , weight 500
+      headline2: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+        color: CustomColors.black,
       ),
 
       ///color brown,size 16 , weight 800 (brown medium bold)
@@ -84,6 +70,20 @@ class CustomsThemes {
         fontSize: 16,
         fontWeight: FontWeight.w300,
         color: CustomColors.yellowDeepColor,
+      ),
+
+      ///color brown,size 12 , weight 400 (brown small)
+      headline3: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        color: CustomColors.primaryColor,
+      ),
+
+      ///color brown,size 12 , weight 800 (brown small bold)
+      headline4: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w800,
+        color: CustomColors.primaryColor,
       ),
 
       ///color grey,size 12 , weight 400 (grey small)

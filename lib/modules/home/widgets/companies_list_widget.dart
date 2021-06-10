@@ -39,7 +39,7 @@ class CompaniesListWidget extends StatelessWidget {
                 img: item.img,
                 itemWidth: 90,
                 itemPadding: 8,
-                onTap: () => Navigator.pushNamed(context, Routes.menuRoute),
+                onTap: () => Navigator.pushNamed(context, Routes.menuPage),
               );
             },
           ),
