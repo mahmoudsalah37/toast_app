@@ -41,5 +41,32 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>Program requires GPS to track cars and job orders</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Program requires GPS to track cars and job orders</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Program requires GPS to track cars and job orders</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app uses your Microphone to allow Voice over IP communication with the Program Admin system</string>
+
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to location in the background.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app needs access to location when in the background.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app needs access to location when open and in the background.</string>
+
+
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Need location when in use</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>Always and when in use!</string>
+<key>NSLocationUsageDescription</key>
+<string>Older devices need location.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Can I haz location always?</string>
+
 </dict>
 </plist>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/src/routes.dart';
 import '../provider/bottom_navigation_provider.dart';
 
 class CurvedBottomNavigation extends StatefulWidget {
@@ -151,7 +152,7 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () =>Navigator.pushNamed(context, Routes.newSpecialOrderPickStoreLocationPage),
                   child: Text(
                     'Special Order',
                     style: TextStyle(color: Colors.black),

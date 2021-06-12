@@ -3,6 +3,7 @@ import 'package:toast_app/modules/home/pages/home_page.dart';
 import 'package:toast_app/modules/home/pages/menu_page.dart';
 import 'package:toast_app/modules/shopping_cart/pages/cart_page.dart';
 import 'package:toast_app/modules/special_order/pages/new_special_order_page.dart';
+import 'package:toast_app/modules/special_order/pages/new_special_order_pick_store_location_page.dart';
 import 'package:toast_app/modules/special_order/pages/new_special_order_pick_store_page.dart';
 
 class Routes {
@@ -10,7 +11,9 @@ class Routes {
       menuPage = '/menuPage',
       newSpecialOrderapge = '/newSpecialOrder',
       newSpecialOrderPickStorePage = '/newSpecialOrderPickStore',
-      placeOrderAll = '/placeOrderAll';
+      newSpecialOrderPickStoreLocationPage =
+          '/newSpecialOrderPickStoreLocationPage',
+      cartPage = '/cartPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -24,9 +27,11 @@ class Routes {
       case newSpecialOrderPickStorePage:
         return MaterialPageRoute(
             builder: (context) => NewSpecialOrderPickStorePage());
-      case placeOrderAll:
+      case newSpecialOrderPickStoreLocationPage:
         return MaterialPageRoute(
-            builder: (context) => CartPage());
+            builder: (context) => NewSpecialOrderPickStoreLocationPage());
+      case cartPage:
+        return MaterialPageRoute(builder: (context) => CartPage());
       default:
         return MaterialPageRoute(builder: (context) => HomePage());
     }

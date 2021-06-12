@@ -20,7 +20,6 @@ class HomeScreen extends StatelessWidget {
     ];
     final res = Responsive(context);
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ListView(
         children: [
           Row(

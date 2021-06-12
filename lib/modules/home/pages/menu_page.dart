@@ -35,10 +35,7 @@ class _MenuPageState extends State<MenuPage> {
                     decoration: CustomStyle.homeSearchInputDecoration),
               ),
               trailing: GestureDetector(
-                onTap: () {
-                  print('pressed');
-                  Navigator.pushNamed(context, Routes.placeOrderAll);
-                  },
+                onTap: () => Navigator.pushNamed(context, Routes.cartPage),
                 child: Stack(
                   children: [
                     Padding(
