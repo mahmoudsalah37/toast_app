@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'see_icon_widget.dart';
-import '../../models/category_model.dart';
 
+import '../models/category_model.dart';
+import 'see_icon_widget.dart';
 import 'category_item_widget.dart';
 
 class CategoriesWidget extends StatefulWidget {

@@ -10,7 +10,6 @@ class NewSpecialOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
@@ -20,76 +19,7 @@ class NewSpecialOrderPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              margin: const EdgeInsets.all(16),
-              padding: const EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 1),
-                    blurRadius: 8,
-                    color: Colors.grey[300]!,
-                  )
-                ],
-                color: Colors.white,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    children: [
-                      SizedBox(height: 20),
-                      DotStepper(
-                        activeStep: 0,
-                        direction: Axis.vertical,
-                        dotCount: 4,
-                        dotRadius: 6,
-                        spacing: 50,
-                        lineConnectorsEnabled: true,
-                        tappingEnabled: false,
-                        lineConnectorDecoration: LineConnectorDecoration(
-                          strokeWidth: 1,
-                        ),
-                        onDotTapped: (i) {},
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 4),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          EnterLocationTFW(
-                            hitText: 'Store Location 1...',
-                            textEditingController:
-                                TextEditingController(text: ''),
-                          ),
-                          EnterLocationTFW(
-                            hitText: 'Store Location 2...',
-                            textEditingController:
-                                TextEditingController(text: ''),
-                          ),
-                          EnterLocationTFW(
-                            hitText: 'Store Location 3...',
-                            textEditingController:
-                                TextEditingController(text: ''),
-                          ),
-                          EnterLocationTFW(
-                            hitText: 'Your Location...',
-                            textEditingController:
-                                TextEditingController(text: ''),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            PickStoresLocationWidget(),
             Spacer(),
             Container(
               margin: const EdgeInsets.all(16),
@@ -126,6 +56,78 @@ class NewSpecialOrderPage extends StatelessWidget {
             SizedBox(height: 21),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PickStoresLocationWidget extends StatelessWidget {
+  const PickStoresLocationWidget();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 1),
+            blurRadius: 8,
+            color: Colors.grey[300]!,
+          )
+        ],
+        color: Colors.white,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            children: [
+              SizedBox(height: 20),
+              DotStepper(
+                activeStep: 0,
+                direction: Axis.vertical,
+                dotCount: 4,
+                dotRadius: 6,
+                spacing: 50,
+                lineConnectorsEnabled: true,
+                tappingEnabled: false,
+                lineConnectorDecoration: LineConnectorDecoration(
+                  strokeWidth: 1,
+                ),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.only(left: 4),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  EnterLocationTFW(
+                    hitText: 'Store Location 1...',
+                    textEditingController: TextEditingController(text: 'gfngf'),
+                  ),
+                  EnterLocationTFW(
+                    hitText: 'Store Location 2...',
+                    textEditingController: TextEditingController(text: ''),
+                  ),
+                  EnterLocationTFW(
+                    hitText: 'Store Location 3...',
+                    textEditingController: TextEditingController(text: ''),
+                  ),
+                  EnterLocationTFW(
+                    hitText: 'Your Location...',
+                    textEditingController: TextEditingController(text: ''),
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }

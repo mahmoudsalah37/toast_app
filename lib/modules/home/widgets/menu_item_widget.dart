@@ -4,11 +4,11 @@ import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/src/theme.dart';
 
 class MenuItemWidget extends StatelessWidget {
-  late String title;
-  late String description;
-  late String price;
-  late String img;
-  late Function() onTap;
+  final String title;
+  final String description;
+  final String price;
+  final String img;
+  final Function() onTap;
 
   MenuItemWidget({
     required this.title,

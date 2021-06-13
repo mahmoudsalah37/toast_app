@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/classes/resposive.dart';
-import 'package:toast_app/modules/home/pages/menu_page.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/src/theme.dart';
+
+import '../../../classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../src/theme.dart';
 
 class MenuItemModalBottomSheet extends StatefulWidget {
   @override
@@ -88,11 +88,12 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                     padding: EdgeInsets.symmetric(vertical: 8),
                     itemBuilder: (context, index) =>
                         AddAndWithOutCheckBoxWidget(
-                            title: 'Cheese',
-                            value: true,
-                            onChanged: (value) {},
-                            hasPrice: false,
-                            price: ''),
+                      title: 'Cheese',
+                      value: true,
+                      onChanged: (value) {},
+                      hasPrice: false,
+                      price: '',
+                    ),
                   ),
                 ),
                 SizedBox(height: res.getHeight(.8)),
@@ -128,6 +129,60 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                   ),
                 )
               ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class AddAndWithOutCheckBoxWidget extends StatelessWidget {
+  final Function onChanged;
+  final String title;
+  final String? price;
+  final bool value;
+  final bool hasPrice;
+
+  const AddAndWithOutCheckBoxWidget({
+    required this.title,
+    required this.value,
+    required this.onChanged,
+    required this.hasPrice,
+    this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    Responsive res = Responsive(context);
+    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
+    return InkWell(
+      onTap: () {
+        onChanged(!value);
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            height: res.getHeight(3.8),
+            child: Checkbox(
+              value: value,
+              // checkColor: CustomColors.primaryColor,
+              activeColor: CustomColors.primaryColor,
+              onChanged: (newValue) {
+                onChanged(newValue);
+              },
+            ),
+          ),
+          Expanded(child: Text(title, style: textTheme.headline2)),
+          Visibility(
+            visible: hasPrice ? true : false,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: Text(
+                hasPrice ? '+$price.00' : '',
+                style: textTheme.headline3,
+              ),
             ),
           )
         ],

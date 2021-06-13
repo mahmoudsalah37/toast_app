@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchTFW extends StatelessWidget {
-  const SearchTFW({required this.text});
+  const SearchTFW({required this.text, required this.onChange});
   final String text;
+  final void Function(String v) onChange;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,6 +17,7 @@ class SearchTFW extends StatelessWidget {
         ],
       ),
       child: TextField(
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
           fillColor: Colors.grey[50],
           filled: true,
@@ -24,7 +26,12 @@ class SearchTFW extends StatelessWidget {
             borderSide: BorderSide(color: Colors.white, width: 8),
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
           ),
+          focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.white, width: 8),
+            borderRadius: const BorderRadius.all(Radius.circular(12.0)),
+          ),
         ),
+        onChanged: onChange,
       ),
     );
   }
