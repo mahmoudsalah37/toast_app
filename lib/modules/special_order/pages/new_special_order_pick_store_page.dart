@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/src/routes.dart';
 import '../widgets/search_text_field_widget.dart';
-import '../widgets/text_button_widget.dart';
 import '../widgets/location_company_card_widget.dart';
 import '../widgets/app_bar._widget.dart';
 
@@ -27,34 +27,7 @@ class NewSpecialOrderPickStorePage extends StatelessWidget {
                 children: [
                   SearchTFW(
                     text: 'Wa',
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    height: 50,
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey[200]!,
-                          blurRadius: 8,
-                          offset: const Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'OTHER',
-                        style: TextStyle(
-                          color: Color.fromRGBO(89, 46, 30, 1),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
+                    onChange: (v) {},
                   ),
                 ],
               ),
@@ -68,14 +41,14 @@ class NewSpecialOrderPickStorePage extends StatelessWidget {
                   details: '4.8 Good (500+) - Fashion - Footware - Men - Women',
                   distance: '1.5 miles away',
                   image: '',
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed(Routes.newSpecialOrderPickStoreLocationPage);
+                  },
                 ),
               ),
             ),
             Spacer(),
-            TextButtonWidget(
-              text: 'Next',
-            ),
-            SizedBox(height: 21),
           ],
         ),
       ),

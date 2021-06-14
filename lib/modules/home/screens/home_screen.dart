@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/modules/models/company_model.dart';
-import 'package:toast_app/src/colors.dart';
-import '../../../modules/models/category_model.dart';
-import '../widgets/categories_widget.dart';
-import '../../../src/styles.dart';
-import '../widgets/companies_list_widget.dart';
 
+import '../../../src/colors.dart';
+import '../models/company_model.dart';
+import '../models/category_model.dart';
+import '../widgets/categories_widget.dart';
+import '../widgets/companies_list_widget.dart';
 import '../widgets/custom_auto_swiper_widget.dart';
 import '../../../classes/resposive.dart';
 

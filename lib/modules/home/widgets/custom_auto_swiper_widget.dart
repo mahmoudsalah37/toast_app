@@ -3,7 +3,7 @@ import 'package:flutter_card_swipper/flutter_card_swiper.dart';
 import 'package:toast_app/classes/resposive.dart';
 
 class CustomAutoSwiperWidget extends StatelessWidget {
-  late List<String> swiperData;
+  final List<String> swiperData;
 
   CustomAutoSwiperWidget({required this.swiperData});
 

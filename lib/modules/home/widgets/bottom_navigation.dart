@@ -152,7 +152,8 @@ class _CurvedBottomNavigationState extends State<CurvedBottomNavigation>
                       ),
                     ),
                   ),
-                  onPressed: () =>Navigator.pushNamed(context, Routes.newSpecialOrderPickStoreLocationPage),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, Routes.newSpecialOrderapge),
                   child: Text(
                     'Special Order',
                     style: TextStyle(color: Colors.black),

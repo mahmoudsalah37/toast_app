@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../models/company_model.dart';
+
+import '../models/company_model.dart';
 import '../../../src/routes.dart';
 import '../../../classes/resposive.dart';
 
@@ -24,7 +25,7 @@ class CompaniesListWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: res.getHeight(33),
+          height: res.getHeight(36),
           child: ListView.builder(
             itemCount: items.length,
             shrinkWrap: true,
@@ -38,7 +39,6 @@ class CompaniesListWidget extends StatelessWidget {
                 deliveryTime: item.deliveryTime,
                 img: item.img,
                 itemWidth: 90,
-                itemPadding: 8,
                 onTap: () => Navigator.pushNamed(context, Routes.menuPage),
               );
             },

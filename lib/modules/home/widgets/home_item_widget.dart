@@ -7,13 +7,11 @@ import 'package:toast_app/src/theme.dart';
 import 'favorite_icon_widget.dart';
 
 class CompanyWidget extends StatelessWidget {
-  final double itemPadding;
   final double itemWidth;
   final VoidCallback onTap;
   final String img, name, rate, distance, deliveryTime;
 
   CompanyWidget({
-    required this.itemPadding,
     required this.itemWidth,
     required this.onTap,
     required this.img,
@@ -25,12 +23,24 @@ class CompanyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
-    return GestureDetector(
+    final res = Responsive(context);
+    final textTheme = CustomsThemes.defaultThemeData.textTheme;
+    return InkWell(
       onTap: onTap,
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: itemPadding),
+        margin: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[200]!,
+              offset: Offset(0, 1),
+              blurRadius: 4,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
         child: Stack(
           children: [
             Column(
@@ -42,7 +52,7 @@ class CompanyWidget extends StatelessWidget {
                       height: res.getHeight(25),
                       width: res.getWidth(itemWidth),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(12),
                         image: DecorationImage(
                           fit: BoxFit.fill,
                           image: AssetImage(img),
@@ -52,12 +62,14 @@ class CompanyWidget extends StatelessWidget {
                     Positioned(
                       right: 10,
                       top: 10,
-                      child: FavoriteIconWidget(),
+                      child: FavoriteIconWidget(
+                        onChanged: (v) {},
+                      ),
                     ),
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,6 +86,7 @@ class CompanyWidget extends StatelessWidget {
                         maxFontSize: 20,
                         overflow: TextOverflow.ellipsis,
                       ),
+                      SizedBox(height: 4),
                       Text(
                         '$distance miles away',
                         style: textTheme.headline3,
@@ -84,7 +97,7 @@ class CompanyWidget extends StatelessWidget {
               ],
             ),
             Positioned(
-              bottom: res.getHeight(6),
+              top: res.getHeight(21),
               right: res.getWidth(5),
               child: Container(
                 width: 100,
