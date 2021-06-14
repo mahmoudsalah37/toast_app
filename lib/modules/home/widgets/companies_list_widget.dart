@@ -8,8 +8,10 @@ import 'home_item_widget.dart';
 
 class CompaniesListWidget extends StatelessWidget {
   const CompaniesListWidget({required this.title, required this.items});
+
   final String title;
   final List<CompanyModel> items;
+
   @override
   Widget build(BuildContext context) {
     final res = Responsive(context);
@@ -25,7 +27,7 @@ class CompaniesListWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: res.getHeight(36),
+          height: res.getHeight(37),
           child: ListView.builder(
             itemCount: items.length,
             shrinkWrap: true,

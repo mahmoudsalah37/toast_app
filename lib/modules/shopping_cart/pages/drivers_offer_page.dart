@@ -38,17 +38,17 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               _controller.complete(controller);
             },
           ),
-          CustomEstimatedDistanceStepper(
-            numberOfPlaces: 3,
-            estimatedDistance: '18',
-            firstPlaceTitle: 'Fred Perry',
-            secondPlaceTitle: 'Bershka',
-            thirdPlaceTitle: 'Zara',
-            ///firstPlaceDistance is distance between first and second place and
-            ///distance for place if only one place
-            firstPlaceDistance: '10',
-            secondPlaceDistance: '8',
-          ),
+          // CustomEstimatedDistanceStepper(
+          //   numberOfPlaces: 3,
+          //   estimatedDistance: '18',
+          //   firstPlaceTitle: 'Fred Perry',
+          //   secondPlaceTitle: 'Bershka',
+          //   thirdPlaceTitle: 'Zara',
+          //   ///firstPlaceDistance is distance between first and second place and
+          //   ///distance for place if only one place
+          //   firstPlaceDistance: '10',
+          //   secondPlaceDistance: '8',
+          // ),
           // Container(
           //   color: Colors.black26,
           //   child: Column(
@@ -87,26 +87,26 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
           //     ],
           //   ),
           // ),
-          // OrderDetailsWidget(
-          //   driverImg: 'assets/test/banner_three.png',
-          //   driverName: 'Ahmed Nasser',
-          //   driverRate: '4.8',
-          //   orderNumber: '12312346332',
-          //   onTapCallDriver: () {},
-          //   onTapChatDriver: () {},
-          //   onTapOrderDetails: () => showModalBottomSheet(
-          //     shape: RoundedRectangleBorder(
-          //       borderRadius: BorderRadius.only(
-          //         topRight: Radius.circular(20),
-          //         topLeft: Radius.circular(20),
-          //       ),
-          //     ),
-          //     context: context,
-          //     builder: (context) {
-          //       return OrderDetailBottomSheet();
-          //     },
-          //   ),
-          // )
+          OrderDetailsWidget(
+            driverImg: 'assets/test/banner_three.png',
+            driverName: 'Ahmed Nasser',
+            driverRate: '4.8',
+            orderNumber: '12312346332',
+            onTapCallDriver: () {},
+            onTapChatDriver: () {},
+            onTapOrderDetails: () => showModalBottomSheet(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20),
+                ),
+              ),
+              context: context,
+              builder: (context) {
+                return OrderDetailBottomSheet();
+              },
+            ),
+          )
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toast_app/src/routes.dart';
 
 import '../../../classes/resposive.dart';
 import '../widgets/drop_down_menu_widget.dart';
@@ -30,7 +31,7 @@ class _MenuPageState extends State<MenuPage> {
         actions: [
           IconButton(
             icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Navigator.pushNamed(context, Routes.cartPage),
           )
         ],
       ),

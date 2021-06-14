@@ -64,7 +64,8 @@ class HomeScreen extends StatelessWidget {
               items: [
                 CategoryModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
-                    title: 'foods'),
+                    title: 'foods'
+                ),
                 CategoryModel(
                     icon: 'assets/images/home/make_up_icon.svg',
                     title: 'make up'),
@@ -109,6 +110,7 @@ class HomeScreen extends StatelessWidget {
                 name: 'I\'m Hungry',
                 deliveryTime: '10-20',
                 img: 'assets/test/banner_three.png',
+
               ),
               CompanyModel(
                 rate: '4.8 Good (500+) - Burgers - Chicken ',

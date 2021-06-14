@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toast_app/classes/resposive.dart';
@@ -39,7 +40,7 @@ class OrderDetailsWidget extends StatelessWidget {
         children: [
           Container(
             width: res.getWidth(100),
-            height: res.getHeight(8),
+            height: res.getHeight(9),
             padding: EdgeInsets.all(8),
             decoration: CustomStyle.containerShadowDecoration,
             child: Row(
@@ -80,9 +81,7 @@ class OrderDetailsWidget extends StatelessWidget {
           Column(
             children: [
               GestureDetector(
-                onTap: () {
-                  onTapOrderDetails();
-                },
+                onTap: () => onTapOrderDetails(),
                 child: Container(
                   width: res.getWidth(70),
                   height: res.getHeight(6),
@@ -104,29 +103,34 @@ class OrderDetailsWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                height: res.getHeight(10),
+                height: res.getHeight(11),
                 margin: EdgeInsets.only(top: 14),
                 decoration: CustomStyle.containerShadowDecoration,
                 child: ListTile(
+                  contentPadding: EdgeInsets.only(bottom: 10, left: 10),
                   leading: Container(
                     width: 60,
                     decoration: BoxDecoration(
-                        color: Colors.blue,
-                        image: DecorationImage(
-                            fit: BoxFit.cover, image: AssetImage(driverImg)),
-                        shape: BoxShape.circle),
+                      color: Colors.blue,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(driverImg),
+                      ),
+                      shape: BoxShape.circle,
+                    ),
                   ),
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      AutoSizeText(
                         driverName,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headline5,
+                        maxLines: 1,
                       ),
                       Text(
                         '★ $driverRate',
-                        style: theme.textTheme.headline3!
+                        style: theme.textTheme.headline4!
                             .copyWith(color: CustomColors.accentColor),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -137,7 +141,7 @@ class OrderDetailsWidget extends StatelessWidget {
                     child: Row(
                       children: [
                         ElevatedButton(
-                          onPressed: onTapChatDriver,
+                          onPressed: () => onTapChatDriver(),
                           child: Icon(
                             Icons.message,
                             color: Colors.blue,
@@ -151,7 +155,7 @@ class OrderDetailsWidget extends StatelessWidget {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: onTapCallDriver,
+                          onPressed: () => onTapCallDriver(),
                           child: Icon(
                             Icons.phone_enabled_rounded,
                             color: Colors.blue,
