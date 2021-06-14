@@ -20,4 +20,9 @@ class CustomStyle {
       borderRadius: BorderRadius.all(Radius.circular(12.0)),
     ),
   );
+  static final BoxDecoration containerShadowDecoration = BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [BoxShadow(color: Colors.black45,blurRadius: 2)]
+  );
 }

@@ -7,6 +7,7 @@ import 'package:toast_app/modules/shopping_cart/widget/clear_cart_items_dialog.d
 import 'package:toast_app/modules/shopping_cart/widget/payment_type_item_widget.dart';
 import 'package:toast_app/modules/shopping_cart/widget/shopping_cart_item_widget.dart';
 import 'package:toast_app/src/colors.dart';
+import 'package:toast_app/src/routes.dart';
 import 'package:toast_app/src/styles.dart';
 
 class CartPage extends StatefulWidget {
@@ -110,6 +111,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                         borderSide: BorderSide(
                           color: CustomColors.blueLightColor,
                         ),
+                        shape: StadiumBorder(),
                         child: Icon(
                           Icons.add,
                           color: CustomColors.blueLightColor,
@@ -272,7 +274,8 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
               width: res.getWidth(100),
               child: FlatButton(
                 color: CustomColors.yellowDeepColor,
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.pushNamed(context, Routes.driversOfferPage),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
                   child: Text('Continue', style: theme.textTheme.headline6),
