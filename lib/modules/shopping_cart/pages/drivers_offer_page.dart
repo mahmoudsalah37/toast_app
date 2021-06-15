@@ -232,7 +232,6 @@ class OrderDetailBottomSheet extends StatelessWidget {
             ),
           ),
         ),
-
       ],
     );
   }

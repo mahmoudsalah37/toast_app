@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../models/category_model.dart';
+import '../models/category_icon_model.dart';
 import 'see_icon_widget.dart';
 import 'category_item_widget.dart';
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({this.items = const [], required this.crossAxisCount})
       : assert(crossAxisCount > 0);
-  final List<CategoryModel> items;
+  final List<CategoryIconModel> items;
   final int crossAxisCount;
   @override
   _CategoriesWidgetState createState() => _CategoriesWidgetState();

@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../src/colors.dart';
 import '../models/company_model.dart';
-import '../models/category_model.dart';
+import '../models/category_icon_model.dart';
 import '../widgets/categories_widget.dart';
 import '../widgets/companies_list_widget.dart';
 import '../widgets/custom_auto_swiper_widget.dart';
@@ -62,42 +62,41 @@ class HomeScreen extends StatelessWidget {
             child: CategoriesWidget(
               crossAxisCount: 4,
               items: [
-                CategoryModel(
+                CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
-                    title: 'foods'
-                ),
-                CategoryModel(
+                    title: 'foods'),
+                CategoryIconModel(
                     icon: 'assets/images/home/make_up_icon.svg',
                     title: 'make up'),
-                CategoryModel(
+                CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
                     title: 'breakfast'),
-                CategoryModel(
+                CategoryIconModel(
                   icon: 'assets/images/home/pizza_icon.svg',
                   title: 'pizza',
                 ),
-                CategoryModel(
+                CategoryIconModel(
                   icon: 'assets/images/home/grill_icon.svg',
                   title: 'grill',
                 ),
-                CategoryModel(
+                CategoryIconModel(
                     icon: 'assets/images/home/make_up_icon.svg',
                     title: 'vfvfv fvfvf '),
-                CategoryModel(
+                CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
                     title: 'vvv'),
-                CategoryModel(icon: '', title: 'foods'),
-                CategoryModel(icon: '', title: 'makeup'),
-                CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'vvv'),
-                CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'vvv'),
-                CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'vvv'),
-                CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'vvv'),
-                CategoryModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryModel(icon: '', title: 'hi'),
+                CategoryIconModel(icon: '', title: 'foods'),
+                CategoryIconModel(icon: '', title: 'makeup'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'hi'),
               ],
             ),
           ),
@@ -110,7 +109,6 @@ class HomeScreen extends StatelessWidget {
                 name: 'I\'m Hungry',
                 deliveryTime: '10-20',
                 img: 'assets/test/banner_three.png',
-
               ),
               CompanyModel(
                 rate: '4.8 Good (500+) - Burgers - Chicken ',
