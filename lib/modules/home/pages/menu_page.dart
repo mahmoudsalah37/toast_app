@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toast_app/src/routes.dart';
-
-import '../../../classes/resposive.dart';
 import '../widgets/drop_down_menu_widget.dart';
 import '../widgets/home_item_widget.dart';
 import '../widgets/menu_item_bottom_sheet.dart';
 import '../widgets/menu_item_widget.dart';
-import '../../../../src/colors.dart';
-import '../../../../src/theme.dart';
 
 class MenuPage extends StatefulWidget {
   @override

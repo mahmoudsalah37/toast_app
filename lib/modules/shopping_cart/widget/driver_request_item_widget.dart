@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/classes/resposive.dart';
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 
-class DriverRequestItemWidget extends StatelessWidget {
+class DriverOffersItemWidget extends StatelessWidget {
   final String driverName;
   final String driverRate;
   final String driverImg;
@@ -13,7 +12,7 @@ class DriverRequestItemWidget extends StatelessWidget {
   final VoidCallback onTapDecline;
   final VoidCallback onTapAccept;
 
-  DriverRequestItemWidget({
+  DriverOffersItemWidget({
     required this.driverName,
     required this.driverRate,
     required this.driverImg,
@@ -26,7 +25,6 @@ class DriverRequestItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -82,24 +80,27 @@ class DriverRequestItemWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              OutlineButton(
+              OutlinedButton(
                 onPressed: onTapDecline,
-                borderSide: BorderSide(
-                  color: Colors.red,
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  side: BorderSide(color: Colors.red),
+                  shape: StadiumBorder(),
                 ),
-                shape: StadiumBorder(),
-                child: Text(
-                  'Decline',
-                  style: theme.textTheme.subtitle2!.copyWith(color: Colors.red),
-                ),
+                child: Text('Decline',
+                    style:
+                        theme.textTheme.subtitle2!.copyWith(color: Colors.red)),
               ),
-              OutlineButton(
+              OutlinedButton(
                 onPressed: onTapAccept,
-                borderSide: BorderSide(
-                  color: CustomColors.blueLightColor,
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  side: BorderSide(color: CustomColors.blueLightColor),
+                  shape: StadiumBorder(),
                 ),
-                shape: StadiumBorder(),
-                child: Text('Accept', style: theme.textTheme.subtitle2),
+                child: Text('Accept',
+                    style:
+                        theme.textTheme.subtitle2),
               ),
             ],
           )

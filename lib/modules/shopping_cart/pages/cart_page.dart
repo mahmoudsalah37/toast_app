@@ -106,15 +106,16 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                     SizedBox(
                       width: res.getWidth(16),
                       height: res.getHeight(4),
-                      child: OutlineButton(
+                      child: OutlinedButton(
                         onPressed: () {},
-                        borderSide: BorderSide(
-                          color: CustomColors.blueLightColor,
-                        ),
-                        shape: StadiumBorder(),
-                        child: Icon(
-                          Icons.add,
-                          color: CustomColors.blueLightColor,
+                        child:
+                            Icon(Icons.add, color: CustomColors.blueLightColor),
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          side: BorderSide(color: CustomColors.blueLightColor),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     )
@@ -272,13 +273,17 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
             top: res.getHeight(92),
             child: SizedBox(
               width: res.getWidth(100),
-              child: FlatButton(
-                color: CustomColors.yellowDeepColor,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: CustomColors.yellowDeepColor,
+                  textStyle: theme.textTheme.headline6,
+                  padding: EdgeInsets.all(0)
+                ),
                 onPressed: () =>
                     Navigator.pushNamed(context, Routes.driversOfferPage),
                 child: Padding(
                   padding: const EdgeInsets.all(20),
-                  child: Text('Continue', style: theme.textTheme.headline6),
+                  child: Text('Continue'),
                 ),
               ),
             ),
