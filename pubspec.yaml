@@ -53,6 +53,7 @@ flutter:
     - assets/images/bottom_navigation/
     - assets/images/shopping_cart/
     - assets/test/
+    - assets/lottie/
   # example:
   # fonts:
   #   - family: Schyler
