@@ -6,6 +6,7 @@ part 'price_model.freezed.dart';
 part 'price_model.g.dart';
 
 @freezed
+@JsonKey(name: 'price')
 class PriceModel with _$PriceModel {
   const factory PriceModel({
     @Default(0.0) double price,

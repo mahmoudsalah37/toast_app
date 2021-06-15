@@ -12,8 +12,8 @@ class ProductModel with _$ProductModel {
   const factory ProductModel({
     int? id,
     @Default('') String title,
-    MetaModel? metaModel,
-    PriceModel? priceModel,
+    @JsonKey(name: 'meta') MetaModel? metaModel,
+    @JsonKey(name: 'price') PriceModel? priceModel,
   }) = _ProductModel;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);

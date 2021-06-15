@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/modules/shopping_cart/widget/add_copon_custom_painter.dart';
 import 'package:toast_app/modules/shopping_cart/widget/clear_cart_items_dialog.dart';
 import 'package:toast_app/modules/shopping_cart/widget/payment_type_item_widget.dart';
@@ -275,10 +275,9 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
               width: res.getWidth(100),
               child: TextButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: CustomColors.yellowDeepColor,
-                  textStyle: theme.textTheme.headline6,
-                  padding: EdgeInsets.all(0)
-                ),
+                    backgroundColor: CustomColors.yellowDeepColor,
+                    textStyle: theme.textTheme.headline6,
+                    padding: EdgeInsets.all(0)),
                 onPressed: () =>
                     Navigator.pushNamed(context, Routes.driversOfferPage),
                 child: Padding(

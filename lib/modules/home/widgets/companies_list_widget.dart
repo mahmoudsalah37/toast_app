@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/company_model.dart';
 import '../../../src/routes.dart';
-import '../../../classes/resposive.dart';
+import '../../../utils/classes/resposive.dart';
 
 import 'home_item_widget.dart';
 

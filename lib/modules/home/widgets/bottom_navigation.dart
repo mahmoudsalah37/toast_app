@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/src/routes.dart';
 import '../provider/bottom_navigation_provider.dart';
 

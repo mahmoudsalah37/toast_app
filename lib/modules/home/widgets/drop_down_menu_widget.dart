@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../classes/resposive.dart';
+import '../../../utils/classes/resposive.dart';
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
 

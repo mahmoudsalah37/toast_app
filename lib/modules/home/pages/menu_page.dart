@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/home/models/categories_model.dart';
+import 'package:toast_app/modules/home/models/product_model.dart';
+import 'package:toast_app/modules/home/provider/categories_provider.dart';
 import 'package:toast_app/src/routes.dart';
+import 'package:toast_app/utils/enums/notifier_state.dart';
 import '../widgets/drop_down_menu_widget.dart';
 import '../widgets/home_item_widget.dart';
 import '../widgets/menu_item_bottom_sheet.dart';
@@ -11,6 +16,12 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<CategoriesProvider>(context, listen: false).getCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,34 +77,53 @@ class _MenuPageState extends State<MenuPage> {
               ],
             ),
             Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.zero,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return MenuItemWidget(
-                    onTap: () => showModalBottomSheet(
-                      context: context,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                      ),
-                      isScrollControlled: true,
-                      builder: (context) => SingleChildScrollView(
-                        child: Container(
-                          padding: EdgeInsets.only(
-                            bottom: MediaQuery.of(context).viewInsets.bottom,
-                          ),
-                          child: MenuItemModalBottomSheet(),
-                        ),
-                      ),
-                    ),
-                    img: 'assets/test/banner_three.png',
-                    title: 'Cheese Single Burger',
-                    description: 'Fresh slice beef burger, lattuce,',
-                    price: '20.0',
-                  );
+              child: Consumer<CategoriesProvider>(
+                builder: (_, notifier, __) {
+                  if (notifier.state == NotifierState.initial) {
+                    return Text('Press the button');
+                  } else if (notifier.state == NotifierState.loading) {
+                    return Center(child: CircularProgressIndicator());
+                  } else {
+                    return notifier.categories!.fold(
+                      (failure) => Text(failure.toString()),
+                      (data) {
+                        final products = fetchAll(data);
+                        return ListView.builder(
+                          padding: EdgeInsets.zero,
+                          itemCount: products.length,
+                          itemBuilder: (context, index) {
+                            final product = products.elementAt(index);
+                            return MenuItemWidget(
+                              onTap: () => showModalBottomSheet(
+                                context: context,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20),
+                                  ),
+                                ),
+                                isScrollControlled: true,
+                                builder: (context) => SingleChildScrollView(
+                                  child: Container(
+                                    padding: EdgeInsets.only(
+                                      bottom: MediaQuery.of(context)
+                                          .viewInsets
+                                          .bottom,
+                                    ),
+                                    child: MenuItemModalBottomSheet(),
+                                  ),
+                                ),
+                              ),
+                              img: 'assets/test/banner_three.png',
+                              title: product.title,
+                              description: product.metaModel?.content ?? '',
+                              price: '${product.priceModel?.price ?? 0.0}',
+                            );
+                          },
+                        );
+                      },
+                    );
+                  }
                 },
               ),
             )
@@ -102,4 +132,12 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
+}
+
+List<ProductModel> fetchAll(CategoriesModel categoriesModel) {
+  List<ProductModel> products = [];
+  for (final v in categoriesModel.categories!) {
+    products.addAll(v.products ?? []);
+  }
+  return products;
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/src/routes.dart';
 import '../widgets/search_text_field_widget.dart';
 import '../widgets/location_company_card_widget.dart';

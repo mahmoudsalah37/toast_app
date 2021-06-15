@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:im_stepper/stepper.dart';
-import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 
@@ -114,7 +114,7 @@ class CustomEstimatedDistanceStepper extends StatelessWidget {
                                   ),
                                   Visibility(
                                     visible: numberOfPlaces == 2 ||
-                                        numberOfPlaces == 3
+                                            numberOfPlaces == 3
                                         ? true
                                         : false,
                                     child: Text(secondPlaceTitle,
@@ -148,7 +148,7 @@ class CustomEstimatedDistanceStepper extends StatelessWidget {
                             activeStepColor: CustomColors.primaryColor,
                             scrollingDisabled: true,
                             numberStyle:
-                            TextStyle(color: CustomColors.primaryColor),
+                                TextStyle(color: CustomColors.primaryColor),
                             lineColor: CustomColors.primaryColor,
                             stepColor: CustomColors.primaryColor,
                             lineLength: 30,

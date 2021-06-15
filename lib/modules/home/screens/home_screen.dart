@@ -7,7 +7,7 @@ import '../models/category_icon_model.dart';
 import '../widgets/categories_widget.dart';
 import '../widgets/companies_list_widget.dart';
 import '../widgets/custom_auto_swiper_widget.dart';
-import '../../../classes/resposive.dart';
+import '../../../utils/classes/resposive.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

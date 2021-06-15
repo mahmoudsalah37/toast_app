@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/classes/resposive.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 

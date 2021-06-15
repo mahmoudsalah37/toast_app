@@ -10,12 +10,12 @@ _$_ProductModel _$_$_ProductModelFromJson(Map<String, dynamic> json) {
   return _$_ProductModel(
     id: json['id'] as int?,
     title: json['title'] as String? ?? '',
-    metaModel: json['metaModel'] == null
+    metaModel: json['meta'] == null
         ? null
-        : MetaModel.fromJson(json['metaModel'] as Map<String, dynamic>),
-    priceModel: json['priceModel'] == null
+        : MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
+    priceModel: json['price'] == null
         ? null
-        : PriceModel.fromJson(json['priceModel'] as Map<String, dynamic>),
+        : PriceModel.fromJson(json['price'] as Map<String, dynamic>),
   );
 }
 
@@ -23,6 +23,6 @@ Map<String, dynamic> _$_$_ProductModelToJson(_$_ProductModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
-      'metaModel': instance.metaModel,
-      'priceModel': instance.priceModel,
+      'meta': instance.metaModel,
+      'price': instance.priceModel,
     };

@@ -23,8 +23,8 @@ class _$ProductModelTearOff {
   _ProductModel call(
       {int? id,
       String title = '',
-      MetaModel? metaModel,
-      PriceModel? priceModel}) {
+      @JsonKey(name: 'meta') MetaModel? metaModel,
+      @JsonKey(name: 'price') PriceModel? priceModel}) {
     return _ProductModel(
       id: id,
       title: title,
@@ -45,7 +45,9 @@ const $ProductModel = _$ProductModelTearOff();
 mixin _$ProductModel {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'meta')
   MetaModel? get metaModel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price')
   PriceModel? get priceModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -60,7 +62,10 @@ abstract class $ProductModelCopyWith<$Res> {
           ProductModel value, $Res Function(ProductModel) then) =
       _$ProductModelCopyWithImpl<$Res>;
   $Res call(
-      {int? id, String title, MetaModel? metaModel, PriceModel? priceModel});
+      {int? id,
+      String title,
+      @JsonKey(name: 'meta') MetaModel? metaModel,
+      @JsonKey(name: 'price') PriceModel? priceModel});
 
   $MetaModelCopyWith<$Res>? get metaModel;
   $PriceModelCopyWith<$Res>? get priceModel;
@@ -132,7 +137,10 @@ abstract class _$ProductModelCopyWith<$Res>
       __$ProductModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int? id, String title, MetaModel? metaModel, PriceModel? priceModel});
+      {int? id,
+      String title,
+      @JsonKey(name: 'meta') MetaModel? metaModel,
+      @JsonKey(name: 'price') PriceModel? priceModel});
 
   @override
   $MetaModelCopyWith<$Res>? get metaModel;
@@ -182,7 +190,10 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   const _$_ProductModel(
-      {this.id, this.title = '', this.metaModel, this.priceModel});
+      {this.id,
+      this.title = '',
+      @JsonKey(name: 'meta') this.metaModel,
+      @JsonKey(name: 'price') this.priceModel});
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductModelFromJson(json);
@@ -193,8 +204,10 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   @override
   final String title;
   @override
+  @JsonKey(name: 'meta')
   final MetaModel? metaModel;
   @override
+  @JsonKey(name: 'price')
   final PriceModel? priceModel;
 
   @override
@@ -252,8 +265,8 @@ abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
       {int? id,
       String title,
-      MetaModel? metaModel,
-      PriceModel? priceModel}) = _$_ProductModel;
+      @JsonKey(name: 'meta') MetaModel? metaModel,
+      @JsonKey(name: 'price') PriceModel? priceModel}) = _$_ProductModel;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$_ProductModel.fromJson;
@@ -263,8 +276,10 @@ abstract class _ProductModel implements ProductModel {
   @override
   String get title => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'meta')
   MetaModel? get metaModel => throw _privateConstructorUsedError;
   @override
+  @JsonKey(name: 'price')
   PriceModel? get priceModel => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
