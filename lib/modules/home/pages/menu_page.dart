@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/models/categories_model.dart';
-import 'package:toast_app/modules/home/models/product_model.dart';
+import 'package:toast_app/modules/home/models/category_model.dart';
 import 'package:toast_app/modules/home/provider/categories_provider.dart';
+import 'package:toast_app/modules/home/widgets/drop_down_button_widget.dart';
+import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/routes.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/utils/enums/notifier_state.dart';
-import '../widgets/drop_down_menu_widget.dart';
 import '../widgets/home_item_widget.dart';
 import '../widgets/menu_item_bottom_sheet.dart';
 import '../widgets/menu_item_widget.dart';
@@ -16,14 +17,18 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
+  late CategoriesProvider catgoriesProvider;
   @override
   void initState() {
     super.initState();
-    Provider.of<CategoriesProvider>(context, listen: false).getCategories();
+    catgoriesProvider = Provider.of<CategoriesProvider>(context, listen: false)
+      ..getCategories();
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final res = Responsive(context);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -58,13 +63,35 @@ class _MenuPageState extends State<MenuPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DropDownMenuWidget(
-                  items: [
-                    'All',
-                    'Burger',
-                    'Dessert',
-                  ],
-                  onChanged: (v) {},
+                Container(
+                  width: res.getWidth(30),
+                  margin: const EdgeInsets.only(left: 8),
+                  child: Consumer<CategoriesProvider>(
+                    builder: (_, notifier, __) {
+                      if (notifier.state == NotifierState.loading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else {
+                        return DropDownButtonWidget<CategoryModel>(
+                          dropdownColor: CustomColors.yellowDeepColor,
+                          items: notifier.categories!.fold((failure) {
+                            return [];
+                          }, (data) {
+                            return data.categories ?? [];
+                          }),
+                          onChanged: (v) {
+                            catgoriesProvider.setCategory(v);
+                          },
+                          itemBuilder: (v) => DropdownMenuItem(
+                            value: v,
+                            child: Text(
+                              v.name,
+                              style: theme.textTheme.headline6,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 ),
                 IconButton(
                   onPressed: () {},
@@ -79,15 +106,13 @@ class _MenuPageState extends State<MenuPage> {
             Expanded(
               child: Consumer<CategoriesProvider>(
                 builder: (_, notifier, __) {
-                  if (notifier.state == NotifierState.initial) {
-                    return Text('Press the button');
-                  } else if (notifier.state == NotifierState.loading) {
+                  if (notifier.state == NotifierState.loading) {
                     return Center(child: CircularProgressIndicator());
                   } else {
                     return notifier.categories!.fold(
                       (failure) => Text(failure.toString()),
                       (data) {
-                        final products = fetchAll(data);
+                        final products = notifier.getCategory?.products ?? [];
                         return ListView.builder(
                           padding: EdgeInsets.zero,
                           itemCount: products.length,
@@ -132,12 +157,4 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
-}
-
-List<ProductModel> fetchAll(CategoriesModel categoriesModel) {
-  List<ProductModel> products = [];
-  for (final v in categoriesModel.categories!) {
-    products.addAll(v.products ?? []);
-  }
-  return products;
 }

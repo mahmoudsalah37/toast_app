@@ -1,9 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/errors_handler/failure.dart';
-import 'package:toast_app/modules/home/models/categories_model.dart';
-import 'package:toast_app/modules/home/services/category_service.dart';
+import '../models/categories_model.dart';
+import '../models/category_model.dart';
+import '../services/category_service.dart';
 import '../../../utils/enums/notifier_state.dart';
+import '../../../extensions/task_extensions.dart';
+import '../../../errors_handler/failure.dart';
 
 class CategoriesProvider extends ChangeNotifier {
   final _categoriesService = CategoryService();
@@ -15,6 +17,7 @@ class CategoriesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  CategoryModel? _categoryModel;
   Either<Failure, CategoriesModel>? _categories;
   Either<Failure, CategoriesModel>? get categories => _categories;
   void _setCategories(Either<Failure, CategoriesModel> categories) {
@@ -22,28 +25,19 @@ class CategoriesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  CategoryModel? get getCategory => _categoryModel;
+  void setCategory(CategoryModel? category) {
+    _categoryModel = category;
+    notifyListeners();
+  }
+
   void getCategories() async {
     // _setState(NotifierState.loading);
-    await Task(() => _categoriesService.getCategoriesById(3))
-        .attempt()
-        .mapLeftToFailure()
-        .run()
-        .then((value) =>
-            _setCategories(value as Either<Failure, CategoriesModel>));
+    final data = _categoriesService.getCategoriesById(3);
+    await Task(() => data).attempt().mapLeftToFailure().run().then(
+        (value) => _setCategories(value as Either<Failure, CategoriesModel>));
+    final v = await data;
+    if (v.categories?.isNotEmpty ?? false) _categoryModel = v.categories?.first;
     _setState(NotifierState.loaded);
-  }
-}
-
-extension TaskX<T extends Either<Object, U>, U> on Task<T> {
-  Task<Either<Failure, U>> mapLeftToFailure() {
-    return this.map(
-      (either) => either.leftMap((obj) {
-        try {
-          return obj as Failure;
-        } catch (e) {
-          throw obj;
-        }
-      }),
-    );
   }
 }
