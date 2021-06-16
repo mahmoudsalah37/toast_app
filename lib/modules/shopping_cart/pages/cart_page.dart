@@ -155,14 +155,19 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SizedBox(width: res.getWidth(20)),
+                        SizedBox(width: res.getWidth(16)),
                         Shimmer.fromColors(
                           highlightColor: Colors.lightBlueAccent,
                           direction: ShimmerDirection.rtl,
                           baseColor: CustomColors.blueColor,
                           period: Duration(milliseconds: 800),
-                          child: Text('<<< Slide to add coupon',
-                              style: theme.textTheme.subtitle2),
+                          child: Text(
+                            '<<< Slide to add coupon',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: CustomColors.blueLightColor,
+                            ),
+                          ),
                         ),
                         Stack(
                           alignment: Alignment.center,
@@ -270,7 +275,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
             ],
           ),
           Positioned(
-            top: res.getHeight(92),
+            top: res.getHeight(93),
             child: SizedBox(
               width: res.getWidth(100),
               child: TextButton(

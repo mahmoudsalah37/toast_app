@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:toast_app/modules/home/pages/home_page.dart';
 import 'package:toast_app/modules/home/pages/menu_page.dart';
 import 'package:toast_app/modules/shopping_cart/pages/cart_page.dart';
+import 'package:toast_app/modules/shopping_cart/pages/chat_page.dart';
 import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
 import 'package:toast_app/modules/special_order/pages/new_special_order_page.dart';
 import 'package:toast_app/modules/special_order/pages/new_special_order_pick_store_location_page.dart';
@@ -14,9 +15,9 @@ class Routes {
       newSpecialOrderPickStorePage = '/newSpecialOrderPickStore',
       newSpecialOrderPickStoreLocationPage =
           '/newSpecialOrderPickStoreLocationPage',
-      driversOfferPage =
-          '/driversOfferPage',
-      cartPage = '/cartPage';
+      driversOfferPage = '/driversOfferPage',
+      cartPage = '/cartPage',
+      chatPage = '/chatPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -35,8 +36,10 @@ class Routes {
             builder: (context) => NewSpecialOrderPickStoreLocationPage());
       case cartPage:
         return MaterialPageRoute(builder: (context) => CartPage());
-      case  driversOfferPage:
+      case driversOfferPage:
         return MaterialPageRoute(builder: (context) => DriversOfferPage());
+      case chatPage:
+        return MaterialPageRoute(builder: (context) => ChatPage());
       default:
         return MaterialPageRoute(builder: (context) => HomePage());
     }

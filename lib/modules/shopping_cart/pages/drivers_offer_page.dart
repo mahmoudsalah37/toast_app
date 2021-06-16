@@ -2,6 +2,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:lottie/lottie.dart';
+import 'package:toast_app/modules/shopping_cart/widget/cancel_order_dialog_widget.dart';
+import 'package:toast_app/src/routes.dart';
 import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:toast_app/modules/shopping_cart/widget/custom_estimated_distance_stepper.dart';
 import 'package:toast_app/modules/shopping_cart/widget/driver_request_item_widget.dart';
@@ -9,6 +12,7 @@ import 'package:toast_app/modules/shopping_cart/widget/order_details_widget.dart
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
 import 'order_details_bottom_sheet.dart';
+import 'package:url_launcher/url_launcher.dart' as urLauncher;
 
 class DriversOfferPage extends StatefulWidget {
   @override
@@ -34,6 +38,13 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
       });
     });
     super.initState();
+  }
+  Future<void> _makePhoneCall(String url) async {
+    if (await urLauncher.canLaunch(url)) {
+      await urLauncher.launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -80,10 +91,11 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () => showDialog(
-                      context: context,
-                      builder: (context) => CancelOrderDialogWidget(),
-                    ),
+                    onTap: () =>
+                        showDialog(
+                          context: context,
+                          builder: (context) => CancelOrderDialogWidget(),
+                        ),
                     child: Container(
                       width: res.getWidth(100),
                       margin: EdgeInsets.only(
@@ -136,13 +148,19 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               driverName: 'Ahmed Nasser',
               driverRate: '4.8',
               orderNumber: '12312346332',
-              onTapCallDriver: () {},
-              onTapChatDriver: () {},
-              onTapOrderDetails: () => showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (context) => OrderDetailBottomSheet(),
-              ),
+              onTapCallDriver: () async {
+                String phoneNo = '01119193535';
+                await _makePhoneCall('tel:$phoneNo');
+              },
+              onTapChatDriver: () {
+                Navigator.pushNamed(context, Routes.chatPage);
+              },
+              onTapOrderDetails: () =>
+                  showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) => OrderDetailBottomSheet(),
+                  ),
             ),
           ),
         ],
@@ -151,82 +169,7 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
   }
 }
 
-class CancelOrderDialogWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    ThemeData theme = Theme.of(context);
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: res.getHeight(20),
-                padding: EdgeInsets.only(top: 40),
-                margin: EdgeInsets.only(top: 40),
-                decoration: CustomStyle.containerShadowDecoration
-                    .copyWith(color: Colors.white),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Are you sure to cancel order ?',
-                      style: theme.textTheme.headline2!
-                          .copyWith(color: Colors.red),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side:
-                                BorderSide(color: CustomColors.blueLightColor),
-                            shape: StadiumBorder(),
-                          ),
-                          child: Text('No', style: theme.textTheme.subtitle2),
-                        ),
-                        OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side: BorderSide(color: Colors.red),
-                            shape: StadiumBorder(),
-                          ),
-                          child: Text('Yes',
-                              style: theme.textTheme.subtitle2!
-                                  .copyWith(color: Colors.red)),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Positioned(
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.black,
-                    child: Icon(
-                      Icons.emoji_emotions_outlined,
-                      color: CustomColors.yellowDeepColor,
-                      size: 80,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
+
 
 class LoadingIndicator extends StatelessWidget {
   @override
