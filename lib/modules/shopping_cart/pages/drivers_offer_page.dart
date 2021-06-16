@@ -39,11 +39,13 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
     });
     super.initState();
   }
-  Future<void> _makePhoneCall(String url) async {
-    if (await urLauncher.canLaunch(url)) {
-      await urLauncher.launch(url);
+
+  Future<void> _makePhoneCall({required String phoneNumber}) async {
+    phoneNumber = 'tel://$phoneNumber';
+    if (await urLauncher.canLaunch(phoneNumber)) {
+      await urLauncher.launch(phoneNumber);
     } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $phoneNumber';
     }
   }
 
@@ -91,11 +93,10 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               child: Column(
                 children: [
                   GestureDetector(
-                    onTap: () =>
-                        showDialog(
-                          context: context,
-                          builder: (context) => CancelOrderDialogWidget(),
-                        ),
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (context) => CancelOrderDialogWidget(),
+                    ),
                     child: Container(
                       width: res.getWidth(100),
                       margin: EdgeInsets.only(
@@ -149,18 +150,16 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               driverRate: '4.8',
               orderNumber: '12312346332',
               onTapCallDriver: () async {
-                String phoneNo = '01119193535';
-                await _makePhoneCall('tel:$phoneNo');
+                await _makePhoneCall(phoneNumber: '01119193535');
               },
               onTapChatDriver: () {
                 Navigator.pushNamed(context, Routes.chatPage);
               },
-              onTapOrderDetails: () =>
-                  showModalBottomSheet(
-                    backgroundColor: Colors.transparent,
-                    context: context,
-                    builder: (context) => OrderDetailBottomSheet(),
-                  ),
+              onTapOrderDetails: () => showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) => OrderDetailBottomSheet(),
+              ),
             ),
           ),
         ],
@@ -168,8 +167,6 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
     );
   }
 }
-
-
 
 class LoadingIndicator extends StatelessWidget {
   @override
