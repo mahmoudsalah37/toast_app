@@ -11,7 +11,9 @@ class CategoriesProvider extends ChangeNotifier {
   final _categoriesService = CategoryService();
 
   NotifierState _state = NotifierState.loading;
+
   NotifierState get state => _state;
+
   void _setState(NotifierState state) {
     _state = state;
     notifyListeners();
@@ -19,13 +21,16 @@ class CategoriesProvider extends ChangeNotifier {
 
   CategoryModel? _categoryModel;
   Either<Failure, CategoriesModel>? _categories;
+
   Either<Failure, CategoriesModel>? get categories => _categories;
+
   void _setCategories(Either<Failure, CategoriesModel> categories) {
     _categories = categories;
     notifyListeners();
   }
 
   CategoryModel? get getCategory => _categoryModel;
+
   void setCategory(CategoryModel? category) {
     _categoryModel = category;
     notifyListeners();

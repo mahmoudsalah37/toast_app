@@ -42,32 +42,30 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
         children: [
           ListView(
             children: [
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () => Navigator.pop(context),
-                        icon: Icon(Icons.arrow_back_ios,
-                            color: CustomColors.yellowDeepColor),
-                      ),
-                      Text('New Order'),
-                      IconButton(
-                        onPressed: () => clearCartItemsDialog(
-                          context: context,
+              Container(
+                margin: EdgeInsets.all(8.0),
+                decoration: CustomStyle.containerShadowDecoration,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: Icon(Icons.arrow_back_ios,
+                          color: CustomColors.yellowDeepColor),
+                    ),
+                    Text('New Order'),
+                    IconButton(
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (context) => ClearItemsCartDialog(
                           onTapYes: () => Navigator.pop(context),
                         ),
-                        icon: SvgPicture.asset(
-                            'assets/images/shopping_cart/delete_basket_icon.svg'),
-                      )
-                    ],
-                  ),
+                      ),
+                      icon: SvgPicture.asset(
+                        'assets/images/shopping_cart/delete_basket_icon.svg',
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -108,11 +106,12 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                       height: res.getHeight(4),
                       child: OutlinedButton(
                         onPressed: () {},
-                        child:
-                            Icon(Icons.add, color: CustomColors.blueLightColor),
+                        child: Icon(Icons.add,
+                            color: CustomColors.blueLightColor),
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          side: BorderSide(color: CustomColors.blueLightColor),
+                          side:
+                              BorderSide(color: CustomColors.blueLightColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -194,7 +193,9 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                           SizedBox(
                             width: res.getWidth(60),
                             child: TextField(
-                              decoration: CustomStyle.homeSearchInputDecoration
+                              style: theme.textTheme.headline2,
+                              decoration: CustomStyle
+                                  .homeSearchInputDecoration
                                   .copyWith(
                                       fillColor: Colors.blue[200],
                                       hintText: 'Coupon...'),
@@ -209,8 +210,8 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                               alignment: Alignment.center,
                               children: [
                                 CustomPaint(
-                                  size:
-                                      Size(res.getWidth(30), res.getHeight(8)),
+                                  size: Size(
+                                      res.getWidth(30), res.getHeight(8)),
                                   painter: AddCouponCustomPainter(
                                       color: CustomColors.blueColor),
                                 ),
@@ -233,21 +234,10 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
                 padding: EdgeInsets.all(10),
                 width: res.getWidth(100),
                 height: res.getHeight(14),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 5,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
+                decoration: CustomStyle.containerShadowDecoration,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // ListTile(l),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -275,7 +265,7 @@ class _CartPageState extends State<CartPage> with TickerProviderStateMixin {
             ],
           ),
           Positioned(
-            top: res.getHeight(93),
+            top: res.getHeight(92),
             child: SizedBox(
               width: res.getWidth(100),
               child: TextButton(
