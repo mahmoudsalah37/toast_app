@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class ChatPage extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class ChatPage extends StatelessWidget {
               width: res.getWidth(100),
               margin: EdgeInsets.only(
                   top: res.getHeight(6), left: 10, right: 10, bottom: 10),
-              padding: EdgeInsets.symmetric(vertical: 10,horizontal: 16),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
               decoration: CustomStyle.containerShadowDecoration,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

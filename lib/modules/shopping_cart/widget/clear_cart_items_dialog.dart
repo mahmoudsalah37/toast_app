@@ -1,9 +1,7 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class ClearItemsCartDialog extends StatefulWidget {
   final Function() onTapYes;

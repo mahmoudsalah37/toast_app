@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class CancelOrderDialogWidget extends StatefulWidget {
   @override
@@ -53,7 +53,7 @@ class _CancelOrderDialogWidgetState extends State<CancelOrderDialogWidget> {
                           style: OutlinedButton.styleFrom(
                             backgroundColor: Colors.white,
                             side:
-                            BorderSide(color: CustomColors.blueLightColor),
+                                BorderSide(color: CustomColors.blueLightColor),
                             shape: StadiumBorder(),
                           ),
                           child: Text('No', style: theme.textTheme.subtitle2),
