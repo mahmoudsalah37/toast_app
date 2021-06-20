@@ -9,6 +9,7 @@ import '../widget/order_details_widget.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import 'order_details_bottom_sheet.dart';
+import 'package:url_launcher/url_launcher.dart' as urLauncher;
 
 class DriversOfferPage extends StatefulWidget {
   @override
@@ -34,6 +35,15 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
       });
     });
     super.initState();
+  }
+
+  Future<void> _makePhoneCall({required String phoneNumber}) async {
+    phoneNumber = 'tel://$phoneNumber';
+    if (await urLauncher.canLaunch(phoneNumber)) {
+      await urLauncher.launch(phoneNumber);
+    } else {
+      throw 'Could not launch $phoneNumber';
+    }
   }
 
   @override
@@ -136,8 +146,12 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               driverName: 'Ahmed Nasser',
               driverRate: '4.8',
               orderNumber: '12312346332',
-              onTapCallDriver: () {},
-              onTapChatDriver: () {},
+              onTapCallDriver: () async {
+                await _makePhoneCall(phoneNumber: '01119193535');
+              },
+              onTapChatDriver: () {
+                Navigator.pushNamed(context, Routes.chatPage);
+              },
               onTapOrderDetails: () => showModalBottomSheet(
                 backgroundColor: Colors.transparent,
                 context: context,
@@ -145,83 +159,6 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class CancelOrderDialogWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    ThemeData theme = Theme.of(context);
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: res.getHeight(20),
-                padding: EdgeInsets.only(top: 40),
-                margin: EdgeInsets.only(top: 40),
-                decoration: CustomStyle.containerShadowDecoration
-                    .copyWith(color: Colors.white),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      'Are you sure to cancel order ?',
-                      style: theme.textTheme.headline2!
-                          .copyWith(color: Colors.red),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side:
-                                BorderSide(color: CustomColors.blueLightColor),
-                            shape: StadiumBorder(),
-                          ),
-                          child: Text('No', style: theme.textTheme.subtitle2),
-                        ),
-                        OutlinedButton(
-                          onPressed: () {},
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            side: BorderSide(color: Colors.red),
-                            shape: StadiumBorder(),
-                          ),
-                          child: Text('Yes',
-                              style: theme.textTheme.subtitle2!
-                                  .copyWith(color: Colors.red)),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Positioned(
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.black,
-                    child: Icon(
-                      Icons.emoji_emotions_outlined,
-                      color: CustomColors.yellowDeepColor,
-                      size: 80,
-                    ),
-                  ),
-                ),
-              )
-            ],
-          )
         ],
       ),
     );

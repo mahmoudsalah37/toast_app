@@ -1,54 +1,109 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/classes/resposive.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:toast_app/src/colors.dart';
+import 'package:toast_app/src/styles.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
 
-void clearCartItemsDialog(
-    {required BuildContext context, required Function() onTapYes}) {
-  Responsive res = Responsive(context);
-  ThemeData theme = Theme.of(context);
-  showDialog(
-    barrierColor: Colors.black.withOpacity(0.5),
-    context: context,
-    builder: (con) => Dialog(
+class ClearItemsCartDialog extends StatefulWidget {
+  final Function() onTapYes;
+
+  const ClearItemsCartDialog({
+    required this.onTapYes,
+  });
+
+  @override
+  State<StatefulWidget> createState() => ClearItemsCartDialogState();
+}
+
+class ClearItemsCartDialogState extends State<ClearItemsCartDialog>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+    scaleAnimation =
+        CurvedAnimation(parent: controller, curve: Curves.elasticInOut);
+
+    controller.addListener(() {
+      setState(() {});
+    });
+
+    controller.forward();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final res = Responsive(context);
+    return Dialog(
       backgroundColor: Colors.transparent,
-      child: Container(
-        height: res.getHeight(20),
-        width: res.getWidth(100),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Scaffold(
-            body: Padding(
-              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Center(
+            child: ScaleTransition(
+              scale: scaleAnimation,
+              child: Stack(
                 children: [
-                  AutoSizeText(
-                    'Delete all items of cart ?',
-                    minFontSize: 1,
-                    maxLines: 1,
-                    style: theme.textTheme.headline6,
+                  Container(
+                    height: res.getHeight(20),
+                    padding: EdgeInsets.only(top: 40),
+                    margin: EdgeInsets.only(top: 40),
+                    decoration: CustomStyle.containerShadowDecoration.copyWith(
+                      color: Colors.white,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Delete all items of cart ?',
+                          style: theme.textTheme.headline5,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(
+                                'No',
+                                style: theme.textTheme.headline5,
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () => widget.onTapYes(),
+                              child: Text(
+                                'Yes',
+                                style: theme.textTheme.headline5,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        child: Text('No'),
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      radius: 35,
+                      backgroundColor: Colors.white,
+                      child: SvgPicture.asset(
+                        'assets/images/shopping_cart/delete_basket_icon.svg',
+                        width: 40,
                       ),
-                      TextButton(
-                          onPressed: () {
-                            onTapYes();
-                          },
-                          child: Text('Yes')),
-                    ],
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-        ),
+        ],
       ),
-    ),
-  );
+    );
+  }
 }

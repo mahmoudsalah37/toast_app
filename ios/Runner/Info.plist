@@ -68,5 +68,13 @@
 <key>NSLocationAlwaysUsageDescription</key>
 <string>Can I haz location always?</string>
 
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>https</string>
+    <string>http</string>
+    <string>tel</string>
+    <string>mailto</string>
+</array>
+
 </dict>
 </plist>

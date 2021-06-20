@@ -25,6 +25,9 @@ dependencies:
   direct_select_flutter: ^1.1.1
   multi_select_flutter: ^4.0.0
   meta:
+  lottie: ^1.0.1
+  url_launcher: ^6.0.6
+
   flutter:
     sdk: flutter
 
