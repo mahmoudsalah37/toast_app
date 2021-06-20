@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import '../models/categories_model.dart';
-import '../models/category_model.dart';
+import '../models/category/categories_model.dart';
+import '../models/category/category_model.dart';
 import '../services/category_service.dart';
 import '../../../utils/enums/notifier_state.dart';
 import '../../../extensions/task_extensions.dart';

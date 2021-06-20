@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/modules/shopping_cart/widget/ordered_details_bottom_sheet_item.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../widget/ordered_details_bottom_sheet_item.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
 
 class OrderDetailBottomSheet extends StatelessWidget {
   @override

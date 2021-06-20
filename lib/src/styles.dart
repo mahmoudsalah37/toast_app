@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
+import 'colors.dart';
 
 class CustomStyle {
   static final InputDecoration homeSearchInputDecoration = InputDecoration(
@@ -23,6 +23,5 @@ class CustomStyle {
   static final BoxDecoration containerShadowDecoration = BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(10),
-      boxShadow: [BoxShadow(color: Colors.black45,blurRadius: 2)]
-  );
+      boxShadow: [BoxShadow(color: Colors.black45, blurRadius: 2)]);
 }

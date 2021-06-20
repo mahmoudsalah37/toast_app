@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
 
 class OrderDetailsWidget extends StatelessWidget {
   late final String orderNumber;

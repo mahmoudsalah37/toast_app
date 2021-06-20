@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/routes.dart';
+import '../../../src/routes.dart';
 
 class EnterLocationTFW extends StatefulWidget {
   const EnterLocationTFW(

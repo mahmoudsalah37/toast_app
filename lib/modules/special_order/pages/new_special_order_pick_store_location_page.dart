@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:toast_app/modules/special_order/widgets/app_bar._widget.dart';
-import 'package:toast_app/modules/special_order/widgets/search_text_field_widget.dart';
-import 'package:toast_app/modules/special_order/widgets/text_button_widget.dart';
+import '../widgets/app_bar._widget.dart';
+import '../widgets/search_text_field_widget.dart';
 import 'dart:async';
 
 class NewSpecialOrderPickStoreLocationPage extends StatelessWidget {

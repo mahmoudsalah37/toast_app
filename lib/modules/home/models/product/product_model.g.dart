@@ -10,12 +10,8 @@ _$_ProductModel _$_$_ProductModelFromJson(Map<String, dynamic> json) {
   return _$_ProductModel(
     id: json['id'] as int?,
     title: json['title'] as String? ?? '',
-    metaModel: json['meta'] == null
-        ? null
-        : MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
-    priceModel: json['price'] == null
-        ? null
-        : PriceModel.fromJson(json['price'] as Map<String, dynamic>),
+    metaModel: MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
+    priceModel: PriceModel.fromJson(json['price'] as Map<String, dynamic>),
   );
 }
 

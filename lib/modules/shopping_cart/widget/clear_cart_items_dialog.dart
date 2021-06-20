@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../utils/classes/resposive.dart';
 
 void clearCartItemsDialog(
     {required BuildContext context, required Function() onTapYes}) {

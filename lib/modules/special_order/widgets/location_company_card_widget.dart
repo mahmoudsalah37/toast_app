@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
+import '../../../src/colors.dart';
 
 class LocationComapnyCardWidget extends StatelessWidget {
   final String title, details, distance, image;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
 
 class DriverOffersItemWidget extends StatelessWidget {
   final String driverName;
@@ -98,9 +98,7 @@ class DriverOffersItemWidget extends StatelessWidget {
                   side: BorderSide(color: CustomColors.blueLightColor),
                   shape: StadiumBorder(),
                 ),
-                child: Text('Accept',
-                    style:
-                        theme.textTheme.subtitle2),
+                child: Text('Accept', style: theme.textTheme.subtitle2),
               ),
             ],
           )

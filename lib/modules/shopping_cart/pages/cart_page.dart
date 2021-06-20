@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/modules/shopping_cart/widget/add_copon_custom_painter.dart';
-import 'package:toast_app/modules/shopping_cart/widget/clear_cart_items_dialog.dart';
-import 'package:toast_app/modules/shopping_cart/widget/payment_type_item_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/shopping_cart_item_widget.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../widget/add_copon_custom_painter.dart';
+import '../widget/clear_cart_items_dialog.dart';
+import '../widget/payment_type_item_widget.dart';
+import '../widget/shopping_cart_item_widget.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../src/styles.dart';
 
 class CartPage extends StatefulWidget {
   @override

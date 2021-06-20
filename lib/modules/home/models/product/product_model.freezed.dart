@@ -23,8 +23,8 @@ class _$ProductModelTearOff {
   _ProductModel call(
       {int? id,
       String title = '',
-      @JsonKey(name: 'meta') MetaModel? metaModel,
-      @JsonKey(name: 'price') PriceModel? priceModel}) {
+      @JsonKey(name: 'meta') MetaModel metaModel = const MetaModel(),
+      @JsonKey(name: 'price') PriceModel priceModel = const PriceModel()}) {
     return _ProductModel(
       id: id,
       title: title,
@@ -46,9 +46,9 @@ mixin _$ProductModel {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'meta')
-  MetaModel? get metaModel => throw _privateConstructorUsedError;
+  MetaModel get metaModel => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
-  PriceModel? get priceModel => throw _privateConstructorUsedError;
+  PriceModel get priceModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,11 +64,11 @@ abstract class $ProductModelCopyWith<$Res> {
   $Res call(
       {int? id,
       String title,
-      @JsonKey(name: 'meta') MetaModel? metaModel,
-      @JsonKey(name: 'price') PriceModel? priceModel});
+      @JsonKey(name: 'meta') MetaModel metaModel,
+      @JsonKey(name: 'price') PriceModel priceModel});
 
-  $MetaModelCopyWith<$Res>? get metaModel;
-  $PriceModelCopyWith<$Res>? get priceModel;
+  $MetaModelCopyWith<$Res> get metaModel;
+  $PriceModelCopyWith<$Res> get priceModel;
 }
 
 /// @nodoc
@@ -98,32 +98,24 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
       metaModel: metaModel == freezed
           ? _value.metaModel
           : metaModel // ignore: cast_nullable_to_non_nullable
-              as MetaModel?,
+              as MetaModel,
       priceModel: priceModel == freezed
           ? _value.priceModel
           : priceModel // ignore: cast_nullable_to_non_nullable
-              as PriceModel?,
+              as PriceModel,
     ));
   }
 
   @override
-  $MetaModelCopyWith<$Res>? get metaModel {
-    if (_value.metaModel == null) {
-      return null;
-    }
-
-    return $MetaModelCopyWith<$Res>(_value.metaModel!, (value) {
+  $MetaModelCopyWith<$Res> get metaModel {
+    return $MetaModelCopyWith<$Res>(_value.metaModel, (value) {
       return _then(_value.copyWith(metaModel: value));
     });
   }
 
   @override
-  $PriceModelCopyWith<$Res>? get priceModel {
-    if (_value.priceModel == null) {
-      return null;
-    }
-
-    return $PriceModelCopyWith<$Res>(_value.priceModel!, (value) {
+  $PriceModelCopyWith<$Res> get priceModel {
+    return $PriceModelCopyWith<$Res>(_value.priceModel, (value) {
       return _then(_value.copyWith(priceModel: value));
     });
   }
@@ -139,13 +131,13 @@ abstract class _$ProductModelCopyWith<$Res>
   $Res call(
       {int? id,
       String title,
-      @JsonKey(name: 'meta') MetaModel? metaModel,
-      @JsonKey(name: 'price') PriceModel? priceModel});
+      @JsonKey(name: 'meta') MetaModel metaModel,
+      @JsonKey(name: 'price') PriceModel priceModel});
 
   @override
-  $MetaModelCopyWith<$Res>? get metaModel;
+  $MetaModelCopyWith<$Res> get metaModel;
   @override
-  $PriceModelCopyWith<$Res>? get priceModel;
+  $PriceModelCopyWith<$Res> get priceModel;
 }
 
 /// @nodoc
@@ -177,11 +169,11 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
       metaModel: metaModel == freezed
           ? _value.metaModel
           : metaModel // ignore: cast_nullable_to_non_nullable
-              as MetaModel?,
+              as MetaModel,
       priceModel: priceModel == freezed
           ? _value.priceModel
           : priceModel // ignore: cast_nullable_to_non_nullable
-              as PriceModel?,
+              as PriceModel,
     ));
   }
 }
@@ -192,8 +184,8 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   const _$_ProductModel(
       {this.id,
       this.title = '',
-      @JsonKey(name: 'meta') this.metaModel,
-      @JsonKey(name: 'price') this.priceModel});
+      @JsonKey(name: 'meta') this.metaModel = const MetaModel(),
+      @JsonKey(name: 'price') this.priceModel = const PriceModel()});
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductModelFromJson(json);
@@ -205,10 +197,10 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   final String title;
   @override
   @JsonKey(name: 'meta')
-  final MetaModel? metaModel;
+  final MetaModel metaModel;
   @override
   @JsonKey(name: 'price')
-  final PriceModel? priceModel;
+  final PriceModel priceModel;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -265,8 +257,8 @@ abstract class _ProductModel implements ProductModel {
   const factory _ProductModel(
       {int? id,
       String title,
-      @JsonKey(name: 'meta') MetaModel? metaModel,
-      @JsonKey(name: 'price') PriceModel? priceModel}) = _$_ProductModel;
+      @JsonKey(name: 'meta') MetaModel metaModel,
+      @JsonKey(name: 'price') PriceModel priceModel}) = _$_ProductModel;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$_ProductModel.fromJson;
@@ -277,10 +269,10 @@ abstract class _ProductModel implements ProductModel {
   String get title => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'meta')
-  MetaModel? get metaModel => throw _privateConstructorUsedError;
+  MetaModel get metaModel => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'price')
-  PriceModel? get priceModel => throw _privateConstructorUsedError;
+  PriceModel get priceModel => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductModelCopyWith<_ProductModel> get copyWith =>

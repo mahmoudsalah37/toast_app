@@ -113,7 +113,7 @@ class __$CategoriesModelCopyWithImpl<$Res>
 class _$_CategoriesModel
     with DiagnosticableTreeMixin
     implements _CategoriesModel {
-  _$_CategoriesModel({this.categories});
+  const _$_CategoriesModel({this.categories});
 
   factory _$_CategoriesModel.fromJson(Map<String, dynamic> json) =>
       _$_$_CategoriesModelFromJson(json);
@@ -159,7 +159,7 @@ class _$_CategoriesModel
 }
 
 abstract class _CategoriesModel implements CategoriesModel {
-  factory _CategoriesModel({List<CategoryModel>? categories}) =
+  const factory _CategoriesModel({List<CategoryModel>? categories}) =
       _$_CategoriesModel;
 
   factory _CategoriesModel.fromJson(Map<String, dynamic> json) =

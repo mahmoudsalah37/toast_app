@@ -22,6 +22,8 @@ dependencies:
   dio: ^4.0.0
   freezed_annotation: ^0.14.2
   dartz: ^0.10.0-nullsafety.2
+  direct_select_flutter: ^1.1.1
+  multi_select_flutter: ^4.0.0
   meta:
   flutter:
     sdk: flutter

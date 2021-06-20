@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+
 import '../errors_handler/failure.dart';
 
 extension TaskX<T extends Either<Object, U>, U> on Task<T> {

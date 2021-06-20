@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/theme.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/theme.dart';
 
 import 'favorite_icon_widget.dart';
 
