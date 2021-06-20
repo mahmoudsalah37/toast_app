@@ -1,12 +1,11 @@
+import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/models/category_model.dart';
-import 'package:toast_app/modules/home/provider/categories_provider.dart';
-import 'package:toast_app/modules/home/widgets/drop_down_button_widget.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/utils/enums/notifier_state.dart';
+import '../../../widgets/direct_selected_item_list.dart';
+import '../provider/categories_provider.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../../utils/enums/notifier_state.dart';
 import '../widgets/home_item_widget.dart';
 import '../widgets/menu_item_bottom_sheet.dart';
 import '../widgets/menu_item_widget.dart';
@@ -18,6 +17,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   late CategoriesProvider catgoriesProvider;
+  int index = 0;
   @override
   void initState() {
     super.initState();
@@ -27,28 +27,27 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final res = Responsive(context);
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+    return DirectSelectContainer(
+      child: Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.blue),
-          onPressed: () => Navigator.of(context).pop(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios, color: Colors.blue),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Text(''),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
+              onPressed: () => Navigator.pushNamed(context, Routes.cartPage),
+            )
+          ],
         ),
-        title: Text(''),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
-            onPressed: () => Navigator.pushNamed(context, Routes.cartPage),
-          )
-        ],
-      ),
-      body: Container(
-        child: Column(
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CompanyWidget(
@@ -64,30 +63,34 @@ class _MenuPageState extends State<MenuPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: res.getWidth(30),
+                  width: res.getWidth(35),
                   margin: const EdgeInsets.only(left: 8),
                   child: Consumer<CategoriesProvider>(
                     builder: (_, notifier, __) {
                       if (notifier.state == NotifierState.loading) {
                         return Center(child: CircularProgressIndicator());
                       } else {
-                        return DropDownButtonWidget<CategoryModel>(
-                          dropdownColor: CustomColors.yellowDeepColor,
-                          items: notifier.categories!.fold((failure) {
-                            return [];
-                          }, (data) {
-                            return data.categories ?? [];
-                          }),
-                          onChanged: (v) {
-                            catgoriesProvider.setCategory(v);
-                          },
-                          itemBuilder: (v) => DropdownMenuItem(
-                            value: v,
-                            child: Text(
-                              v.name,
-                              style: theme.textTheme.headline6,
+                        return DirectSelectListWidget(
+                          defaultItemIndex: index,
+                          focusedItemDecoration: BoxDecoration(
+                            border: BorderDirectional(
+                              bottom:
+                                  BorderSide(width: 1, color: Colors.black12),
+                              top: BorderSide(width: 1, color: Colors.black12),
                             ),
                           ),
+                          categories: notifier.categories!.fold(
+                            (failure) {
+                              return [];
+                            },
+                            (data) {
+                              return data.categories ?? [];
+                            },
+                          ),
+                          onItemSelectedListener: (v, i, _) {
+                            index = i;
+                            catgoriesProvider.setCategory(v);
+                          },
                         );
                       }
                     },
@@ -141,8 +144,8 @@ class _MenuPageState extends State<MenuPage> {
                               ),
                               img: 'assets/test/banner_three.png',
                               title: product.title,
-                              description: product.metaModel?.content ?? '',
-                              price: '${product.priceModel?.price ?? 0.0}',
+                              description: product.metaModel.content,
+                              price: '${product.priceModel.price}',
                             );
                           },
                         );
