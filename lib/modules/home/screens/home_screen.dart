@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:toast_app/src/routes.dart';
 
-import '../../../src/colors.dart';
+import '../widgets/badge_widget.dart';
 import '../models/company_model.dart';
 import '../models/category_icon_model.dart';
 import '../widgets/categories_widget.dart';
@@ -36,10 +37,12 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.brown)),
                     ],
                   ),
-                  trailing: Icon(
-                    Icons.search,
-                    color: CustomColors.yellowDeepColor,
-                    size: 30,
+                  trailing: BadgeWidget(
+                    child: IconButton(
+                      icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, Routes.cartPage),
+                    ),
                   ),
                 ),
               ),

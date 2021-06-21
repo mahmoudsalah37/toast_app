@@ -1,38 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:group_button/group_button.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import '../models/addon/addon_model.dart';
+import '../models/product/product_model.dart';
+import '../models/without/without_model.dart';
+import '../../../widgets/multi_selecteed_dialog_field_widget.dart';
 
 import '../../../utils/classes/resposive.dart';
 import '../../../src/colors.dart';
-import '../../../src/styles.dart';
 import '../../../src/theme.dart';
 
 class MenuItemModalBottomSheet extends StatefulWidget {
+  MenuItemModalBottomSheet({required this.product});
+  final ProductModel product;
   @override
   _MenuItemModalBottomSheetState createState() =>
       _MenuItemModalBottomSheetState();
 }
 
 class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
-  bool addOnsValue = false;
-  Map<String, bool> addOnDataList = {
-    'Tomato': false,
-    'Lettuce': false,
-    'Cheese': false,
-    'Sauce': false,
-  };
-  final addOnsList = {
-    'Tomato',
-    'Lettuce',
-    'Cheese',
-    'Sauce',
-  };
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
     return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             height: res.getHeight(30),
@@ -51,16 +44,17 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Twin Burger Meal', style: textTheme.headline6),
-                    Text('SAR 20', style: textTheme.bodyText1),
+                    Text('${widget.product.title}', style: textTheme.headline6),
+                    Text('${widget.product.priceModel.price} SAR',
+                        style: textTheme.bodyText1),
                   ],
                 ),
-                Text('Best Twin Burger in the world',
+                Text('${widget.product.metaModel.content}',
                     style: textTheme.subtitle1),
                 Divider(color: CustomColors.accentColor),
                 Container(
@@ -69,9 +63,10 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                     children: [
                       SizedBox(height: res.getHeight(.5)),
                       Text('Add Ons:', style: textTheme.headline5),
-                      MultiSelectedDilaogFieldWidget<String>(
-                        items: addOnsList
-                            .map((e) => MultiSelectItem(e, e))
+                      MultiSelectedDilaogFieldWidget<AddonModel>(
+                        items: widget.product.addons
+                            .map((e) => MultiSelectItem(
+                                e, '${e.title} - ${e.price.price} SAR'))
                             .toList(growable: false),
                         title: Text(
                           'Add Ons:',
@@ -80,9 +75,9 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                       ),
                       SizedBox(height: 4),
                       Text('Without:', style: textTheme.headline5),
-                      MultiSelectedDilaogFieldWidget<String>(
-                        items: addOnsList
-                            .map((e) => MultiSelectItem(e, e))
+                      MultiSelectedDilaogFieldWidget<WithoutModel>(
+                        items: widget.product.withouts
+                            .map((e) => MultiSelectItem(e, '${e.title}'))
                             .toList(growable: false),
                         title: Text(
                           'With out:',
@@ -91,34 +86,22 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                       ),
                       SizedBox(height: 4),
                       Text('Varaieties:', style: textTheme.headline5),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 3,
-                        padding: EdgeInsets.symmetric(vertical: 8),
-                        itemBuilder: (context, index) =>
-                            AddAndWithOutCheckBoxWidget(
-                          title: 'Cheese',
-                          value: true,
-                          onChanged: (value) {},
-                          hasPrice: false,
-                          price: '',
-                        ),
-                      ),
+                      GroupButton(
+                        isRadio: true,
+                        spacing: 10,
+                        selectedColor: Colors.blue,
+                        onSelected: (index, isSelected) =>
+                            print('$index button is selected'),
+                        buttons: widget.product.varaieties
+                            .map((e) => '${e.variety} - ${e.price} SAR')
+                            .toList(),
+                      )
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          TextField(
-            textInputAction: TextInputAction.done,
-            decoration: CustomStyle.homeSearchInputDecoration.copyWith(
-              hintText: 'Notes',
-            ),
-            maxLines: 4,
-          ),
-          SizedBox(height: 4),
           TextButton(
             onPressed: () => Navigator.pop(context),
             style: ButtonStyle(
@@ -127,99 +110,12 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              padding: MaterialStateProperty.all(
-                EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              ),
               backgroundColor:
                   MaterialStateProperty.all(CustomColors.yellowDeepColor),
               textStyle: MaterialStateProperty.all(textTheme.headline6),
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                'Done',
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class MultiSelectedDilaogFieldWidget<T> extends StatefulWidget {
-  const MultiSelectedDilaogFieldWidget({required this.items, this.title});
-  final List<MultiSelectItem<T>> items;
-  final Widget? title;
-  @override
-  _MultiSelectedDilaogFieldWidgetState createState() =>
-      _MultiSelectedDilaogFieldWidgetState();
-}
-
-class _MultiSelectedDilaogFieldWidgetState<T>
-    extends State<MultiSelectedDilaogFieldWidget> {
-  List<T> initalValue = [];
-  @override
-  Widget build(BuildContext context) {
-    return MultiSelectDialogField<T>(
-      title: widget.title,
-      onConfirm: (val) {
-        setState(() {
-          initalValue = val;
-        });
-      },
-      items: widget.items as List<MultiSelectItem<T>>,
-      initialValue: initalValue,
-    );
-  }
-}
-
-class AddAndWithOutCheckBoxWidget extends StatelessWidget {
-  final Function onChanged;
-  final String title;
-  final String? price;
-  final bool value;
-  final bool hasPrice;
-
-  const AddAndWithOutCheckBoxWidget({
-    required this.title,
-    required this.value,
-    required this.onChanged,
-    required this.hasPrice,
-    this.price,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    TextTheme textTheme = CustomsThemes.defaultThemeData.textTheme;
-    return InkWell(
-      onTap: () {
-        onChanged(!value);
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            height: res.getHeight(3.8),
-            child: Checkbox(
-              value: value,
-              // checkColor: CustomColors.primaryColor,
-              activeColor: CustomColors.primaryColor,
-              onChanged: (newValue) {
-                onChanged(newValue);
-              },
-            ),
-          ),
-          Expanded(child: Text(title, style: textTheme.headline2)),
-          Visibility(
-            visible: hasPrice ? true : false,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(
-                hasPrice ? '+$price.00' : '',
-                style: textTheme.headline3,
-              ),
+            child: Text(
+              'Add',
             ),
           )
         ],

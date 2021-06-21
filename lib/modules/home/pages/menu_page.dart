@@ -1,6 +1,7 @@
 import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/modules/home/widgets/badge_widget.dart';
 import '../../../widgets/direct_selected_item_list.dart';
 import '../provider/categories_provider.dart';
 import '../../../src/routes.dart';
@@ -41,10 +42,12 @@ class _MenuPageState extends State<MenuPage> {
           title: Text(''),
           centerTitle: true,
           actions: [
-            IconButton(
-              icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
-              onPressed: () => Navigator.pushNamed(context, Routes.cartPage),
-            )
+            BadgeWidget(
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
+                onPressed: () => Navigator.pushNamed(context, Routes.cartPage),
+              ),
+            ),
           ],
         ),
         body: Column(
@@ -138,14 +141,15 @@ class _MenuPageState extends State<MenuPage> {
                                           .viewInsets
                                           .bottom,
                                     ),
-                                    child: MenuItemModalBottomSheet(),
+                                    child: MenuItemModalBottomSheet(
+                                        product: product),
                                   ),
                                 ),
                               ),
                               img: 'assets/test/banner_three.png',
                               title: product.title,
                               description: product.metaModel.content,
-                              price: '${product.priceModel.price}',
+                              price: '${product.priceModel.price} SAR',
                             );
                           },
                         );
