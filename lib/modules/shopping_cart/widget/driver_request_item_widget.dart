@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import 'driver_details_widget.dart';
 
 class DriverOffersItemWidget extends StatelessWidget {
   final String driverName;
@@ -32,49 +33,14 @@ class DriverOffersItemWidget extends StatelessWidget {
       decoration: CustomStyle.containerShadowDecoration,
       child: Column(
         children: [
-          ListTile(
-            leading: Container(
-              width: 60,
-              decoration: BoxDecoration(
-                  color: Colors.blue,
-                  image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(driverImg)),
-                  shape: BoxShape.circle),
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  driverName,
-                  style: theme.textTheme.headline3,
-                ),
-                Text(
-                  '★ $driverRate',
-                  style: theme.textTheme.headline3!
-                      .copyWith(color: CustomColors.accentColor),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
-            trailing: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'SAR $driverPriceOffer',
-                  style: theme.textTheme.headline2!.copyWith(
-                    color: CustomColors.blueLightColor,
-                  ),
-                ),
-                Text(
-                  '$driverDeliveryTime min',
-                  style: theme.textTheme.subtitle2,
-                ),
-                Text(
-                  '$driverDistance KMs',
-                  style: theme.textTheme.subtitle2,
-                ),
-              ],
-            ),
+          DriverDetailsWidget(
+            haveShadow: false,
+            driverName: driverName,
+            driverImg: driverImg,
+            driverRate: driverRate,
+            driverPriceOffer: driverPriceOffer,
+            driverDeliveryTime: driverDeliveryTime,
+            driverDistance: driverDistance,
           ),
           SizedBox(height: 10),
           Row(

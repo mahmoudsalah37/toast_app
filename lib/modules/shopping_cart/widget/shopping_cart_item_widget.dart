@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:toast_app/src/styles.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../src/colors.dart';
 
@@ -30,19 +31,10 @@ class ShoppingCartItemWidget extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(10),
       height: res.getHeight(17.5),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black26,
-            blurRadius: 5,
-            offset: Offset(0, 4),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(14),
-      ),
+      decoration: CustomStyle.containerShadowDecoration,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

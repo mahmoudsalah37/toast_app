@@ -42,7 +42,7 @@ class CustomEstimatedDistanceStepper extends StatelessWidget {
       case 2:
         return MainAxisAlignment.center;
       default:
-        return MainAxisAlignment.spaceEvenly;
+        return MainAxisAlignment.spaceAround;
     }
   }
 
@@ -59,7 +59,6 @@ class CustomEstimatedDistanceStepper extends StatelessWidget {
         children: [
           Container(
             width: res.getWidth(100),
-            height: res.getHeight(25),
             padding: EdgeInsets.all(8),
             decoration: CustomStyle.containerShadowDecoration,
             child: Column(
@@ -95,7 +94,7 @@ class CustomEstimatedDistanceStepper extends StatelessWidget {
                                 numberStyle: TextStyle(color: Colors.black),
                                 lineColor: CustomColors.accentColor,
                                 stepColor: CustomColors.accentColor,
-                                lineLength: 20,
+                                lineLength: res.getHeight(3.5),
                                 activeStep: 0,
                                 enableStepTapping: false,
                                 steppingEnabled: false,
