@@ -23,13 +23,24 @@ class _$ProductModelTearOff {
   _ProductModel call(
       {int? id,
       String title = '',
-      @JsonKey(name: 'meta') MetaModel metaModel = const MetaModel(),
-      @JsonKey(name: 'price') PriceModel priceModel = const PriceModel()}) {
+      @JsonKey(name: 'meta')
+          MetaModel metaModel = const MetaModel(),
+      @JsonKey(name: 'price')
+          PriceModel priceModel = const PriceModel(),
+      @JsonKey(name: 'addons')
+          List<AddonModel> addons = const <AddonModel>[],
+      @JsonKey(name: 'withouts')
+          List<WithoutModel> withouts = const <WithoutModel>[],
+      @JsonKey(name: 'vars')
+          List<VaraietyModel> varaieties = const <VaraietyModel>[]}) {
     return _ProductModel(
       id: id,
       title: title,
       metaModel: metaModel,
       priceModel: priceModel,
+      addons: addons,
+      withouts: withouts,
+      varaieties: varaieties,
     );
   }
 
@@ -49,6 +60,12 @@ mixin _$ProductModel {
   MetaModel get metaModel => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
   PriceModel get priceModel => throw _privateConstructorUsedError;
+  @JsonKey(name: 'addons')
+  List<AddonModel> get addons => throw _privateConstructorUsedError;
+  @JsonKey(name: 'withouts')
+  List<WithoutModel> get withouts => throw _privateConstructorUsedError;
+  @JsonKey(name: 'vars')
+  List<VaraietyModel> get varaieties => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +82,10 @@ abstract class $ProductModelCopyWith<$Res> {
       {int? id,
       String title,
       @JsonKey(name: 'meta') MetaModel metaModel,
-      @JsonKey(name: 'price') PriceModel priceModel});
+      @JsonKey(name: 'price') PriceModel priceModel,
+      @JsonKey(name: 'addons') List<AddonModel> addons,
+      @JsonKey(name: 'withouts') List<WithoutModel> withouts,
+      @JsonKey(name: 'vars') List<VaraietyModel> varaieties});
 
   $MetaModelCopyWith<$Res> get metaModel;
   $PriceModelCopyWith<$Res> get priceModel;
@@ -85,6 +105,9 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
     Object? title = freezed,
     Object? metaModel = freezed,
     Object? priceModel = freezed,
+    Object? addons = freezed,
+    Object? withouts = freezed,
+    Object? varaieties = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -103,6 +126,18 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
           ? _value.priceModel
           : priceModel // ignore: cast_nullable_to_non_nullable
               as PriceModel,
+      addons: addons == freezed
+          ? _value.addons
+          : addons // ignore: cast_nullable_to_non_nullable
+              as List<AddonModel>,
+      withouts: withouts == freezed
+          ? _value.withouts
+          : withouts // ignore: cast_nullable_to_non_nullable
+              as List<WithoutModel>,
+      varaieties: varaieties == freezed
+          ? _value.varaieties
+          : varaieties // ignore: cast_nullable_to_non_nullable
+              as List<VaraietyModel>,
     ));
   }
 
@@ -132,7 +167,10 @@ abstract class _$ProductModelCopyWith<$Res>
       {int? id,
       String title,
       @JsonKey(name: 'meta') MetaModel metaModel,
-      @JsonKey(name: 'price') PriceModel priceModel});
+      @JsonKey(name: 'price') PriceModel priceModel,
+      @JsonKey(name: 'addons') List<AddonModel> addons,
+      @JsonKey(name: 'withouts') List<WithoutModel> withouts,
+      @JsonKey(name: 'vars') List<VaraietyModel> varaieties});
 
   @override
   $MetaModelCopyWith<$Res> get metaModel;
@@ -156,6 +194,9 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
     Object? title = freezed,
     Object? metaModel = freezed,
     Object? priceModel = freezed,
+    Object? addons = freezed,
+    Object? withouts = freezed,
+    Object? varaieties = freezed,
   }) {
     return _then(_ProductModel(
       id: id == freezed
@@ -174,6 +215,18 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
           ? _value.priceModel
           : priceModel // ignore: cast_nullable_to_non_nullable
               as PriceModel,
+      addons: addons == freezed
+          ? _value.addons
+          : addons // ignore: cast_nullable_to_non_nullable
+              as List<AddonModel>,
+      withouts: withouts == freezed
+          ? _value.withouts
+          : withouts // ignore: cast_nullable_to_non_nullable
+              as List<WithoutModel>,
+      varaieties: varaieties == freezed
+          ? _value.varaieties
+          : varaieties // ignore: cast_nullable_to_non_nullable
+              as List<VaraietyModel>,
     ));
   }
 }
@@ -185,7 +238,10 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       {this.id,
       this.title = '',
       @JsonKey(name: 'meta') this.metaModel = const MetaModel(),
-      @JsonKey(name: 'price') this.priceModel = const PriceModel()});
+      @JsonKey(name: 'price') this.priceModel = const PriceModel(),
+      @JsonKey(name: 'addons') this.addons = const <AddonModel>[],
+      @JsonKey(name: 'withouts') this.withouts = const <WithoutModel>[],
+      @JsonKey(name: 'vars') this.varaieties = const <VaraietyModel>[]});
 
   factory _$_ProductModel.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductModelFromJson(json);
@@ -201,10 +257,19 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   @override
   @JsonKey(name: 'price')
   final PriceModel priceModel;
+  @override
+  @JsonKey(name: 'addons')
+  final List<AddonModel> addons;
+  @override
+  @JsonKey(name: 'withouts')
+  final List<WithoutModel> withouts;
+  @override
+  @JsonKey(name: 'vars')
+  final List<VaraietyModel> varaieties;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductModel(id: $id, title: $title, metaModel: $metaModel, priceModel: $priceModel)';
+    return 'ProductModel(id: $id, title: $title, metaModel: $metaModel, priceModel: $priceModel, addons: $addons, withouts: $withouts, varaieties: $varaieties)';
   }
 
   @override
@@ -215,7 +280,10 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('metaModel', metaModel))
-      ..add(DiagnosticsProperty('priceModel', priceModel));
+      ..add(DiagnosticsProperty('priceModel', priceModel))
+      ..add(DiagnosticsProperty('addons', addons))
+      ..add(DiagnosticsProperty('withouts', withouts))
+      ..add(DiagnosticsProperty('varaieties', varaieties));
   }
 
   @override
@@ -231,7 +299,15 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
                     .equals(other.metaModel, metaModel)) &&
             (identical(other.priceModel, priceModel) ||
                 const DeepCollectionEquality()
-                    .equals(other.priceModel, priceModel)));
+                    .equals(other.priceModel, priceModel)) &&
+            (identical(other.addons, addons) ||
+                const DeepCollectionEquality().equals(other.addons, addons)) &&
+            (identical(other.withouts, withouts) ||
+                const DeepCollectionEquality()
+                    .equals(other.withouts, withouts)) &&
+            (identical(other.varaieties, varaieties) ||
+                const DeepCollectionEquality()
+                    .equals(other.varaieties, varaieties)));
   }
 
   @override
@@ -240,7 +316,10 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(title) ^
       const DeepCollectionEquality().hash(metaModel) ^
-      const DeepCollectionEquality().hash(priceModel);
+      const DeepCollectionEquality().hash(priceModel) ^
+      const DeepCollectionEquality().hash(addons) ^
+      const DeepCollectionEquality().hash(withouts) ^
+      const DeepCollectionEquality().hash(varaieties);
 
   @JsonKey(ignore: true)
   @override
@@ -258,7 +337,10 @@ abstract class _ProductModel implements ProductModel {
       {int? id,
       String title,
       @JsonKey(name: 'meta') MetaModel metaModel,
-      @JsonKey(name: 'price') PriceModel priceModel}) = _$_ProductModel;
+      @JsonKey(name: 'price') PriceModel priceModel,
+      @JsonKey(name: 'addons') List<AddonModel> addons,
+      @JsonKey(name: 'withouts') List<WithoutModel> withouts,
+      @JsonKey(name: 'vars') List<VaraietyModel> varaieties}) = _$_ProductModel;
 
   factory _ProductModel.fromJson(Map<String, dynamic> json) =
       _$_ProductModel.fromJson;
@@ -273,6 +355,15 @@ abstract class _ProductModel implements ProductModel {
   @override
   @JsonKey(name: 'price')
   PriceModel get priceModel => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'addons')
+  List<AddonModel> get addons => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'withouts')
+  List<WithoutModel> get withouts => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'vars')
+  List<VaraietyModel> get varaieties => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductModelCopyWith<_ProductModel> get copyWith =>

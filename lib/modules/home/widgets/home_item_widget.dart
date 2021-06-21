@@ -4,7 +4,7 @@ import '../../../utils/classes/resposive.dart';
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
 
-import 'favorite_icon_widget.dart';
+import 'like_button_widget.dart';
 
 class CompanyWidget extends StatelessWidget {
   final double itemWidth;
@@ -62,9 +62,7 @@ class CompanyWidget extends StatelessWidget {
                     Positioned(
                       right: 10,
                       top: 10,
-                      child: FavoriteIconWidget(
-                        onChanged: (v) {},
-                      ),
+                      child: LikeButtonWidget(),
                     ),
                   ],
                 ),
