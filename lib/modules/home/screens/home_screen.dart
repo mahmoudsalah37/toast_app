@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                     child: IconButton(
                       icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
                       onPressed: () =>
-                          Navigator.pushNamed(context, Routes.cartPage),
+                          Navigator.pushNamed(context, Routes.orderDetailsCartPage),
                     ),
                   ),
                 ),
