@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import 'package:toast_app/modules/splash_and_sign_up/pages/splash_page.dart';
 
 import 'modules/home/pages/home_page.dart';
 import 'modules/home/provider/bottom_navigation_provider.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Toast',
         onGenerateRoute: Routes.generateRoute,
-        home: HomePage(),
+        home: SplashPage(),
       ),
     );
   }

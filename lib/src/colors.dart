@@ -6,7 +6,9 @@ class CustomColors {
       yellowLightColor = Color.fromRGBO(255, 247, 213, 1),
       yellowDeepColor = Color.fromRGBO(255, 225, 104, 1),
       blueLightColor = Color.fromRGBO(78, 180, 255, 1),
-      blueColor = Color.fromRGBO(1, 114, 198, 1),
+      blueColor = Color.fromRGBO(0, 82, 112, 1),
       black = Color.fromRGBO(0, 0, 0, 1),
-      greyColor = Color.fromRGBO(172, 172, 172, 1);
+      orangeColor = Color.fromRGBO(244, 157, 97, 1),
+      greyColor = Color.fromRGBO(172, 172, 172, 1),
+      greyLightColor = Color.fromRGBO(250,250,250, 1);
 }

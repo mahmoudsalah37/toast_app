@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_svg/svg.dart';
 import 'colors.dart';
 
 class CustomStyle {
@@ -32,4 +34,34 @@ class CustomStyle {
       ),
     ],
   );
+
+  static final DefaultChatTheme chatTheme = DefaultChatTheme(
+    backgroundColor: CustomColors.greyLightColor,
+    primaryColor: CustomColors.yellowDeepColor,
+    secondaryColor: CustomColors.yellowLightColor,
+    inputBackgroundColor: CustomColors.yellowDeepColor,
+    inputTextColor: Colors.black,
+    sendButtonIcon: SvgPicture.asset(
+      'assets/images/shopping_cart/send_chat_icon.svg',
+    ),
+  );
+
+  static final InputDecoration loginInputDecoration = InputDecoration(
+    fillColor: Colors.white,
+    hintText: 'email',
+    labelStyle: TextStyle(color: CustomColors.blueColor),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: CustomColors.blueColor, width: 1.0),
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: CustomColors.blueColor, width: 2.0),
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+  );
+
 }
