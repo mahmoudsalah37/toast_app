@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/routes.dart';
 
 import '../widgets/badge_widget.dart';
@@ -22,36 +25,49 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: ListView(
         children: [
-          Row(
-            children: [
-              Expanded(
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                  leading:
-                      SvgPicture.asset('assets/images/home/delivery_icon.svg'),
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Now', style: TextStyle(color: Colors.yellow)),
-                      Text('Current location',
-                          style: TextStyle(color: Colors.brown)),
-                    ],
+          ListTile(
+            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+            leading: SvgPicture.asset('assets/images/home/delivery_icon.svg'),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Now', style: TextStyle(color: Colors.yellow)),
+                Text('Current location', style: TextStyle(color: Colors.brown)),
+              ],
+            ),
+            trailing: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Visibility(
+                  visible:
+                  Provider.of<CartProvider>(context).getCartListLength == 0
+                      ? false
+                      : true,
+                  child: BadgeWidget(
+                    child: TextButton(
+                      onPressed: () => Navigator.pushNamed(
+                        context,
+                        Routes.orderDetailsCartPage,
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/images/home/cart_icon.svg',
+                        color: CustomColors.blueColor,
+                      ),
+                    ),
                   ),
-                  // trailing: BadgeWidget(
-                  //   child: IconButton(
-                  //     icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
-                  //     onPressed: () =>
-                  //         Navigator.pushNamed(context, Routes.cartPage),
-                  //   ),
-                  // ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
-                    'assets/images/home/person_profile_icon.svg'),
-              )
-            ],
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: CircleAvatar(
+                    radius: res.getWidth(4.5),
+                    backgroundColor: CustomColors.yellowDeepColor,
+                    child: Icon(Icons.search, color: Colors.white),
+                  ),
+                ),
+                SvgPicture.asset('assets/images/home/person_profile_icon.svg'),
+              ],
+            ),
           ),
           CustomAutoSwiperWidget(swiperData: swiperData),
           Container(
@@ -88,18 +104,18 @@ class HomeScreen extends StatelessWidget {
                 CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
                     title: 'vvv'),
-                // CategoryIconModel(icon: '', title: 'foods'),
-                // CategoryIconModel(icon: '', title: 'makeup'),
-                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                // CategoryIconModel(icon: '', title: 'vvv'),
-                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                // CategoryIconModel(icon: '', title: 'vvv'),
-                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                // CategoryIconModel(icon: '', title: 'vvv'),
-                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                // CategoryIconModel(icon: '', title: 'vvv'),
-                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                // CategoryIconModel(icon: '', title: 'hi'),
+                CategoryIconModel(icon: '', title: 'foods'),
+                CategoryIconModel(icon: '', title: 'makeup'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'vvv'),
+                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                CategoryIconModel(icon: '', title: 'hi'),
               ],
             ),
           ),

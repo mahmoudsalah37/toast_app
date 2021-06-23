@@ -30,6 +30,14 @@ dependencies:
   group_button: ^2.2.2
   like_button: ^2.0.2
   badges: ^2.0.1
+
+  flutter_chat_ui: ^1.1.4
+  file_picker: ^3.0.2+2
+  image_picker: ^0.7.5+3
+  mime: ^1.0.0
+  open_file: ^3.2.1
+  uuid: ^3.0.4
+
   flutter:
     sdk: flutter
 
@@ -60,8 +68,9 @@ flutter:
     - assets/images/special_order/
     - assets/images/bottom_navigation/
     - assets/images/shopping_cart/
-    - assets/test/
+    - assets/images/sign_in/
     - assets/lottie/
+    - assets/test/
   # example:
   # fonts:
   #   - family: Schyler
