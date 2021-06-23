@@ -18,7 +18,7 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   late CategoriesProvider catgoriesProvider;
-  int index = 0;
+  int defaultItemIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -74,7 +74,7 @@ class _MenuPageState extends State<MenuPage> {
                         return Center(child: CircularProgressIndicator());
                       } else {
                         return DirectSelectListWidget(
-                          defaultItemIndex: index,
+                          defaultItemIndex: defaultItemIndex,
                           focusedItemDecoration: BoxDecoration(
                             border: BorderDirectional(
                               bottom:
@@ -91,7 +91,7 @@ class _MenuPageState extends State<MenuPage> {
                             },
                           ),
                           onItemSelectedListener: (v, i, _) {
-                            index = i;
+                            defaultItemIndex = i;
                             catgoriesProvider.setCategory(v);
                           },
                         );

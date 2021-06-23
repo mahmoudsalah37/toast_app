@@ -37,13 +37,13 @@ class HomeScreen extends StatelessWidget {
                           style: TextStyle(color: Colors.brown)),
                     ],
                   ),
-                  trailing: BadgeWidget(
-                    child: IconButton(
-                      icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, Routes.cartPage),
-                    ),
-                  ),
+                  // trailing: BadgeWidget(
+                  //   child: IconButton(
+                  //     icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
+                  //     onPressed: () =>
+                  //         Navigator.pushNamed(context, Routes.cartPage),
+                  //   ),
+                  // ),
                 ),
               ),
               Padding(
@@ -88,18 +88,18 @@ class HomeScreen extends StatelessWidget {
                 CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
                     title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'foods'),
-                CategoryIconModel(icon: '', title: 'makeup'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'hi'),
+                // CategoryIconModel(icon: '', title: 'foods'),
+                // CategoryIconModel(icon: '', title: 'makeup'),
+                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                // CategoryIconModel(icon: '', title: 'vvv'),
+                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                // CategoryIconModel(icon: '', title: 'vvv'),
+                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                // CategoryIconModel(icon: '', title: 'vvv'),
+                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                // CategoryIconModel(icon: '', title: 'vvv'),
+                // CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
+                // CategoryIconModel(icon: '', title: 'hi'),
               ],
             ),
           ),

@@ -1,7 +1,10 @@
 import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:url_launcher/url_launcher.dart' as urLauncher;
+
 import '../widget/cancel_order_dialog_widget.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
@@ -11,7 +14,6 @@ import '../widget/order_details_widget.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import 'order_details_bottom_sheet.dart';
-import 'package:url_launcher/url_launcher.dart' as urLauncher;
 
 class DriversOfferPage extends StatefulWidget {
   @override
