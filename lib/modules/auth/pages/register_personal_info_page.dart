@@ -8,12 +8,12 @@ import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../widgets/custom_stepper_dots.dart';
 
-class RegisterStepOnePage extends StatefulWidget {
+class RegisterPersonalInfoPage extends StatefulWidget {
   @override
-  _RegisterStepOnePageState createState() => _RegisterStepOnePageState();
+  _RegisterPersonalInfoPageState createState() => _RegisterPersonalInfoPageState();
 }
 
-class _RegisterStepOnePageState extends State<RegisterStepOnePage> {
+class _RegisterPersonalInfoPageState extends State<RegisterPersonalInfoPage> {
   final TextEditingController firstNameTEC = TextEditingController(text: ''),
       lastNameTEC = TextEditingController(text: ''),
       emailTEC = TextEditingController(text: ''),
@@ -134,7 +134,7 @@ class _RegisterStepOnePageState extends State<RegisterStepOnePage> {
             child: RegisterOutlineButton(
               onPressed: () => Navigator.pushNamed(
                 context,
-                Routes.registerStepTwoPage,
+                Routes.registerVerificationCodePage,
               ),
               width: 40,
               height: 10,

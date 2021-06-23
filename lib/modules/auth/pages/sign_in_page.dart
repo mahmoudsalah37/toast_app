@@ -118,7 +118,7 @@ class SignInPage extends StatelessWidget {
             SizedBox(height: res.getHeight(2)),
             TextButton(
               onPressed: () =>
-                  Navigator.pushNamed(context, Routes.registerStepOnePage),
+                  Navigator.pushNamed(context, Routes.registerPersonalInfoPage),
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(

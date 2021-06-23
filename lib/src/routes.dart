@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../modules/auth/pages/register_done_page.dart';
-import '../modules/auth/pages/register_step_one_page.dart';
+import '../modules/auth/pages/register_personal_info_page.dart';
 import '../modules/auth/pages/register_step_three_page.dart';
-import '../modules/auth/pages/register_step_two_page.dart';
+import '../modules/auth/pages/register_verification_code_page.dart';
 import '../modules/auth/pages/sign_in_page.dart';
 import '../modules/auth/pages/splash_page.dart';
 import '../modules/home/pages/home_page.dart';
@@ -32,9 +32,10 @@ class Routes {
       orderAcceptedPage = '/orderAcceptedPage',
       splashPage = '/splashPage',
       signInPage = '/signInPage',
-      registerStepOnePage = '/registerStepOnePage',
-      registerStepTwoPage = '/registerStepTwoPage',
-      registerStepThreePage = '/registerStepThreePage',
+      registerPersonalInfoPage = '/registerPersonalInfoPage',
+      registerVerificationCodePage = '/registerVerificationCodePage',
+      registerSelectFavoriteCategoryPage =
+          '/registerSelectFavoriteCategoryPage',
       registerStepDonePage = '/registerStepDonePage',
       chatPage = '/chatPage';
 
@@ -69,12 +70,15 @@ class Routes {
         return MaterialPageRoute(builder: (context) => SplashPage());
       case signInPage:
         return MaterialPageRoute(builder: (context) => SignInPage());
-      case registerStepOnePage:
-        return MaterialPageRoute(builder: (context) => RegisterStepOnePage());
-      case registerStepTwoPage:
-        return MaterialPageRoute(builder: (context) => RegisterStepTwoPage());
-      case registerStepThreePage:
-        return MaterialPageRoute(builder: (context) => RegisterStepThreePage());
+      case registerPersonalInfoPage:
+        return MaterialPageRoute(
+            builder: (context) => RegisterPersonalInfoPage());
+      case registerVerificationCodePage:
+        return MaterialPageRoute(
+            builder: (context) => RegisterVerificationCodePage());
+      case registerSelectFavoriteCategoryPage:
+        return MaterialPageRoute(
+            builder: (context) => RegisterSelectFavorireCategoryPage());
       case registerStepDonePage:
         return MaterialPageRoute(builder: (context) => RegisterDonePage());
       default:

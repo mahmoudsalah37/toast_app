@@ -7,7 +7,7 @@ import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../widgets/custom_stepper_dots.dart';
 
-class RegisterStepThreePage extends StatelessWidget {
+class RegisterSelectFavorireCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final res = Responsive(context);

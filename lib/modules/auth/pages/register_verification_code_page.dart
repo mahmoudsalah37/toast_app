@@ -8,7 +8,7 @@ import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../widgets/custom_stepper_dots.dart';
 
-class RegisterStepTwoPage extends StatelessWidget {
+class RegisterVerificationCodePage extends StatelessWidget {
   final TextEditingController codeTEC = TextEditingController(text: '');
 
   @override
@@ -80,7 +80,7 @@ class RegisterStepTwoPage extends StatelessWidget {
             child: RegisterOutlineButton(
               onPressed: () => Navigator.pushNamed(
                 context,
-                Routes.registerStepThreePage,
+                Routes.registerSelectFavoriteCategoryPage,
               ),
               title: 'Verify',
             ),
