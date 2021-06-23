@@ -1,33 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/cart_model.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
 
 class ShoppingCartItemWidget extends StatelessWidget {
-  final Function() onTapPlus;
-  final Function() onTapMinus;
-  final String itemTitle;
-  final String companyName;
-  final String description;
-  final double price;
-  final int quantity;
+  final CartItemModel cartItemModel;
+  final int index;
 
   const ShoppingCartItemWidget({
-    required this.onTapPlus,
-    required this.onTapMinus,
-    required this.itemTitle,
-    required this.companyName,
-    required this.price,
-    required this.description,
-    required this.quantity,
+    required this.cartItemModel,
+    required this.index,
   });
 
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
+    var cartProvider = Provider.of<CartProvider>(context);
     return Container(
       margin: EdgeInsets.all(8.0),
       padding: EdgeInsets.all(10),
@@ -40,12 +34,12 @@ class ShoppingCartItemWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(itemTitle, style: theme.textTheme.headline5),
-              Text(companyName, style: theme.textTheme.headline5),
+              Text(cartItemModel.itemName, style: theme.textTheme.headline5),
+              Text(cartItemModel.placeName, style: theme.textTheme.headline5),
             ],
           ),
           AutoSizeText(
-            description,
+            cartItemModel.description,
             style: theme.textTheme.subtitle2,
             maxLines: 2,
           ),
@@ -55,19 +49,25 @@ class ShoppingCartItemWidget extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    onPressed: onTapMinus,
+                    onPressed: () =>
+                        cartProvider.getCartList[index].quantity > 1
+                            ? cartProvider.decrementQuantity(index)
+                            : cartProvider
+                                .deleteItem(cartProvider.getCartList[index]),
                     icon: Icon(
-                      Icons.indeterminate_check_box_rounded,
+                      cartItemModel.quantity == 1
+                          ? Icons.delete_forever
+                          : Icons.indeterminate_check_box_rounded,
                       color: CustomColors.blueLightColor,
                     ),
                   ),
                   AutoSizeText(
-                    quantity.toString(),
+                    cartItemModel.quantity.toString(),
                     maxLines: 1,
                     style: theme.textTheme.headline5,
                   ),
                   IconButton(
-                    onPressed: onTapPlus,
+                    onPressed: () => cartProvider.incrementQuantity(index),
                     icon: Icon(
                       Icons.add_box_rounded,
                       color: CustomColors.blueLightColor,
@@ -75,7 +75,8 @@ class ShoppingCartItemWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Text('SAR $price', style: theme.textTheme.headline5),
+              Text('SAR ${cartItemModel.price}',
+                  style: theme.textTheme.headline5),
             ],
           ),
         ],

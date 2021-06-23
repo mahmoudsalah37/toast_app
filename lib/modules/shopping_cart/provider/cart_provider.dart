@@ -4,21 +4,41 @@ import '../models/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
   List<CartItemModel> _cartList = [];
-  late int quantity;
+  late double _subTotalPrice =
+      getPriceMultiplyQuantityOfCartList().reduce((a, b) => a + b);
+  late double _vat = _subTotalPrice * 14 / 100;
+  late double _total = _subTotalPrice + _vat;
 
   int get getCartListLength => _cartList.length;
 
   List<CartItemModel> get getCartList => _cartList;
 
-  void addItemToCart(
-    CartItemModel cartItemModel,
-  ) {
-    final cartItem = cartItemModel;
-    _cartList.add(cartItem);
+  double get getSubTotal => _subTotalPrice;
+
+  double get getVat => _vat;
+
+  double get getTotal => _total;
+
+  List getPriceMultiplyQuantityOfCartList() {
+    var checkedPricesList = [];
+    _cartList.forEach(
+      (element) => checkedPricesList.add(element.quantity * element.price),
+    );
+    return checkedPricesList;
+  }
+
+  updatePrice() {
+    _subTotalPrice =
+        getPriceMultiplyQuantityOfCartList().reduce((a, b) => a + b);
+    _vat = _subTotalPrice * 14 / 100;
+    _total = _subTotalPrice + _vat;
     notifyListeners();
   }
 
-  void updateItem(CartItemModel updateItem) {
+  void addItemToCart(CartItemModel cartItemModel) {
+    final cartItem = cartItemModel;
+    _cartList.add(cartItem);
+    updatePrice();
     notifyListeners();
   }
 
@@ -27,7 +47,11 @@ class CartProvider extends ChangeNotifier {
     final quantity = _cartList.elementAt(index).quantity;
 
     _cartList.replaceRange(
-        index, index + 1, [product.copyWith(quantity: quantity + 1)]);
+      index,
+      index + 1,
+      [product.copyWith(quantity: quantity + 1)],
+    );
+    updatePrice();
     notifyListeners();
   }
 
@@ -36,13 +60,21 @@ class CartProvider extends ChangeNotifier {
     final quantity = _cartList.elementAt(index).quantity;
 
     _cartList.replaceRange(
-        index, index + 1, [product.copyWith(quantity: quantity - 1)]);
-
+      index,
+      index + 1,
+      [product.copyWith(quantity: quantity - 1)],
+    );
+    updatePrice();
     notifyListeners();
   }
 
   void deleteItem(CartItemModel deleteItem) {
-    _cartList.remove(deleteItem);
+    try {
+      _cartList.remove(deleteItem);
+      updatePrice();
+    } catch (e) {
+      print('deleteException $e');
+    }
     notifyListeners();
   }
 }
