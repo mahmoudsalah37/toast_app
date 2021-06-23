@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/location/location_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../models/location/location_model.dart';
+import '../provider/locations_provider.dart';
 
 class LocationSingleSelectionItemWidget extends StatefulWidget {
   const LocationSingleSelectionItemWidget();

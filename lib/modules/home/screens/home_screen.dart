@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
 
-import '../widgets/badge_widget.dart';
-import '../models/company_model.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../shopping_cart/provider/cart_provider.dart';
 import '../models/category_icon_model.dart';
+import '../models/company_model.dart';
+import '../widgets/badge_widget.dart';
 import '../widgets/categories_widget.dart';
 import '../widgets/companies_list_widget.dart';
 import '../widgets/custom_auto_swiper_widget.dart';
-import '../../../utils/classes/resposive.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -41,9 +41,9 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Visibility(
                   visible:
-                  Provider.of<CartProvider>(context).getCartListLength == 0
-                      ? false
-                      : true,
+                      Provider.of<CartProvider>(context).getCartListLength == 0
+                          ? false
+                          : true,
                   child: BadgeWidget(
                     child: TextButton(
                       onPressed: () => Navigator.pushNamed(

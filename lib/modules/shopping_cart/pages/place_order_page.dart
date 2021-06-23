@@ -1,15 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/shopping_cart/widget/add_coupon_animation_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
-import 'package:toast_app/modules/shopping_cart/widget/driver_details_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/total_price_row_item_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/total_price_widget.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../widget/add_coupon_animation_widget.dart';
+import '../widget/cart_app_bar_widget.dart';
+import '../widget/cart_yellow_button.dart';
+import '../widget/driver_details_widget.dart';
+import '../widget/total_price_row_item_widget.dart';
+import '../widget/total_price_widget.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class PlaceOrderPage extends StatefulWidget {
   @override
@@ -59,12 +59,11 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                       height: res.getHeight(4),
                       child: OutlinedButton(
                         onPressed: () {},
-                        child: Icon(Icons.add,
-                            color: CustomColors.blueLightColor),
+                        child:
+                            Icon(Icons.add, color: CustomColors.blueLightColor),
                         style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          side:
-                              BorderSide(color: CustomColors.blueLightColor),
+                          side: BorderSide(color: CustomColors.blueLightColor),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -113,7 +112,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                 ),
               ),
               AddCouponAnimationWidget(
-                onTapEnterCoupon:(){
+                onTapEnterCoupon: () {
                   print(couponTEC.text);
                   couponTEC.clear();
                 },

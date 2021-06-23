@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../models/company_model.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
-
+import '../models/company_model.dart';
 import 'home_item_widget.dart';
 
 class CompaniesListWidget extends StatelessWidget {

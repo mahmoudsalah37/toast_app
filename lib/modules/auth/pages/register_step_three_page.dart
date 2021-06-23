@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/modules/splash_and_sign_up/widgets/custom_outline_button.dart';
-import 'package:toast_app/modules/splash_and_sign_up/widgets/register_app_bar.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/widgets/custom_stepper_dots.dart';
+import '../widgets/custom_outline_button.dart';
+import '../widgets/register_app_bar.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../../widgets/custom_stepper_dots.dart';
 
 class RegisterStepThreePage extends StatelessWidget {
   @override

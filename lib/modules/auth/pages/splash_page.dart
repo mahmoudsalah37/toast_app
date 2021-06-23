@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
 
 class SplashPage extends StatefulWidget {
   @override

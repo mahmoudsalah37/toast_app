@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../addon/addon_model.dart';
-import '../varaiety/varaiety_model.dart';
-import '../without/without_model.dart';
 import '../meta/meta_model.dart';
 import '../price/price_model.dart';
+import '../varaiety/varaiety_model.dart';
+import '../without/without_model.dart';
 
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';

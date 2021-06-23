@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:toast_app/modules/shopping_cart/models/location/Locations_model.dart';
-import 'package:toast_app/modules/shopping_cart/models/location/location_model.dart';
+import '../models/location/Locations_model.dart';
+import '../models/location/location_model.dart';
 
 import '../../../errors_handler/failure.dart';
 import '../../../services/default_service.dart';

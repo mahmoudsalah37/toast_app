@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
+
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
 
 class DriverDetailsWidget extends StatelessWidget {
   final String driverName;
@@ -28,11 +29,10 @@ class DriverDetailsWidget extends StatelessWidget {
       decoration: haveShadow
           ? CustomStyle.containerShadowDecoration
           : CustomStyle.containerShadowDecoration.copyWith(
-              boxShadow: [
-              ],
+              boxShadow: [],
             ),
-      margin: EdgeInsets.all(haveShadow?10:0),
-      padding: EdgeInsets.all(haveShadow?10:0),
+      margin: EdgeInsets.all(haveShadow ? 10 : 0),
+      padding: EdgeInsets.all(haveShadow ? 10 : 0),
       child: ListTile(
         leading: Container(
           width: 60,
@@ -50,7 +50,8 @@ class DriverDetailsWidget extends StatelessWidget {
           children: [
             Text(
               driverName,
-              style: theme.textTheme.headline2!.copyWith(color: CustomColors.primaryColor),
+              style: theme.textTheme.headline2!
+                  .copyWith(color: CustomColors.primaryColor),
             ),
             Text(
               '★ $driverRate',

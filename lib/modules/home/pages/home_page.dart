@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../widgets/bottom_navigation.dart';
+
 import '../provider/bottom_navigation_provider.dart';
+import '../widgets/bottom_navigation.dart';
 
 class HomePage extends StatelessWidget {
   @override

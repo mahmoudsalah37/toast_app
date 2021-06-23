@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:toast_app/widgets/custom_stepper_dots.dart';
 
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../widgets/custom_stepper_dots.dart';
 import 'clear_cart_items_dialog.dart';
 
 class CustomCartAppBar extends StatelessWidget {
@@ -55,4 +54,3 @@ class CustomCartAppBar extends StatelessWidget {
     );
   }
 }
-

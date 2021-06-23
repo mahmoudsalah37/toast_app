@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:im_stepper/stepper.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class CustomEstimatedDistanceStepper extends StatelessWidget {
   final int numberOfPlaces;

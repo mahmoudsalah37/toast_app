@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class OrderDetailsWidget extends StatelessWidget {
   late final String orderNumber;

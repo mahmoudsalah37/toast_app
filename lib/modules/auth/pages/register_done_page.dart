@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toast_app/modules/splash_and_sign_up/widgets/custom_outline_button.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
+import '../widgets/custom_outline_button.dart';
 
 class RegisterDonePage extends StatelessWidget {
   @override
@@ -45,7 +46,7 @@ class RegisterDonePage extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: RegisterOutlineButton(
                 title: 'Done',
-                onPressed: () =>Navigator.pushNamed(context, Routes.homePage),
+                onPressed: () => Navigator.pushNamed(context, Routes.homePage),
               ),
             ),
           ),

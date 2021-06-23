@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../screens/cart_screen.dart';
+import '../screens/home_screen.dart';
 import '../screens/notification_screen.dart';
 import '../screens/profile_screen.dart';
-import '../screens/home_screen.dart';
 
 class BottomNavigationProvider extends ChangeNotifier {
   int _currentIndex = 0;

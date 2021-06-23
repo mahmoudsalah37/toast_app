@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
 
 class RegisterAppBar extends StatelessWidget {
   final bool? haveSkipButton;

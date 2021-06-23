@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../../../src/colors.dart';
+import '../../../utils/classes/resposive.dart';
 
 class RegisterOutlineButton extends StatelessWidget {
   final double? height, width;

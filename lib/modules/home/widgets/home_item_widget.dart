@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
-
+import '../../../utils/classes/resposive.dart';
 import 'like_button_widget.dart';
 
 class CompanyWidget extends StatelessWidget {

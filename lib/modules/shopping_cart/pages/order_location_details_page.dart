@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
-import 'package:toast_app/modules/shopping_cart/widget/location_single_selection_item_widget.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/routes.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../widget/cart_app_bar_widget.dart';
+import '../widget/cart_yellow_button.dart';
+import '../widget/location_single_selection_item_widget.dart';
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
 
 class OrderLocationDetailsPage extends StatelessWidget {
   @override

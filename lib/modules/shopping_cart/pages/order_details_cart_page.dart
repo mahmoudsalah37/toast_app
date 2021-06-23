@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
-import 'package:toast_app/modules/shopping_cart/widget/total_price_row_item_widget.dart';
-import 'package:toast_app/modules/shopping_cart/widget/total_price_widget.dart';
-import '../../../utils/classes/resposive.dart';
-import '../widget/shopping_cart_item_widget.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';
+import '../../../utils/classes/resposive.dart';
+import '../provider/cart_provider.dart';
+import '../widget/cart_app_bar_widget.dart';
+import '../widget/cart_yellow_button.dart';
+import '../widget/shopping_cart_item_widget.dart';
+import '../widget/total_price_row_item_widget.dart';
+import '../widget/total_price_widget.dart';
 
 class OrderDetailsCartPage extends StatefulWidget {
   @override

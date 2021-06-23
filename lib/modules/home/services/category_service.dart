@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import '../../../errors_handler/failure.dart';
-import '../models/category/categories_model.dart';
 import '../../../services/default_service.dart';
+import '../models/category/categories_model.dart';
 
 class CategoryService extends DefaultService {
   static const path = '/productlist';

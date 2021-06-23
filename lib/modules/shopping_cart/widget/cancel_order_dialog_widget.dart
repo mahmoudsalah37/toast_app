@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';

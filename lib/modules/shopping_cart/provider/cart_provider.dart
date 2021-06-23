@@ -1,6 +1,6 @@
-import 'dart:collection';
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/shopping_cart/models/cart_model.dart';
+
+import '../models/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
   List<CartItemModel> _cartList = [];

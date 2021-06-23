@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/theme.dart';
+import '../../../utils/classes/resposive.dart';
 
 class MenuItemWidget extends StatelessWidget {
   final String title;

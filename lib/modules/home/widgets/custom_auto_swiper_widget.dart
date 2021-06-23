@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swipper/flutter_card_swiper.dart';
+
 import '../../../utils/classes/resposive.dart';
 
 class CustomAutoSwiperWidget extends StatelessWidget {

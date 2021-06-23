@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+
+import '../../../errors_handler/failure.dart';
+import '../../../extensions/task_extensions.dart';
+import '../../../utils/enums/notifier_state.dart';
 import '../models/category/categories_model.dart';
 import '../models/category/category_model.dart';
 import '../services/category_service.dart';
-import '../../../utils/enums/notifier_state.dart';
-import '../../../extensions/task_extensions.dart';
-import '../../../errors_handler/failure.dart';
 
 class CategoriesProvider extends ChangeNotifier {
   final _categoriesService = CategoryService();

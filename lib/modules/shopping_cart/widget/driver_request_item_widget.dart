@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import 'driver_details_widget.dart';

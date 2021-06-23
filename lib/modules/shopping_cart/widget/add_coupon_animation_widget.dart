@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../../../src/colors.dart';
+import '../../../utils/classes/resposive.dart';
 import 'add_coupon_custom_painter.dart';
 
 class AddCouponAnimationWidget extends StatefulWidget {

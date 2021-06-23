@@ -1,8 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/styles.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class ShoppingCartItemWidget extends StatelessWidget {
   final Function() onTapPlus;

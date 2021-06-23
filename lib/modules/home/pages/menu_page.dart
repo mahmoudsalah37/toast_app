@@ -1,14 +1,15 @@
 import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/widgets/badge_widget.dart';
-import 'package:toast_app/modules/shopping_cart/models/cart_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import '../../../widgets/direct_selected_item_list.dart';
-import '../provider/categories_provider.dart';
+
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../utils/enums/notifier_state.dart';
+import '../../../widgets/direct_selected_item_list.dart';
+import '../../shopping_cart/models/cart_model.dart';
+import '../../shopping_cart/provider/cart_provider.dart';
+import '../provider/categories_provider.dart';
+import '../widgets/badge_widget.dart';
 import '../widgets/home_item_widget.dart';
 import '../widgets/menu_item_bottom_sheet.dart';
 import '../widgets/menu_item_widget.dart';

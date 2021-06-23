@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../models/category_icon_model.dart';
-import 'see_icon_widget.dart';
 import 'category_item_widget.dart';
+import 'see_icon_widget.dart';
 
 class CategoriesWidget extends StatefulWidget {
   const CategoriesWidget({this.items = const [], required this.crossAxisCount})

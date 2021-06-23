@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../src/colors.dart';
+import '../utils/classes/resposive.dart';
 
 class CustomStepperDots extends StatelessWidget {
   const CustomStepperDots({
@@ -14,7 +15,7 @@ class CustomStepperDots extends StatelessWidget {
   Widget build(BuildContext context) {
     final res = Responsive(context);
     return Container(
-      width:res.getWidth(20) ,
+      width: res.getWidth(20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -59,9 +60,8 @@ class CustomStepperDots extends StatelessWidget {
             height: 10,
             width: 10,
             decoration: BoxDecoration(
-              color: indicatorIndex == 3
-                  ? CustomColors.blueColor
-                  : Colors.white,
+              color:
+                  indicatorIndex == 3 ? CustomColors.blueColor : Colors.white,
               shape: BoxShape.circle,
               border: Border.all(color: CustomColors.blueColor),
             ),
