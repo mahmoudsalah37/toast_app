@@ -11,7 +11,7 @@ class CustomAutoSwiperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     return SizedBox(
-      height: res.getHeight(25),
+      height: res.getHeight(30),
       child: Swiper(
         // onTap: (value) {},
         // viewportFraction: 0.8,

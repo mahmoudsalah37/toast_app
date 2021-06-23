@@ -18,7 +18,7 @@ import '../modules/special_order/pages/new_special_order_pick_store_location_pag
 import '../modules/special_order/pages/new_special_order_pick_store_page.dart';
 
 class Routes {
-  static const String homePage = '/',
+  static const String homePage = '/homePage',
       menuPage = '/menuPage',
       newSpecialOrderapge = '/newSpecialOrder',
       newSpecialOrderPickStorePage = '/newSpecialOrderPickStore',
@@ -77,7 +77,7 @@ class Routes {
       case registerStepDonePage:
         return MaterialPageRoute(builder: (context) => RegisterDonePage());
       default:
-        return MaterialPageRoute(builder: (context) => HomePage());
+        return MaterialPageRoute(builder: (context) => SplashPage());
     }
   }
 }

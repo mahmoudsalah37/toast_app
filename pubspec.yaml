@@ -68,8 +68,9 @@ flutter:
     - assets/images/special_order/
     - assets/images/bottom_navigation/
     - assets/images/shopping_cart/
-    - assets/test/
+    - assets/images/sign_in/
     - assets/lottie/
+    - assets/test/
   # example:
   # fonts:
   #   - family: Schyler

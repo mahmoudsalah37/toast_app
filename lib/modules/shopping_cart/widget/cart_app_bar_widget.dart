@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:toast_app/src/colors.dart';
 import 'package:toast_app/src/styles.dart';
+import 'package:toast_app/utils/classes/resposive.dart';
+import 'package:toast_app/widgets/custom_stepper_dots.dart';
 
 import 'clear_cart_items_dialog.dart';
 
@@ -34,59 +36,7 @@ class CustomCartAppBar extends StatelessWidget {
             children: [
               Text(title),
               SizedBox(height: 4),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: CustomColors.blueColor,
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 3),
-                    width: 10,
-                    child: Divider(
-                      color: CustomColors.blueColor,
-                      height: 10,
-                      thickness: 1,
-                    ),
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: indicatorIndex == 2 || indicatorIndex == 3
-                          ? CustomColors.blueColor
-                          : Colors.white,
-                      border: Border.all(color: CustomColors.blueColor),
-                    ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 3),
-                    width: 10,
-                    child: Divider(
-                      color: CustomColors.blueColor,
-                      height: 10,
-                      thickness: 1,
-                    ),
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      color: indicatorIndex == 3
-                          ? CustomColors.blueColor
-                          : Colors.white,
-                      shape: BoxShape.circle,
-                      border: Border.all(color: CustomColors.blueColor),
-                    ),
-                  ),
-                ],
-              ),
+              CustomStepperDots(indicatorIndex: indicatorIndex),
             ],
           ),
           IconButton(
@@ -105,3 +55,4 @@ class CustomCartAppBar extends StatelessWidget {
     );
   }
 }
+

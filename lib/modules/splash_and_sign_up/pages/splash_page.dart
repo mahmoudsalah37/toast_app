@@ -11,7 +11,7 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Future.delayed(Duration(milliseconds: 600), () {
+    Future.delayed(Duration(milliseconds: 800), () {
       Navigator.pushReplacementNamed(context, Routes.signInPage);
     });
     super.initState();
@@ -20,7 +20,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
-    ThemeData theme = Theme.of(context);
     return Scaffold(
       body: Center(
         child: SvgPicture.asset(

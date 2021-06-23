@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/provider/categories_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';

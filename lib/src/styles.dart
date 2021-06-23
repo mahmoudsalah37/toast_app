@@ -23,6 +23,24 @@ class CustomStyle {
     ),
   );
 
+  static final InputDecoration registerInputDecoration = InputDecoration(
+    fillColor: Colors.white,
+    hintText: 'email',
+    labelStyle: TextStyle(color: CustomColors.blueLightColor),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: CustomColors.blueLightColor, width: 1.0),
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: CustomColors.blueLightColor, width: 2.0),
+      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+    ),
+  );
+
   static final BoxDecoration containerShadowDecoration = BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(10),
@@ -45,23 +63,4 @@ class CustomStyle {
       'assets/images/shopping_cart/send_chat_icon.svg',
     ),
   );
-
-  static final InputDecoration loginInputDecoration = InputDecoration(
-    fillColor: Colors.white,
-    hintText: 'email',
-    labelStyle: TextStyle(color: CustomColors.blueColor),
-    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: CustomColors.blueColor, width: 1.0),
-      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: CustomColors.blueColor, width: 2.0),
-      borderRadius: BorderRadius.all(Radius.circular(12.0)),
-    ),
-  );
-
 }
