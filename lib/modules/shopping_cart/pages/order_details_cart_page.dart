@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/provider/categories_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
@@ -53,38 +52,40 @@ class _OrderDetailsCartPageState extends State<OrderDetailsCartPage> {
               ),
               SizedBox(
                 height: res.getHeight(45),
-                child: Scrollbar(
-                  radius: Radius.circular(10),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: cartProvider.getCartListLength,
-                    itemBuilder: (context, index) {
-                      return ShoppingCartItemWidget(
-                        description:
-                            cartProvider.getCartList[index].description,
-                        companyName: cartProvider.getCartList[index].placeName,
-                        itemTitle: cartProvider.getCartList[index].itemName,
-                        price: cartProvider.getCartList[index].price,
-                        quantity: cartProvider.getCartList[index].quantity,
-                        onTapPlus: () {
-                          cartProvider.incrementQuantity(
-                            cartProvider.getCartList[index].quantity,
-                          );
-                          // cartProvider.getCartList[index].quantity++;
-                          print('plus pressed');
-                        },
-                        onTapMinus: () {
-                          if (cartProvider.getCartList[index].quantity > 1) {
-                            // cartProvider.getCartList[index].quantity--;
-                          } else {
-                            cartProvider
-                                .deleteItem(cartProvider.getCartList[index]);
-                          }
-                        },
-                      );
-                    },
-                  ),
-                ),
+                child:
+                    Consumer<CartProvider>(builder: (context, cartProvider, w) {
+                  return Scrollbar(
+                    radius: Radius.circular(10),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: cartProvider.getCartListLength,
+                      itemBuilder: (context, index) {
+                        return ShoppingCartItemWidget(
+                          description:
+                              cartProvider.getCartList[index].description,
+                          companyName:
+                              cartProvider.getCartList[index].placeName,
+                          itemTitle: cartProvider.getCartList[index].itemName,
+                          price: cartProvider.getCartList[index].price,
+                          quantity: cartProvider.getCartList[index].quantity,
+                          onTapPlus: () {
+                            cartProvider.incrementQuantity(index);
+                            // cartProvider.getCartList[index].quantity++;
+                            print('plus pressed');
+                          },
+                          onTapMinus: () {
+                            if (cartProvider.getCartList[index].quantity > 1) {
+                              cartProvider.decrementQuantity(index);
+                            } else {
+                              cartProvider
+                                  .deleteItem(cartProvider.getCartList[index]);
+                            }
+                          },
+                        );
+                      },
+                    ),
+                  );
+                }),
               ),
               Divider(color: CustomColors.blueLightColor, thickness: 2),
               SizedBox(height: res.getHeight(8)),
@@ -119,5 +120,14 @@ class _OrderDetailsCartPageState extends State<OrderDetailsCartPage> {
         ],
       ),
     );
+  }
+}
+
+extension ListUpdate<T> on List<T> {
+  List update<T>(int pos, T t) {
+    List<T> list = [];
+    list.add(t);
+    replaceRange(pos, pos + 1, list);
+    return this;
   }
 }
