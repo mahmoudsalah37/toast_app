@@ -3,29 +3,24 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:url_launcher/url_launcher.dart' as urLauncher;
 
 import '../widget/cancel_order_dialog_widget.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../widget/custom_estimated_distance_stepper.dart';
 import '../widget/driver_request_item_widget.dart';
-import '../widget/order_details_widget.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
-import 'order_details_bottom_sheet.dart';
 
-class DriversOfferPage extends StatefulWidget {
+class DriverOfferPage extends StatefulWidget {
   @override
-  _DriversOfferPageState createState() => _DriversOfferPageState();
+  _DriverOfferPageState createState() => _DriverOfferPageState();
 }
 
-class _DriversOfferPageState extends State<DriversOfferPage> {
+class _DriverOfferPageState extends State<DriverOfferPage> {
   final Completer<GoogleMapController> _controller = Completer();
 
   bool driverOffersVisibility = false;
-  bool orderDetailsVisibility = false;
-  bool estimatedStepperVisibility = true;
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(29.990540, 31.150101),
     zoom: 14.4746,
@@ -33,21 +28,12 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(Duration(seconds: 2), () {
       setState(() {
         driverOffersVisibility = true;
       });
     });
     super.initState();
-  }
-
-  Future<void> _makePhoneCall({required String phoneNumber}) async {
-    phoneNumber = 'tel://$phoneNumber';
-    if (await urLauncher.canLaunch(phoneNumber)) {
-      await urLauncher.launch(phoneNumber);
-    } else {
-      throw 'Could not launch $phoneNumber';
-    }
   }
 
   @override
@@ -67,25 +53,22 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
               _controller.complete(controller);
             },
           ),
-          Visibility(
-            visible: estimatedStepperVisibility,
-            child: Stack(
-              children: [
-                CustomEstimatedDistanceStepper(
-                  numberOfPlaces: 3,
-                  estimatedDistance: '18',
-                  firstPlaceTitle: 'Fred Perry',
-                  secondPlaceTitle: 'Bershka',
-                  thirdPlaceTitle: 'Zara',
+          Stack(
+            children: [
+              CustomEstimatedDistanceStepper(
+                numberOfPlaces: 3,
+                estimatedDistance: '18',
+                firstPlaceTitle: 'Fred Perry',
+                secondPlaceTitle: 'Bershka',
+                thirdPlaceTitle: 'Zara',
 
-                  ///firstPlaceDistance is distance between first and second place and
-                  ///distance for place if only one place
-                  firstPlaceDistance: '10',
-                  secondPlaceDistance: '8',
-                ),
-                LoadingIndicator()
-              ],
-            ),
+                ///firstPlaceDistance is distance between first and second place and
+                ///distance for place if only one place
+                firstPlaceDistance: '10',
+                secondPlaceDistance: '8',
+              ),
+              LoadingIndicator()
+            ],
           ),
           Visibility(
             visible: driverOffersVisibility,
@@ -100,12 +83,12 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
                     ),
                     child: Container(
                       width: res.getWidth(100),
+                      padding: EdgeInsets.all(16),
                       margin: EdgeInsets.only(
-                          top: res.getHeight(6),
+                          top: res.getHeight(4),
                           left: 10,
                           right: 10,
                           bottom: 10),
-                      padding: EdgeInsets.all(16),
                       decoration: CustomStyle.containerShadowDecoration,
                       child: Text(
                         'Cancel',
@@ -115,19 +98,15 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
                       ),
                     ),
                   ),
-                  Expanded(
+                  Container(
+                    height: res.getHeight(50),
                     child: ListView.builder(
                       itemCount: 6,
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
                         return DriverOffersItemWidget(
-                          onTapAccept: () {
-                            setState(() {
-                              driverOffersVisibility = false;
-                              orderDetailsVisibility = true;
-                              estimatedStepperVisibility = false;
-                            });
-                          },
+                          onTapAccept: () => Navigator.pushNamed(
+                              context, Routes.placeOrderPage),
                           onTapDecline: () {},
                           driverName: 'Ahmed Nasser $index',
                           driverImg: 'assets/test/banner_three.png',
@@ -140,26 +119,6 @@ class _DriversOfferPageState extends State<DriversOfferPage> {
                     ),
                   )
                 ],
-              ),
-            ),
-          ),
-          Visibility(
-            visible: orderDetailsVisibility,
-            child: OrderDetailsWidget(
-              driverImg: 'assets/test/banner_three.png',
-              driverName: 'Ahmed Nasser',
-              driverRate: '4.8',
-              orderNumber: '12312346332',
-              onTapCallDriver: () async {
-                await _makePhoneCall(phoneNumber: '01119193535');
-              },
-              onTapChatDriver: () {
-                Navigator.pushNamed(context, Routes.chatPage);
-              },
-              onTapOrderDetails: () => showModalBottomSheet(
-                backgroundColor: Colors.transparent,
-                context: context,
-                builder: (context) => OrderDetailBottomSheet(),
               ),
             ),
           ),

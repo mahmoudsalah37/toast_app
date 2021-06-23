@@ -11,13 +11,14 @@ class OrderDetailBottomSheet extends StatelessWidget {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
     return Container(
-      height: res.getHeight(70),
-      color: Colors.transparent,
+      height: res.getHeight(73.5),
       child: Stack(
         children: [
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
+              height: res.getHeight(70),
+              padding: EdgeInsets.only(top: 30, left: 10, right: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(30),
@@ -25,8 +26,6 @@ class OrderDetailBottomSheet extends StatelessWidget {
                 ),
                 color: Colors.white,
               ),
-              height: res.getHeight(50),
-              padding: EdgeInsets.only(top: 30, left: 10, right: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,9 +93,8 @@ class OrderDetailBottomSheet extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: res.getHeight(2.5),
-            right: res.getWidth(14),
-            left: res.getWidth(14),
+            right: res.getWidth(16),
+            left: res.getWidth(16),
             child: Container(
               height: res.getHeight(7),
               padding: EdgeInsets.all(6),
