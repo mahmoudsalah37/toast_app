@@ -8,29 +8,12 @@ class CartProvider extends ChangeNotifier {
 
   int get getCartListLength => _cartList.length;
 
-  UnmodifiableListView<CartItemModel> get getCartList =>
-      UnmodifiableListView(_cartList);
+  List<CartItemModel> get getCartList => _cartList;
 
-  void addItemToCart({
-    required int id,
-    required int quantity,
-    required double price,
-    required String description,
-    required String itemName,
-    required String placeName,
-    required List<int> addOnsListOfId,
-    required List<int> withOutListOfId,
-  }) {
-    final cartItem = CartItemModel(
-      id: id,
-      price: price,
-      quantity: quantity,
-      description: description,
-      itemName: itemName,
-      placeName: placeName,
-      addOnsListOfIds: addOnsListOfId,
-      withOutListOfIds: withOutListOfId,
-    );
+  void addItemToCart(
+    CartItemModel cartItemModel,
+  ) {
+    final cartItem = cartItemModel;
     _cartList.add(cartItem);
     notifyListeners();
   }
@@ -39,17 +22,22 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void incrementQuantity(int quantity) {
-    quantity++;
+  void incrementQuantity(int index) {
+    CartItemModel product = _cartList.elementAt(index);
+    final quantity = _cartList.elementAt(index).quantity;
+
+    _cartList.replaceRange(
+        index, index + 1, [product.copyWith(quantity: quantity + 1)]);
     notifyListeners();
   }
 
-  void decrementQuantity(int quantity) {
-    if (quantity > 1) {
-      quantity--;
-    } else {
-      print('item Deleted');
-    }
+  void decrementQuantity(int index) {
+    CartItemModel product = _cartList.elementAt(index);
+    final quantity = _cartList.elementAt(index).quantity;
+
+    _cartList.replaceRange(
+        index, index + 1, [product.copyWith(quantity: quantity - 1)]);
+
     notifyListeners();
   }
 

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_app_bar_widget.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
 import 'package:toast_app/modules/shopping_cart/widget/location_single_selection_item_widget.dart';
@@ -45,14 +43,7 @@ class OrderLocationDetailsPage extends StatelessWidget {
                   ],
                 ),
               ),
-              LocationSingleSelectionItemWidget(
-                lat: 29.990540,
-                long: 31.150101,
-                aprt: '920',
-                street: 'Haram',
-                building: '8',
-                locationTitle: 'Home',
-              ),
+              LocationSingleSelectionItemWidget(),
               SizedBox(height: res.getHeight(9)),
             ],
           ),

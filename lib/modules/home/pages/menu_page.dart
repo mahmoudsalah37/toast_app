@@ -2,6 +2,7 @@ import 'package:direct_select_flutter/direct_select_container.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/home/widgets/badge_widget.dart';
+import 'package:toast_app/modules/shopping_cart/models/cart_model.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import '../../../widgets/direct_selected_item_list.dart';
 import '../provider/categories_provider.dart';
@@ -49,26 +50,28 @@ class _MenuPageState extends State<MenuPage> {
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.orderDetailsCartPage);
                   var provider =
-                  Provider.of<CartProvider>(context, listen: false);
-                  provider.addItemToCart(
+                      Provider.of<CartProvider>(context, listen: false);
+                  provider.addItemToCart(CartItemModel(
                     id: 1,
                     quantity: 1,
                     price: 10,
                     description: 'description 1',
                     itemName: 'itemName 1',
                     placeName: 'placeName 1',
-                    addOnsListOfId: [1, 2],
-                    withOutListOfId: [3, 4],
-                  );
+                    addOnsListOfIds: [1, 2],
+                    withOutListOfIds: [3, 4],
+                  ));
                   provider.addItemToCart(
-                    id: 2,
-                    quantity: 2,
-                    price: 20,
-                    description: 'description 2',
-                    itemName: 'itemName 2',
-                    placeName: 'placeName 2',
-                    addOnsListOfId: [2, 4],
-                    withOutListOfId: [6, 8],
+                    CartItemModel(
+                      id: 2,
+                      quantity: 2,
+                      price: 20,
+                      description: 'description 2',
+                      itemName: 'itemName 2',
+                      placeName: 'placeName 2',
+                      addOnsListOfIds: [2, 4],
+                      withOutListOfIds: [6, 8],
+                    ),
                   );
                 },
               ),
