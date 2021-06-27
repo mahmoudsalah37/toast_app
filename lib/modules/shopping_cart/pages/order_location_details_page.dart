@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';
 import '../widget/location_single_selection_item_widget.dart';
@@ -9,8 +11,8 @@ import '../../../utils/classes/resposive.dart';
 class OrderLocationDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    ThemeData theme = Theme.of(context);
+    final res = Responsive(context);
+    final theme = Theme.of(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -51,11 +53,20 @@ class OrderLocationDetailsPage extends StatelessWidget {
             top: res.getHeight(92),
             child: SizedBox(
               width: res.getWidth(100),
-              child: CustomCartYellowButton(
-                title: 'Continue',
-                onTap: () =>
-                    Navigator.pushNamed(context, Routes.driversOfferPage),
-              ),
+              child: Consumer<LocationsProvider>(
+                  builder: (_, locationsProvider, __) {
+                return CustomCartYellowButton(
+                  title: 'Continue',
+                  onPressed: () {
+                    if (locationsProvider.getSelectedLocation == null) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Select Location Please')));
+                      return;
+                    }
+                    Navigator.pushNamed(context, Routes.driversOfferPage);
+                  },
+                );
+              }),
             ),
           )
         ],

@@ -19,7 +19,7 @@ class LocationsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  LocationModel _selectedLocation = LocationModel();
+  LocationModel? _selectedLocation;
   Either<Failure, List<LocationModel>>? _locations;
 
   Either<Failure, List<LocationModel>>? get locations => _locations;
@@ -29,18 +29,22 @@ class LocationsProvider extends ChangeNotifier {
     _setState(NotifierState.loading);
   }
 
-  LocationModel get getSelectedLocation => _selectedLocation;
+  LocationModel? get getSelectedLocation => _selectedLocation;
 
   void setLocation(LocationModel location) {
     _selectedLocation = location;
+    notifyListeners();
   }
 
   void getLocations() async {
     final data = _locationsService.getLocations();
     await Task(() => data).attempt().mapLeftToFailure().run().then(
         (value) => _locations = value as Either<Failure, List<LocationModel>>);
-    final v = await data;
-    if (v.isNotEmpty) _selectedLocation = v.first;
+    final locations =
+        _locations?.fold((l) => <LocationModel>[], (r) => r) ?? [];
+    if (locations.isNotEmpty) {
+      _selectedLocation = locations.elementAt(0);
+    }
     _setState(NotifierState.loaded);
   }
 }

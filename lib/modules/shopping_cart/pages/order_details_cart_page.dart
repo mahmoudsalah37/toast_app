@@ -51,7 +51,7 @@ class OrderDetailsCartPage extends StatelessWidget {
                       children: [
                         TotalPriceRowItemWidget(
                           title: 'SubTotal',
-                          price: cartProvider.getSubTotal,
+                          price: cartProvider.gettotalPiceWithoutVat,
                           // price: cartProvider.subTotalPrice,
                         ),
                         SizedBox(height: 8),
@@ -63,7 +63,7 @@ class OrderDetailsCartPage extends StatelessWidget {
                         SizedBox(height: 8),
                         TotalPriceRowItemWidget(
                           title: 'Total',
-                          price: cartProvider.getTotal,
+                          price: cartProvider.getTotalPrice,
                           // price: cartProvider.total,
                         ),
                       ],
@@ -74,7 +74,7 @@ class OrderDetailsCartPage extends StatelessWidget {
                   top: res.getHeight(92),
                   child: CustomCartYellowButton(
                     title: 'Continue',
-                    onTap: () => Navigator.pushNamed(
+                    onPressed: () => Navigator.pushNamed(
                         context, Routes.orderLocationDetailsPage),
                   ),
                 ),

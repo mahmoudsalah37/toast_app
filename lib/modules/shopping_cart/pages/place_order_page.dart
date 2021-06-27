@@ -145,7 +145,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
             top: res.getHeight(92),
             child: CustomCartYellowButton(
               title: 'Place Order',
-              onTap: () =>
+              onPressed: () =>
                   Navigator.pushNamed(context, Routes.orderAcceptedPage),
             ),
           )

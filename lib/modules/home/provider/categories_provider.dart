@@ -30,6 +30,10 @@ class CategoriesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  CategoriesModel get getCategories =>
+      _categories?.fold((l) => CategoriesModel(), (r) => r) ??
+      CategoriesModel();
+
   CategoryModel? get getCategory => _categoryModel;
 
   void setCategory(CategoryModel? category) {
@@ -37,7 +41,7 @@ class CategoriesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void getCategories() async {
+  void getCategoriesFromApi() async {
     // _setState(NotifierState.loading);
     final data = _categoriesService.getCategoriesById(3);
     await Task(() => data).attempt().mapLeftToFailure().run().then(

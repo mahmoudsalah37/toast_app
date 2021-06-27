@@ -21,14 +21,14 @@ class _$CartItemModelTearOff {
   const _$CartItemModelTearOff();
 
   _CartItemModel call(
-      {int id = 0,
+      {int? id,
       int quantity = 0,
       double price = 0,
       String placeName = '',
       String itemName = '',
       String description = '',
-      List<int> addOnsListOfIds = const [],
-      List<int> withOutListOfIds = const []}) {
+      List<AddonModel> addOns = const [],
+      List<WithoutModel> withOuts = const []}) {
     return _CartItemModel(
       id: id,
       quantity: quantity,
@@ -36,8 +36,8 @@ class _$CartItemModelTearOff {
       placeName: placeName,
       itemName: itemName,
       description: description,
-      addOnsListOfIds: addOnsListOfIds,
-      withOutListOfIds: withOutListOfIds,
+      addOns: addOns,
+      withOuts: withOuts,
     );
   }
 
@@ -51,14 +51,14 @@ const $CartItemModel = _$CartItemModelTearOff();
 
 /// @nodoc
 mixin _$CartItemModel {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
   String get placeName => throw _privateConstructorUsedError;
   String get itemName => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  List<int> get addOnsListOfIds => throw _privateConstructorUsedError;
-  List<int> get withOutListOfIds => throw _privateConstructorUsedError;
+  List<AddonModel> get addOns => throw _privateConstructorUsedError;
+  List<WithoutModel> get withOuts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -72,14 +72,14 @@ abstract class $CartItemModelCopyWith<$Res> {
           CartItemModel value, $Res Function(CartItemModel) then) =
       _$CartItemModelCopyWithImpl<$Res>;
   $Res call(
-      {int id,
+      {int? id,
       int quantity,
       double price,
       String placeName,
       String itemName,
       String description,
-      List<int> addOnsListOfIds,
-      List<int> withOutListOfIds});
+      List<AddonModel> addOns,
+      List<WithoutModel> withOuts});
 }
 
 /// @nodoc
@@ -99,14 +99,14 @@ class _$CartItemModelCopyWithImpl<$Res>
     Object? placeName = freezed,
     Object? itemName = freezed,
     Object? description = freezed,
-    Object? addOnsListOfIds = freezed,
-    Object? withOutListOfIds = freezed,
+    Object? addOns = freezed,
+    Object? withOuts = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -127,14 +127,14 @@ class _$CartItemModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      addOnsListOfIds: addOnsListOfIds == freezed
-          ? _value.addOnsListOfIds
-          : addOnsListOfIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      withOutListOfIds: withOutListOfIds == freezed
-          ? _value.withOutListOfIds
-          : withOutListOfIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      addOns: addOns == freezed
+          ? _value.addOns
+          : addOns // ignore: cast_nullable_to_non_nullable
+              as List<AddonModel>,
+      withOuts: withOuts == freezed
+          ? _value.withOuts
+          : withOuts // ignore: cast_nullable_to_non_nullable
+              as List<WithoutModel>,
     ));
   }
 }
@@ -147,14 +147,14 @@ abstract class _$CartItemModelCopyWith<$Res>
       __$CartItemModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int id,
+      {int? id,
       int quantity,
       double price,
       String placeName,
       String itemName,
       String description,
-      List<int> addOnsListOfIds,
-      List<int> withOutListOfIds});
+      List<AddonModel> addOns,
+      List<WithoutModel> withOuts});
 }
 
 /// @nodoc
@@ -176,14 +176,14 @@ class __$CartItemModelCopyWithImpl<$Res>
     Object? placeName = freezed,
     Object? itemName = freezed,
     Object? description = freezed,
-    Object? addOnsListOfIds = freezed,
-    Object? withOutListOfIds = freezed,
+    Object? addOns = freezed,
+    Object? withOuts = freezed,
   }) {
     return _then(_CartItemModel(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -204,14 +204,14 @@ class __$CartItemModelCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      addOnsListOfIds: addOnsListOfIds == freezed
-          ? _value.addOnsListOfIds
-          : addOnsListOfIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-      withOutListOfIds: withOutListOfIds == freezed
-          ? _value.withOutListOfIds
-          : withOutListOfIds // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+      addOns: addOns == freezed
+          ? _value.addOns
+          : addOns // ignore: cast_nullable_to_non_nullable
+              as List<AddonModel>,
+      withOuts: withOuts == freezed
+          ? _value.withOuts
+          : withOuts // ignore: cast_nullable_to_non_nullable
+              as List<WithoutModel>,
     ));
   }
 }
@@ -220,21 +220,20 @@ class __$CartItemModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
   const _$_CartItemModel(
-      {this.id = 0,
+      {this.id,
       this.quantity = 0,
       this.price = 0,
       this.placeName = '',
       this.itemName = '',
       this.description = '',
-      this.addOnsListOfIds = const [],
-      this.withOutListOfIds = const []});
+      this.addOns = const [],
+      this.withOuts = const []});
 
   factory _$_CartItemModel.fromJson(Map<String, dynamic> json) =>
       _$_$_CartItemModelFromJson(json);
 
-  @JsonKey(defaultValue: 0)
   @override
-  final int id;
+  final int? id;
   @JsonKey(defaultValue: 0)
   @override
   final int quantity;
@@ -252,14 +251,14 @@ class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
   final String description;
   @JsonKey(defaultValue: const [])
   @override
-  final List<int> addOnsListOfIds;
+  final List<AddonModel> addOns;
   @JsonKey(defaultValue: const [])
   @override
-  final List<int> withOutListOfIds;
+  final List<WithoutModel> withOuts;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CartItemModel(id: $id, quantity: $quantity, price: $price, placeName: $placeName, itemName: $itemName, description: $description, addOnsListOfIds: $addOnsListOfIds, withOutListOfIds: $withOutListOfIds)';
+    return 'CartItemModel(id: $id, quantity: $quantity, price: $price, placeName: $placeName, itemName: $itemName, description: $description, addOns: $addOns, withOuts: $withOuts)';
   }
 
   @override
@@ -273,8 +272,8 @@ class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
       ..add(DiagnosticsProperty('placeName', placeName))
       ..add(DiagnosticsProperty('itemName', itemName))
       ..add(DiagnosticsProperty('description', description))
-      ..add(DiagnosticsProperty('addOnsListOfIds', addOnsListOfIds))
-      ..add(DiagnosticsProperty('withOutListOfIds', withOutListOfIds));
+      ..add(DiagnosticsProperty('addOns', addOns))
+      ..add(DiagnosticsProperty('withOuts', withOuts));
   }
 
   @override
@@ -297,12 +296,11 @@ class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
-            (identical(other.addOnsListOfIds, addOnsListOfIds) ||
+            (identical(other.addOns, addOns) ||
+                const DeepCollectionEquality().equals(other.addOns, addOns)) &&
+            (identical(other.withOuts, withOuts) ||
                 const DeepCollectionEquality()
-                    .equals(other.addOnsListOfIds, addOnsListOfIds)) &&
-            (identical(other.withOutListOfIds, withOutListOfIds) ||
-                const DeepCollectionEquality()
-                    .equals(other.withOutListOfIds, withOutListOfIds)));
+                    .equals(other.withOuts, withOuts)));
   }
 
   @override
@@ -314,8 +312,8 @@ class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
       const DeepCollectionEquality().hash(placeName) ^
       const DeepCollectionEquality().hash(itemName) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(addOnsListOfIds) ^
-      const DeepCollectionEquality().hash(withOutListOfIds);
+      const DeepCollectionEquality().hash(addOns) ^
+      const DeepCollectionEquality().hash(withOuts);
 
   @JsonKey(ignore: true)
   @override
@@ -330,20 +328,20 @@ class _$_CartItemModel with DiagnosticableTreeMixin implements _CartItemModel {
 
 abstract class _CartItemModel implements CartItemModel {
   const factory _CartItemModel(
-      {int id,
+      {int? id,
       int quantity,
       double price,
       String placeName,
       String itemName,
       String description,
-      List<int> addOnsListOfIds,
-      List<int> withOutListOfIds}) = _$_CartItemModel;
+      List<AddonModel> addOns,
+      List<WithoutModel> withOuts}) = _$_CartItemModel;
 
   factory _CartItemModel.fromJson(Map<String, dynamic> json) =
       _$_CartItemModel.fromJson;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   @override
   int get quantity => throw _privateConstructorUsedError;
   @override
@@ -355,9 +353,9 @@ abstract class _CartItemModel implements CartItemModel {
   @override
   String get description => throw _privateConstructorUsedError;
   @override
-  List<int> get addOnsListOfIds => throw _privateConstructorUsedError;
+  List<AddonModel> get addOns => throw _privateConstructorUsedError;
   @override
-  List<int> get withOutListOfIds => throw _privateConstructorUsedError;
+  List<WithoutModel> get withOuts => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CartItemModelCopyWith<_CartItemModel> get copyWith =>

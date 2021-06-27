@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/cart_model.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
@@ -19,6 +22,8 @@ class MenuItemModalBottomSheet extends StatefulWidget {
 }
 
 class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
+  List<AddonModel> addons = [];
+  List<WithoutModel> withouts = [];
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
@@ -72,6 +77,9 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                           'Add Ons:',
                           style: textTheme.headline5,
                         ),
+                        onConfirm: (items) {
+                          addons = items;
+                        },
                       ),
                       SizedBox(height: 4),
                       Text('Without:', style: textTheme.headline5),
@@ -83,6 +91,9 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                           'With out:',
                           style: textTheme.headline5,
                         ),
+                        onConfirm: (items) {
+                          withouts = items;
+                        },
                       ),
                       SizedBox(height: 4),
                       Text('Varaieties:', style: textTheme.headline5),
@@ -103,7 +114,21 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
             ),
           ),
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              Provider.of<CartProvider>(context, listen: false).addItemToCart(
+                CartItemModel(
+                  id: widget.product.id,
+                  itemName: widget.product.title,
+                  description: widget.product.metaModel.content,
+                  placeName: widget.product.title,
+                  price: widget.product.priceModel.price,
+                  quantity: 1,
+                  addOns: addons,
+                  withOuts: withouts,
+                ),
+              );
+              Navigator.pop(context);
+            },
             style: ButtonStyle(
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
