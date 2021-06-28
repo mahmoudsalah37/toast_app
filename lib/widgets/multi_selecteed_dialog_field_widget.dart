@@ -6,7 +6,7 @@ class MultiSelectedDilaogFieldWidget<T> extends StatefulWidget {
       {required this.items, this.title, required this.onConfirm});
   final List<MultiSelectItem<T>> items;
   final Widget? title;
-  final Function(List<T> items) onConfirm;
+  final void Function(List<dynamic> items) onConfirm;
   @override
   _MultiSelectedDilaogFieldWidgetState createState() =>
       _MultiSelectedDilaogFieldWidgetState();
@@ -25,6 +25,7 @@ class _MultiSelectedDilaogFieldWidgetState<T>
         setState(() {
           initalValue = val;
         });
+        widget.onConfirm(val);
       },
       items: widget.items as List<MultiSelectItem<T>>,
       initialValue: initalValue,

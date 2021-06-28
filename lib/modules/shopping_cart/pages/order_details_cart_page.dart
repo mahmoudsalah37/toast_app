@@ -18,7 +18,7 @@ class OrderDetailsCartPage extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     var cartProvider = Provider.of<CartProvider>(context);
     return Scaffold(
-      body: cartProvider.getCartListLength != 0
+      body: cartProvider.getProductLength != 0
           ? Stack(
               children: [
                 ListView(
@@ -35,10 +35,11 @@ class OrderDetailsCartPage extends StatelessWidget {
                         radius: Radius.circular(10),
                         child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: cartProvider.getCartListLength,
+                          itemCount: cartProvider.getProductLength,
                           itemBuilder: (context, index) {
                             return ShoppingCartItemWidget(
-                              cartItemModel: cartProvider.getCartList[index],
+                              product:
+                                  cartProvider.getProducts.elementAt(index),
                               index: index,
                             );
                           },
@@ -51,20 +52,17 @@ class OrderDetailsCartPage extends StatelessWidget {
                       children: [
                         TotalPriceRowItemWidget(
                           title: 'SubTotal',
-                          price: cartProvider.gettotalPiceWithoutVat,
-                          // price: cartProvider.subTotalPrice,
+                          price: cartProvider.getSubtotalPice,
                         ),
                         SizedBox(height: 8),
                         TotalPriceRowItemWidget(
                           title: 'VAT%',
                           price: cartProvider.getVat,
-                          // price: cartProvider.vat,
                         ),
                         SizedBox(height: 8),
                         TotalPriceRowItemWidget(
                           title: 'Total',
                           price: cartProvider.getTotalPrice,
-                          // price: cartProvider.total,
                         ),
                       ],
                     )

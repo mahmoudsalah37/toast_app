@@ -27,6 +27,9 @@ class ProductModel with _$ProductModel {
     @Default(const <VaraietyModel>[])
     @JsonKey(name: 'vars')
         List<VaraietyModel> varaieties,
+    @Default(1) int quantity,
+    @Default(0) double totalAdds,
+    @Default(0) double totalPrice,
   }) = _ProductModel;
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
       _$ProductModelFromJson(json);

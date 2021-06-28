@@ -15,7 +15,7 @@ class BadgeWidget extends StatelessWidget {
       animationDuration: Duration(milliseconds: 300),
       animationType: BadgeAnimationType.slide,
       badgeContent: AutoSizeText(
-        Provider.of<CartProvider>(context).getCartListLength.toString(),
+        Provider.of<CartProvider>(context).getProducts.length.toString(),
         style: TextStyle(color: Colors.white),
         maxLines: 1,
         maxFontSize: 13,

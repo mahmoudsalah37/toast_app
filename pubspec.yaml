@@ -37,7 +37,7 @@ dependencies:
   mime: ^1.0.0
   open_file: ^3.2.1
   uuid: ^3.0.4
-
+  fluttertoast: ^8.0.7
   flutter:
     sdk: flutter
 

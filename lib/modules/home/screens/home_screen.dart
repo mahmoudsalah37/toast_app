@@ -39,24 +39,6 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Visibility(
-                  visible:
-                      Provider.of<CartProvider>(context).getCartListLength == 0
-                          ? false
-                          : true,
-                  child: BadgeWidget(
-                    child: TextButton(
-                      onPressed: () => Navigator.pushNamed(
-                        context,
-                        Routes.orderDetailsCartPage,
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/images/home/cart_icon.svg',
-                        color: CustomColors.blueColor,
-                      ),
-                    ),
-                  ),
-                ),
                 Padding(
                   padding: EdgeInsets.all(8.0),
                   child: CircleAvatar(
