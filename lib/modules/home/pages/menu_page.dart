@@ -26,7 +26,7 @@ class _MenuPageState extends State<MenuPage> {
   void initState() {
     super.initState();
     catgoriesProvider = Provider.of<CategoriesProvider>(context, listen: false)
-      ..getCategories();
+      ..getCategoriesFromApi();
   }
 
   @override
@@ -50,30 +50,6 @@ class _MenuPageState extends State<MenuPage> {
                 icon: Icon(Icons.shopping_cart_sharp, color: Colors.blue),
                 onPressed: () {
                   Navigator.pushNamed(context, Routes.orderDetailsCartPage);
-                  var provider =
-                      Provider.of<CartProvider>(context, listen: false);
-                  provider.addItemToCart(CartItemModel(
-                    id: 1,
-                    quantity: 1,
-                    price: 10,
-                    description: 'description 1',
-                    itemName: 'itemName 1',
-                    placeName: 'placeName 1',
-                    addOnsListOfIds: [1, 2],
-                    withOutListOfIds: [3, 4],
-                  ));
-                  provider.addItemToCart(
-                    CartItemModel(
-                      id: 2,
-                      quantity: 2,
-                      price: 20,
-                      description: 'description 2',
-                      itemName: 'itemName 2',
-                      placeName: 'placeName 2',
-                      addOnsListOfIds: [2, 4],
-                      withOutListOfIds: [6, 8],
-                    ),
-                  );
                 },
               ),
             ),

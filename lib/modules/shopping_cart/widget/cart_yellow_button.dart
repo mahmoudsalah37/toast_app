@@ -4,11 +4,11 @@ import '../../../src/colors.dart';
 import '../../../utils/classes/resposive.dart';
 
 class CustomCartYellowButton extends StatelessWidget {
-  final Function onTap;
+  final Function()? onPressed;
   final String title;
 
   const CustomCartYellowButton({
-    required this.onTap,
+    this.onPressed,
     required this.title,
   });
 
@@ -23,7 +23,7 @@ class CustomCartYellowButton extends StatelessWidget {
             backgroundColor: CustomColors.yellowDeepColor,
             textStyle: theme.textTheme.headline6,
             padding: EdgeInsets.all(0)),
-        onPressed: () => onTap(),
+        onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Text(title),

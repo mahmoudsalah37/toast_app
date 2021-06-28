@@ -8,18 +8,18 @@ part of 'cart_model.dart';
 
 _$_CartItemModel _$_$_CartItemModelFromJson(Map<String, dynamic> json) {
   return _$_CartItemModel(
-    id: json['id'] as int? ?? 0,
+    id: json['id'] as int?,
     quantity: json['quantity'] as int? ?? 0,
     price: (json['price'] as num?)?.toDouble() ?? 0,
     placeName: json['placeName'] as String? ?? '',
     itemName: json['itemName'] as String? ?? '',
     description: json['description'] as String? ?? '',
-    addOnsListOfIds: (json['addOnsListOfIds'] as List<dynamic>?)
-            ?.map((e) => e as int)
+    addOns: (json['addOns'] as List<dynamic>?)
+            ?.map((e) => AddonModel.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
-    withOutListOfIds: (json['withOutListOfIds'] as List<dynamic>?)
-            ?.map((e) => e as int)
+    withOuts: (json['withOuts'] as List<dynamic>?)
+            ?.map((e) => WithoutModel.fromJson(e as Map<String, dynamic>))
             .toList() ??
         [],
   );
@@ -33,6 +33,6 @@ Map<String, dynamic> _$_$_CartItemModelToJson(_$_CartItemModel instance) =>
       'placeName': instance.placeName,
       'itemName': instance.itemName,
       'description': instance.description,
-      'addOnsListOfIds': instance.addOnsListOfIds,
-      'withOutListOfIds': instance.withOutListOfIds,
+      'addOns': instance.addOns,
+      'withOuts': instance.withOuts,
     };

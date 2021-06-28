@@ -1,37 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
+  CartProvider();
   List<CartItemModel> _cartList = [];
-  late double _subTotalPrice =
-      getPriceMultiplyQuantityOfCartList().reduce((a, b) => a + b);
-  late double _vat = _subTotalPrice * 14 / 100;
-  late double _total = _subTotalPrice + _vat;
+  double _totalPriceWithouVat = 0,
+      _vat = 0,
+      _totalPrice = 0,
+      _totaladdonsPrice = 0;
 
   int get getCartListLength => _cartList.length;
 
   List<CartItemModel> get getCartList => _cartList;
 
-  double get getSubTotal => _subTotalPrice;
+  double get gettotalPiceWithoutVat => _totalPriceWithouVat;
 
   double get getVat => _vat;
 
-  double get getTotal => _total;
+  double get getTotalPrice => _totalPrice;
 
-  List getPriceMultiplyQuantityOfCartList() {
-    var checkedPricesList = [];
+  double calculateTotalPriceWithoutVat() {
+    List<double> checkedPricesList = [];
     _cartList.forEach(
       (element) => checkedPricesList.add(element.quantity * element.price),
     );
-    return checkedPricesList;
+    return _cartList.map((e) => e.quantity * e.price).reduce((a, b) => a + b);
   }
 
-  updatePrice() {
-    _subTotalPrice =
-        getPriceMultiplyQuantityOfCartList().reduce((a, b) => a + b);
-    _vat = _subTotalPrice * 14 / 100;
-    _total = _subTotalPrice + _vat;
+  // double calculateTotalAddonsPrice() {
+  //   return _cartList.map((e) => e.addOns.re).reduce((a, b) => a + b);
+  // }
+
+  void updatePrice() {
+    _totaladdonsPrice = _totalPriceWithouVat = calculateTotalPriceWithoutVat();
+    _vat = _totalPriceWithouVat * 14 / 100;
+    _totalPrice = _totalPriceWithouVat + _vat;
     notifyListeners();
   }
 

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 
 class MultiSelectedDilaogFieldWidget<T> extends StatefulWidget {
-  const MultiSelectedDilaogFieldWidget({required this.items, this.title});
+  const MultiSelectedDilaogFieldWidget(
+      {required this.items, this.title, required this.onConfirm});
   final List<MultiSelectItem<T>> items;
   final Widget? title;
+  final Function(List<T> items) onConfirm;
   @override
   _MultiSelectedDilaogFieldWidgetState createState() =>
       _MultiSelectedDilaogFieldWidgetState();
