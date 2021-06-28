@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toast_app/modules/shopping_cart/pages/add_location_page.dart';
 
 import '../modules/auth/pages/register_done_page.dart';
 import '../modules/auth/pages/register_personal_info_page.dart';
@@ -37,7 +38,8 @@ class Routes {
       registerSelectFavoriteCategoryPage =
           '/registerSelectFavoriteCategoryPage',
       registerStepDonePage = '/registerStepDonePage',
-      chatPage = '/chatPage';
+      chatPage = '/chatPage',
+      addLocationPage = '/addLocationPage';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -81,6 +83,8 @@ class Routes {
             builder: (context) => RegisterSelectFavorireCategoryPage());
       case registerStepDonePage:
         return MaterialPageRoute(builder: (context) => RegisterDonePage());
+      case addLocationPage:
+        return MaterialPageRoute(builder: (context) => AddLocationPage());
       default:
         return MaterialPageRoute(builder: (context) => SplashPage());
     }

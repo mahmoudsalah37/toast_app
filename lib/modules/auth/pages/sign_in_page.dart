@@ -5,7 +5,6 @@ import '../widgets/custom_sign_in_button.dart';
 import '../widgets/register_text_field.dart';
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';
-import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
 
 class SignInPage extends StatelessWidget {
