@@ -167,7 +167,7 @@ class _AddLocationPageState extends State<AddLocationPage> {
                     SizedBox(height: 8),
                     Center(
                       child: CustomCartYellowButton(
-                        onTap: () async {
+                        onPressed: () async {
                           print('lat= $lat long = $long');
                           await locationProvider.addLocation(
                             LocationModel().copyWith(

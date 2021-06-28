@@ -104,7 +104,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
         height: res.getHeight(25),
         width: res.getWidth(100),
         decoration: changeDecoration(
-          selected: locationsProvider.getSelectedLocation,
+          selected: locationsProvider.getSelectedLocation as LocationModel,
           currentLocation: currentLocation,
         ),
         child: Stack(
@@ -182,9 +182,8 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   builder: (context) => ClearItemsCartDialog(
                     title: 'Delete Location?',
                     onTapYes: () {
-                      locationsProvider.deleteLocation(
-                        currentLocation.id as int,
-                      );
+                      locationsProvider
+                          .deleteLocation(currentLocation.id as int);
                       Navigator.pop(context);
                     },
                   ),
