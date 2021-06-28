@@ -28,7 +28,10 @@ class OrderLocationDetailsPage extends StatelessWidget {
                       width: res.getWidth(16),
                       height: res.getHeight(4),
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          Routes.addLocationPage,
+                        ),
                         child:
                             Icon(Icons.add, color: CustomColors.blueLightColor),
                         style: OutlinedButton.styleFrom(

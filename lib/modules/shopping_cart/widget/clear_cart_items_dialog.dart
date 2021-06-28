@@ -6,9 +6,11 @@ import '../../../utils/classes/resposive.dart';
 
 class ClearItemsCartDialog extends StatefulWidget {
   final Function() onTapYes;
+  final String title;
 
   const ClearItemsCartDialog({
     required this.onTapYes,
+    this.title = 'Delete all items of cart ?',
   });
 
   @override
@@ -61,7 +63,7 @@ class ClearItemsCartDialogState extends State<ClearItemsCartDialog>
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(
-                          'Delete all items of cart ?',
+                          widget.title.toString(),
                           style: theme.textTheme.headline5,
                         ),
                         Row(

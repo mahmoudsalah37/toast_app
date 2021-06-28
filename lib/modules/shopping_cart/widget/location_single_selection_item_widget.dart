@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -7,6 +8,7 @@ import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
 import '../models/location/location_model.dart';
 import '../provider/locations_provider.dart';
+import 'clear_cart_items_dialog.dart';
 
 class LocationSingleSelectionItemWidget extends StatefulWidget {
   const LocationSingleSelectionItemWidget();
@@ -21,6 +23,7 @@ class _LocationSingleSelectionItemWidgetState
   late LocationsProvider locationsProvider;
   List<LocationModel> locations = <LocationModel>[];
   int selectedLocaion = -1;
+
   @override
   void initState() {
     super.initState();
@@ -68,8 +71,10 @@ class _LocationSingleSelectionItemWidgetState
 
 class LocationCardWidget extends StatefulWidget {
   const LocationCardWidget({required this.index, required this.onSelected});
+
   final int index;
   final void Function(int idnex) onSelected;
+
   @override
   _LocationCardWidgetState createState() => _LocationCardWidgetState();
 }
@@ -93,7 +98,6 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
-
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -117,8 +121,10 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   mapType: MapType.normal,
                   initialCameraPosition: CameraPosition(
                     target: LatLng(
-                        currentLocation.latitude, currentLocation.longitude),
-                    zoom: 14,
+                      currentLocation.latitude,
+                      currentLocation.longitude,
+                    ),
+                    zoom: 12,
                   ),
                 ),
               ),
@@ -133,7 +139,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${currentLocation.name} ${widget.index}',
+                      currentLocation.name,
                       style: theme.textTheme.bodyText1!.copyWith(
                         color: CustomColors.blueColor,
                       ),
@@ -147,7 +153,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                           child: Text('Bul: ${currentLocation.building}',
                               style: theme.textTheme.subtitle2),
                         ),
-                        Text('Aprt: ${currentLocation.apartment}',
+                        Text('Apart: ${currentLocation.apartment}',
                             style: theme.textTheme.subtitle2),
                       ],
                     ),
@@ -156,13 +162,44 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
               ),
             ),
             GestureDetector(
-              onTap: () => widget.onSelected(widget.index),
+              onTap: () {
+                widget.onSelected(widget.index);
+                print(currentLocation.id);
+                print(currentLocation.latitude);
+                print(currentLocation.longitude);
+              },
               child: Container(
                 width: res.getWidth(100),
                 height: res.getHeight(100),
                 color: Colors.transparent,
               ),
-            )
+            ),
+            Align(
+              alignment: Alignment.topRight,
+              child: GestureDetector(
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) => ClearItemsCartDialog(
+                    title: 'Delete Location?',
+                    onTapYes: () {
+                      locationsProvider.deleteLocation(
+                        currentLocation.id as int,
+                      );
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(6),
+                  margin: EdgeInsets.all(4),
+                  decoration: CustomStyle.containerShadowDecoration,
+                  child: SvgPicture.asset(
+                    'assets/images/shopping_cart/delete_basket_icon.svg',
+                    height: 25,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

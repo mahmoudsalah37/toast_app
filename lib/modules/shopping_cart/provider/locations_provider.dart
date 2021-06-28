@@ -1,5 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:toast_app/modules/shopping_cart/services/add_location_service.dart';
+import 'package:toast_app/modules/shopping_cart/services/delete_location_service.dart';
 
 import '../../../errors_handler/failure.dart';
 import '../../../extensions/task_extensions.dart';
@@ -42,5 +44,17 @@ class LocationsProvider extends ChangeNotifier {
     final v = await data;
     if (v.isNotEmpty) _selectedLocation = v.first;
     _setState(NotifierState.loaded);
+  }
+
+  deleteLocation(int id) async {
+    final deleteLocationService = DeleteLocationService();
+    await deleteLocationService.deleteLocationById(id: id);
+    notifyListeners();
+  }
+
+  addLocation(LocationModel locationModel) async {
+    final addLocationService = AddLocationService();
+    await addLocationService.addLocation(locationModel: locationModel);
+    notifyListeners();
   }
 }
