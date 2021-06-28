@@ -53,12 +53,14 @@ class LocationsProvider extends ChangeNotifier {
   deleteLocation(int id) async {
     final deleteLocationService = DeleteLocationService();
     await deleteLocationService.deleteLocationById(id: id);
+    getLocations();
     notifyListeners();
   }
 
   addLocation(LocationModel locationModel) async {
     final addLocationService = AddLocationService();
     await addLocationService.addLocation(locationModel: locationModel);
+    getLocations();
     notifyListeners();
   }
 }
