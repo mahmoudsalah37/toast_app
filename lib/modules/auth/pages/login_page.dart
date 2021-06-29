@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:toast_app/modules/auth/model/login/login_model.dart';
+import 'package:toast_app/modules/auth/service/LoginService.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
 import '../widgets/custom_outline_button.dart';
 import '../widgets/custom_sign_in_button.dart';
 import '../widgets/register_text_field.dart';
@@ -7,9 +11,15 @@ import '../../../src/colors.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 
-class SignInPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailTEC = TextEditingController(text: ''),
       passwordTEC = TextEditingController(text: '');
+  bool passwordVisibility = true;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +55,15 @@ class SignInPage extends StatelessWidget {
               controller: passwordTEC,
               hint: 'Password',
               inputType: TextInputType.visiblePassword,
-              obscureText: true,
+              obscureText: passwordVisibility,
+              suffixIcon: IconButton(
+                icon: Icon(
+                  passwordVisibility ? Icons.visibility_off : Icons.visibility,
+                  color: CustomColors.blueColor,
+                ),
+                onPressed: () =>
+                    setState(() => passwordVisibility = !passwordVisibility),
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
@@ -60,7 +78,21 @@ class SignInPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: res.getWidth(20)),
               child: RegisterOutlineButton(
                 title: 'Sign in',
-                onPressed: () {},
+                onPressed: () async {
+                  final loginResponse = await LoginService.login(
+                    loginModel: LoginModel(
+                      email: emailTEC.text,
+                      password: passwordTEC.text,
+                    ),
+                  );
+                  Navigator.pushNamed(context, Routes.homePage);
+                  HelperMethods.showToast(
+                    msg: 'Welcome ${loginResponse.data['user']['name']}',
+                    gravity: ToastGravity.TOP,
+                    toastLength: Toast.LENGTH_LONG
+                  );
+                  print('token = ${loginResponse.data['token']}');
+                },
                 backgroundColor: CustomColors.blueColor,
                 textColor: Colors.white,
               ),

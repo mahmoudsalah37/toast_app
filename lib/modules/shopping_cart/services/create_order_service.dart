@@ -9,13 +9,13 @@ import 'package:toast_app/services/default_service.dart';
 class CreateOrderService extends DefaultService {
   static const path = '/create_order';
 
-  Future<Response> createOrder(CreateOrderModel createOrderModel) async {
+  Future<Response> createOrder(Map<String, dynamic> data) async {
     try {
       final defaultService = DefaultService();
 
       final response = await defaultService.postData(
         path,
-        data: createOrderModel.toJson(),
+        data: data,
       );
       if (response.statusCode == 200) {
         print('>>>>>> Success');
@@ -23,7 +23,7 @@ class CreateOrderService extends DefaultService {
       } else {
         print('>>>>>> failed ${response.statusCode}');
       }
-       return response;
+      return response;
     } on SocketException {
       throw Failure('No Internet connection');
     } on HttpException {

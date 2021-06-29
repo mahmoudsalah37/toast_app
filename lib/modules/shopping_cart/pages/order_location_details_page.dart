@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
-import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
 import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
+import 'package:toast_app/widgets/loading_indicator.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';
 import '../widget/location_single_selection_item_widget.dart';
@@ -74,7 +76,7 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
                   title: 'Next',
                   onPressed: () async {
                     // setState(() => loadingVisibility = true);
-                    // final createOrderService = CreateOrderService();
+                    final createOrderService = CreateOrderService();
                     final cartProvider =
                         Provider.of<CartProvider>(context, listen: false);
                     final createOrderModel = CreateOrderModel(
@@ -87,16 +89,18 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
                       cartItemsList: cartProvider.getProducts,
                       orderType: 'normal',
                     );
-                    final v = toJsonCustom(createOrderModel);
-                    print('createOrderModel>>> $v');
-                    // await createOrderService
-                    //    .createOrder(createOrderModel);
-                    // if (createOrderResponse.data != null) {
-                    //   Navigator.pushNamed(context, Routes.driversOfferPage);
-                    // } else {
-                    //   print('something went wrong');
-                    // }
-                    // setState(() => loadingVisibility = false);
+                    final createOrderData = toJsonCustom(createOrderModel);
+                    final createOrderResponse =
+                        await createOrderService.createOrder(createOrderData);
+                    if (createOrderData.isNotEmpty) {
+                      Navigator.pushNamed(context, Routes.driversOfferPage);
+                      HelperMethods.showToast(msg: 'Order Created');
+                      print(
+                          'order_channel>>>>>>${createOrderResponse.data['data']['order_channel']}');
+                    } else {
+                      print('something went wrong');
+                    }
+                    setState(() => loadingVisibility = false);
                   },
                 );
               }),
@@ -118,13 +122,15 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
     data['vat'] = createOrderModel.vat;
     data['type'] = createOrderModel.orderType;
     data['cart'] = createOrderModel.cartItemsList
-        .map((e) => {
-              'item_id': e.id,
-              'quantity': e.quantity,
-              'addons': e.addons.map((e) => e.id).toList(growable: false),
-              'withouts': e.withouts.map((e) => e.id).toList(growable: false),
-              'variety_id': e.varaieties.first.termId,
-            })
+        .map(
+          (e) => {
+            'item_id': e.id,
+            'quantity': e.quantity,
+            'addons': e.addons.map((e) => e.id).toList(growable: false),
+            'withouts': e.withouts.map((e) => e.id).toList(growable: false),
+            'variety_id': e.varaieties.first.termId,
+          },
+        )
         .toList(growable: false);
     return data;
   }

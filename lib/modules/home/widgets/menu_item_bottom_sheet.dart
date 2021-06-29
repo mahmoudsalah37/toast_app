@@ -6,6 +6,7 @@ import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/home/provider/select_product_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
@@ -17,7 +18,9 @@ import '../models/without/without_model.dart';
 
 class MenuItemModalBottomSheet extends StatefulWidget {
   MenuItemModalBottomSheet({required this.product});
+
   final ProductModel product;
+
   @override
   _MenuItemModalBottomSheetState createState() =>
       _MenuItemModalBottomSheetState();
@@ -25,6 +28,7 @@ class MenuItemModalBottomSheet extends StatefulWidget {
 
 class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
   late SelectProductProvider selectProductProvider;
+
   @override
   void initState() {
     super.initState();
@@ -164,14 +168,7 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
                     selectProductProvider.getLastSelectedProduct;
                 Navigator.pop(context);
               } else {
-                Fluttertoast.showToast(
-                    msg: "Please Select Varaiety",
-                    toastLength: Toast.LENGTH_SHORT,
-                    gravity: ToastGravity.BOTTOM,
-                    timeInSecForIosWeb: 1,
-                    backgroundColor: Colors.red,
-                    textColor: Colors.white,
-                    fontSize: 16.0);
+                HelperMethods.showToast(msg: 'PLease select variations');
               }
             },
             style: ButtonStyle(

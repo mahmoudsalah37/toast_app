@@ -7,9 +7,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/location/location_model.dart';
 import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
-import 'package:toast_app/modules/shopping_cart/services/add_location_service.dart';
+import 'package:toast_app/modules/shopping_cart/provider/map_service.dart';
 import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
 import 'package:toast_app/src/styles.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
 import 'package:toast_app/utils/classes/resposive.dart';
 import 'package:geolocator/geolocator.dart' as geoLocator;
 import 'package:geocoding/geocoding.dart';
@@ -43,6 +44,7 @@ class _AddLocationPageState extends State<AddLocationPage> {
         setState(() {});
       },
     );
+    MapService.markers.clear();
     super.initState();
   }
 
@@ -90,7 +92,10 @@ class _AddLocationPageState extends State<AddLocationPage> {
                   mapController: mapController,
                   searchTEC: searchTEC,
                   setState: setStateFunction,
-                );
+                ).then((value) {
+                  lat = value.latitude;
+                  long = value.longitude;
+                });
               },
               decoration: CustomStyle.registerInputDecoration.copyWith(
                 hintText: 'Search...',
@@ -168,28 +173,7 @@ class _AddLocationPageState extends State<AddLocationPage> {
                     SizedBox(height: 8),
                     Center(
                       child: CustomCartYellowButton(
-                        onPressed: () async {
-                          print('lat= $lat long = $long');
-                          if (nameTEC.text.isEmpty ||
-                              streetTEC.text.isEmpty ||
-                              apartTEC.text.isEmpty ||
-                              floorTEC.text.isEmpty)
-                            Fluttertoast.showToast(
-                                msg: 'Please complete location fields');
-                          else {
-                            await locationProvider.addLocation(
-                              LocationModel().copyWith(
-                                name: nameTEC.text,
-                                street: streetTEC.text,
-                                apartment: apartTEC.text,
-                                building: floorTEC.text,
-                                latitude: lat,
-                                longitude: long,
-                              ),
-                            );
-                            Navigator.pop(context);
-                          }
-                        },
+                        onPressed: () => addLocation(locationProvider),
                         title: 'Add Address',
                       ),
                     ),
@@ -202,85 +186,24 @@ class _AddLocationPageState extends State<AddLocationPage> {
       ),
     );
   }
-}
 
-class MapService {
-  static List<Marker> markers = [];
-
-  ///This method to get current location and animate with camera on this lat and long
-  static Future<void> getCurrentLocation({
-    required Completer<GoogleMapController> mapController,
-    required LatLng initialPosition,
-  }) async {
-    Position position = await getCurrentLatLngOfUser();
-    final GoogleMapController controller = await mapController.future;
-
-    initialPosition = LatLng(position.latitude, position.longitude);
-    final newCameraPosition = CameraPosition(
-      target: LatLng(position.latitude, position.longitude),
-      zoom: 14.4746,
-    );
-    controller.animateCamera(
-      CameraUpdate.newCameraPosition(newCameraPosition),
-    );
-  }
-
-  static Future<Position> getCurrentLatLngOfUser() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    return position;
-  }
-
-  ///This method to search then animate camera and add marker on map searched location
-  static Future<void> searchMap(
-      {required Completer<GoogleMapController> mapController,
-      required TextEditingController searchTEC,
-      required Function setState}) async {
-    try {
-      final position =
-          await GeocodingPlatform.instance.locationFromAddress(searchTEC.text);
-      final GoogleMapController controller = await mapController.future;
-      final newCameraPosition = CameraPosition(
-        target: LatLng(position[0].latitude, position[0].longitude),
-        zoom: 14.4746,
-      );
-      markers.isEmpty
-          ? addMarker(position[0].latitude, position[0].longitude)
-          : replaceMarker(position[0].latitude, position[0].longitude);
-      GeocodingPlatform.instance.placemarkFromCoordinates(
-          position[0].latitude, position[0].longitude);
-      controller.animateCamera(
-        CameraUpdate.newCameraPosition(newCameraPosition),
-      );
-      setState();
-    } catch (e) {
-      print('search exception>>>>>>>>>> $e');
+  addLocation(LocationsProvider locationProvider) async {
+    print('lat= $lat long = $long');
+    if (nameTEC.text.isEmpty ||
+        streetTEC.text.isEmpty ||
+        apartTEC.text.isEmpty ||
+        floorTEC.text.isEmpty) {
+      HelperMethods.showToast(msg: 'Please complete location info');
+    } else {
+      await locationProvider.addLocation(LocationModel().copyWith(
+        name: nameTEC.text,
+        street: streetTEC.text,
+        apartment: apartTEC.text,
+        building: floorTEC.text,
+        latitude: lat,
+        longitude: long,
+      ));
+      Navigator.pop(context);
     }
-  }
-
-  ///this method replace marker which added
-  static void replaceMarker(double lat, double long) {
-    markers.replaceRange(0, 1, [
-      Marker(
-        markerId: MarkerId('2'),
-        position: LatLng(lat, long),
-        icon: BitmapDescriptor.defaultMarker,
-        // icon: BitmapDescriptor.fromAssetImage(ImageConfiguration.size.width, 'assetName'),
-        onTap: () => print('on tap marker'),
-      ),
-    ]);
-  }
-
-  ///this method added marker
-  static void addMarker(double lat, double long) {
-    markers.add(
-      Marker(
-        markerId: MarkerId('1'),
-        position: LatLng(lat, long),
-        icon: BitmapDescriptor.defaultMarker,
-        // icon: BitmapDescriptor.fromAssetImage(ImageConfiguration.size.width, 'assetName'),
-        onTap: () => print('on tap marker'),
-      ),
-    );
   }
 }

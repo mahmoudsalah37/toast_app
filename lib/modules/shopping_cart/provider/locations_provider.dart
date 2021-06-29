@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:toast_app/modules/shopping_cart/services/add_location_service.dart';
-import 'package:toast_app/modules/shopping_cart/services/delete_location_service.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
 
 import '../../../errors_handler/failure.dart';
 import '../../../extensions/task_extensions.dart';
@@ -53,8 +52,8 @@ class LocationsProvider extends ChangeNotifier {
   }
 
   Future<void> deleteLocation(int id, int index) async {
-    final deleteLocationService = DeleteLocationService();
-    final response = await deleteLocationService.deleteLocationById(id: id);
+    final locationService = LocationsService();
+    final response = await locationService.deleteLocationById(id: id);
     if (response.statusCode == 200) {
       getLocations();
     } else {
@@ -63,19 +62,18 @@ class LocationsProvider extends ChangeNotifier {
   }
 
   Future<void> addLocation(LocationModel locationModel) async {
-    final addLocationService = AddLocationService();
     final location = _locations!.fold((l) => [], (r) => r);
     final locationLength = location.length;
     if (locationLength == 3) {
-      Fluttertoast.showToast(
+      HelperMethods.showToast(
         msg: 'Sorry you have Maximum Locations,\n delete to add another',
-        toastLength: Toast.LENGTH_LONG,
         fontSize: 12,
       );
     } else {
       final response =
-          await addLocationService.addLocation(locationModel: locationModel);
+          await _locationsService.addLocation(locationModel: locationModel);
       if (response.statusCode == 200) {
+        HelperMethods.showToast(msg: 'Location added');
         getLocations();
       } else {
         print('addLocationError');

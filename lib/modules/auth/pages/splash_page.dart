@@ -12,7 +12,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(Duration(milliseconds: 800), () {
-      Navigator.pushReplacementNamed(context, Routes.signInPage);
+      Navigator.pushReplacementNamed(context, Routes.loginPage);
     });
     super.initState();
   }

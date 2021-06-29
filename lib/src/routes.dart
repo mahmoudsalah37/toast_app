@@ -5,7 +5,7 @@ import '../modules/auth/pages/register_done_page.dart';
 import '../modules/auth/pages/register_personal_info_page.dart';
 import '../modules/auth/pages/register_step_three_page.dart';
 import '../modules/auth/pages/register_verification_code_page.dart';
-import '../modules/auth/pages/sign_in_page.dart';
+import '../modules/auth/pages/login_page.dart';
 import '../modules/auth/pages/splash_page.dart';
 import '../modules/home/pages/home_page.dart';
 import '../modules/home/pages/menu_page.dart';
@@ -32,7 +32,7 @@ class Routes {
       placeOrderPage = '/placeOrderPage',
       orderAcceptedPage = '/orderAcceptedPage',
       splashPage = '/splashPage',
-      signInPage = '/signInPage',
+      loginPage = '/loginPage',
       registerPersonalInfoPage = '/registerPersonalInfoPage',
       registerVerificationCodePage = '/registerVerificationCodePage',
       registerSelectFavoriteCategoryPage =
@@ -70,8 +70,8 @@ class Routes {
         return MaterialPageRoute(builder: (context) => OrderAcceptedPage());
       case splashPage:
         return MaterialPageRoute(builder: (context) => SplashPage());
-      case signInPage:
-        return MaterialPageRoute(builder: (context) => SignInPage());
+      case loginPage:
+        return MaterialPageRoute(builder: (context) => LoginPage());
       case registerPersonalInfoPage:
         return MaterialPageRoute(
             builder: (context) => RegisterPersonalInfoPage());

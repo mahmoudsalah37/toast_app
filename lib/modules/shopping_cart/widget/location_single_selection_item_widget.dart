@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
 import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
 import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
+import 'package:toast_app/utils/classes/helper_methods.dart';
 import 'package:toast_app/utils/enums/notifier_state.dart';
 
 import '../../../src/colors.dart';
@@ -199,6 +200,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                       await locationsProvider.deleteLocation(
                           currentLocation.id as int, widget.index);
                       Navigator.pop(context);
+                      HelperMethods.showToast(msg: 'Location deleted');
                     },
                   ),
                 ),
