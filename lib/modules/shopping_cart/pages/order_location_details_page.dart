@@ -86,10 +86,11 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
                       subTotal: cartProvider.getSubtotalPice,
                       cartItemsList: cartProvider.getProducts,
                       orderType: 'normal',
-                    ).toJsonCustom(1);
-                    print('createOrderModel>>> $createOrderModel');
-                     // await createOrderService
-                     //    .createOrder(createOrderModel);
+                    );
+                    final v = toJsonCustom(createOrderModel);
+                    print('createOrderModel>>> $v');
+                    // await createOrderService
+                    //    .createOrder(createOrderModel);
                     // if (createOrderResponse.data != null) {
                     //   Navigator.pushNamed(context, Routes.driversOfferPage);
                     // } else {
@@ -105,5 +106,26 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
         ],
       ),
     );
+  }
+
+  Map<String, dynamic> toJsonCustom(CreateOrderModel createOrderModel) {
+    final data = new Map<String, dynamic>();
+    data['vendor_id'] = 3;
+    data['user_id'] = 1;
+    data['user_location_id'] = createOrderModel.selectedLocationId;
+    data['sub_total'] = createOrderModel.subTotal;
+    data['discount'] = createOrderModel.discount;
+    data['vat'] = createOrderModel.vat;
+    data['type'] = createOrderModel.orderType;
+    data['cart'] = createOrderModel.cartItemsList
+        .map((e) => {
+              'item_id': e.id,
+              'quantity': e.quantity,
+              'addons': e.addons.map((e) => e.id).toList(growable: false),
+              'withouts': e.withouts.map((e) => e.id).toList(growable: false),
+              'variety_id': e.varaieties.first.termId,
+            })
+        .toList(growable: false);
+    return data;
   }
 }
