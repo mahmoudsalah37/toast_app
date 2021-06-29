@@ -16,4 +16,11 @@ class CartModel with _$CartModel {
   }) = _CartModel;
   factory CartModel.fromJson(Map<String, dynamic> json) =>
       _$CartModelFromJson(json);
+  // Map<String, dynamic> toJson() {
+  //   final data = new Map<String, dynamic>();
+  //   data['vendor_id'] = 3;
+  //   data['user_id'] = 1;
+  //   data['user_location_id'] = 1;
+  //   return data;
+  // }
 }
