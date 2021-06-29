@@ -20,11 +20,12 @@ class CreateOrderModel with _$CreateOrderModel {
 
   factory CreateOrderModel.fromJson(Map<String, dynamic> json) =>
       _$CreateOrderModelFromJson(json);
-  Map<String, dynamic> toJson() {
+
+  Map<String, dynamic> toJsonCustom(int locationId) {
     final data = new Map<String, dynamic>();
     data['vendor_id'] = 3;
     data['user_id'] = 1;
-    data['user_location_id'] = 1;
+    data['user_location_id'] = locationId;
     data['sub_total'] = this.subTotal;
     data['discount'] = this.discount;
     data['vat'] = this.vat;

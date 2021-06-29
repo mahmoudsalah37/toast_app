@@ -74,29 +74,28 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
                   title: 'Next',
                   onPressed: () async {
                     // setState(() => loadingVisibility = true);
-                    final createOrderService = CreateOrderService();
+                    // final createOrderService = CreateOrderService();
                     final cartProvider =
                         Provider.of<CartProvider>(context, listen: false);
-                    final createOrderResponse =
-                        await createOrderService.createOrder(
-                      CreateOrderModel().copyWith(
-                        companyId: 3,
-                        userId: 1,
-                        selectedLocationId:
-                            locationsProvider.getSelectedLocation!.id as int,
-                        vat: cartProvider.getVat,
-                        subTotal: cartProvider.getSubtotalPice,
-                        // cartItemsList: cartProvider.getProducts,
-                        cartItemsList: [],
-                        orderType: 'normal',
-                      ),
-                    );
-                    if (createOrderResponse.data != null) {
-                      Navigator.pushNamed(context, Routes.driversOfferPage);
-                    } else {
-                      print('something went wrong');
-                    }
-                    setState(() => loadingVisibility = false);
+                    final createOrderModel = CreateOrderModel(
+                      companyId: 3,
+                      userId: 1,
+                      selectedLocationId:
+                          locationsProvider.getSelectedLocation!.id as int,
+                      vat: cartProvider.getVat,
+                      subTotal: cartProvider.getSubtotalPice,
+                      cartItemsList: cartProvider.getProducts,
+                      orderType: 'normal',
+                    ).toJsonCustom(1);
+                    print('createOrderModel>>> $createOrderModel');
+                     // await createOrderService
+                     //    .createOrder(createOrderModel);
+                    // if (createOrderResponse.data != null) {
+                    //   Navigator.pushNamed(context, Routes.driversOfferPage);
+                    // } else {
+                    //   print('something went wrong');
+                    // }
+                    // setState(() => loadingVisibility = false);
                   },
                 );
               }),
