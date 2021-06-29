@@ -39,6 +39,7 @@ class LocationsProvider extends ChangeNotifier {
   }
 
   void getLocations() async {
+    _setState(NotifierState.loading);
     final data = _locationsService.getLocations();
     await Task(() => data).attempt().mapLeftToFailure().run().then(
         (value) => _locations = value as Either<Failure, List<LocationModel>>);
@@ -54,13 +55,13 @@ class LocationsProvider extends ChangeNotifier {
     final deleteLocationService = DeleteLocationService();
     final response = await deleteLocationService.deleteLocationById(id: id);
     if (response.statusCode == 200) {
-      final list = _locations!.fold((l) => [], (r) => r);
-      list.removeAt(index);
-      // getLocations();
+      // final list = _locations!.fold((l) => [], (r) => r);
+      // list.removeAt(index);
+      getLocations();
     } else {
       print('deleteLocationError');
     }
-    notifyListeners();
+    // notifyListeners();
   }
 
   Future<void> addLocation(LocationModel locationModel) async {
