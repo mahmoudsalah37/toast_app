@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:toast_app/modules/shopping_cart/services/add_location_service.dart';
 import 'package:toast_app/modules/shopping_cart/services/delete_location_service.dart';
 
@@ -55,21 +56,30 @@ class LocationsProvider extends ChangeNotifier {
     final deleteLocationService = DeleteLocationService();
     final response = await deleteLocationService.deleteLocationById(id: id);
     if (response.statusCode == 200) {
-      // final list = _locations!.fold((l) => [], (r) => r);
-      // list.removeAt(index);
       getLocations();
     } else {
       print('deleteLocationError');
     }
-    // notifyListeners();
   }
 
   Future<void> addLocation(LocationModel locationModel) async {
     final addLocationService = AddLocationService();
-    await addLocationService.addLocation(locationModel: locationModel);
-    Future.delayed(Duration(milliseconds: 500), () {
-      getLocations();
-    });
-    notifyListeners();
+    final location = _locations!.fold((l) => [], (r) => r);
+    final locationLength = location.length;
+    if (locationLength == 3) {
+      Fluttertoast.showToast(
+        msg: 'Sorry you have Maximum Locations,\n delete to add another',
+        toastLength: Toast.LENGTH_LONG,
+        fontSize: 12,
+      );
+    } else {
+      final response =
+          await addLocationService.addLocation(locationModel: locationModel);
+      if (response.statusCode == 200) {
+        getLocations();
+      } else {
+        print('addLocationError');
+      }
+    }
   }
 }

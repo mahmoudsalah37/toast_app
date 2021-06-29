@@ -31,14 +31,14 @@ class _LocationSingleSelectionItemWidgetState
   @override
   void initState() {
     super.initState();
-    locationsProvider = Provider.of<LocationsProvider>(context, listen: false)
-      ..getLocations();
-    final locations =
-        locationsProvider.locations?.fold((l) => <LocationModel>[], (r) => r) ??
-            [];
     Future.delayed(
       Duration.zero,
       () {
+        locationsProvider = Provider.of<LocationsProvider>(context, listen: false)
+          ..getLocations();
+        final locations =
+            locationsProvider.locations?.fold((l) => <LocationModel>[], (r) => r) ??
+                [];
         if (locations.isNotEmpty) {
           selectedLocaion = 0;
           final location = locations.elementAt(selectedLocaion);

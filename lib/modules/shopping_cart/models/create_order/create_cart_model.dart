@@ -20,5 +20,6 @@ class CreateOrderModel with _$CreateOrderModel {
 
   factory CreateOrderModel.fromJson(Map<String, dynamic> json) =>
       _$CreateOrderModelFromJson(json);
+
 }
 
