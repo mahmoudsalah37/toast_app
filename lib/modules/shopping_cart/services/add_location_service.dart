@@ -11,16 +11,9 @@ class AddLocationService extends DefaultService {
   }) async {
     try {
       final defaultService = DefaultService();
-      defaultService.postData(
+      await defaultService.postData(
         path,
-        data: {
-          "name": locationModel.name,
-          "street": locationModel.street,
-          "building": locationModel.building,
-          "apartment": locationModel.apartment,
-          "longitude": locationModel.latitude,
-          "latitude": locationModel.longitude,
-        },
+        data: locationModel.toJson(),
       );
     } on SocketException {
       throw Failure('No Internet connection');

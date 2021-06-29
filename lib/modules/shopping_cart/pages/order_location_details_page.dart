@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
+import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
+import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';
 import '../widget/location_single_selection_item_widget.dart';
@@ -8,7 +12,15 @@ import '../../../src/colors.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 
-class OrderLocationDetailsPage extends StatelessWidget {
+class OrderLocationDetailsPage extends StatefulWidget {
+  @override
+  _OrderLocationDetailsPageState createState() =>
+      _OrderLocationDetailsPageState();
+}
+
+class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
+  bool loadingVisibility = false;
+
   @override
   Widget build(BuildContext context) {
     final res = Responsive(context);
@@ -59,19 +71,38 @@ class OrderLocationDetailsPage extends StatelessWidget {
               child: Consumer<LocationsProvider>(
                   builder: (_, locationsProvider, __) {
                 return CustomCartYellowButton(
-                  title: 'Continue',
-                  onPressed: () {
-                    if (locationsProvider.getSelectedLocation == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Select Location Please')));
-                      return;
+                  title: 'Next',
+                  onPressed: () async {
+                    // setState(() => loadingVisibility = true);
+                    final createOrderService = CreateOrderService();
+                    final cartProvider =
+                        Provider.of<CartProvider>(context, listen: false);
+                    final createOrderResponse =
+                        await createOrderService.createOrder(
+                      CreateOrderModel().copyWith(
+                        companyId: 3,
+                        userId: 1,
+                        selectedLocationId:
+                            locationsProvider.getSelectedLocation!.id as int,
+                        vat: cartProvider.getVat,
+                        subTotal: cartProvider.getSubtotalPice,
+                        // cartItemsList: cartProvider.getProducts,
+                        cartItemsList: [],
+                        orderType: 'normal',
+                      ),
+                    );
+                    if (createOrderResponse.data != null) {
+                      Navigator.pushNamed(context, Routes.driversOfferPage);
+                    } else {
+                      print('something went wrong');
                     }
-                    Navigator.pushNamed(context, Routes.driversOfferPage);
+                    setState(() => loadingVisibility = false);
                   },
                 );
               }),
             ),
-          )
+          ),
+          Visibility(visible: loadingVisibility, child: LoadingIndicator())
         ],
       ),
     );

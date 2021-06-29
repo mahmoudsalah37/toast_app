@@ -50,17 +50,25 @@ class LocationsProvider extends ChangeNotifier {
     _setState(NotifierState.loaded);
   }
 
-  deleteLocation(int id) async {
+  Future<void> deleteLocation(int id, int index) async {
     final deleteLocationService = DeleteLocationService();
-    await deleteLocationService.deleteLocationById(id: id);
-    getLocations();
+    final response = await deleteLocationService.deleteLocationById(id: id);
+    if (response.statusCode == 200) {
+      final list = _locations!.fold((l) => [], (r) => r);
+      list.removeAt(index);
+      // getLocations();
+    } else {
+      print('deleteLocationError');
+    }
     notifyListeners();
   }
 
-  addLocation(LocationModel locationModel) async {
+  Future<void> addLocation(LocationModel locationModel) async {
     final addLocationService = AddLocationService();
     await addLocationService.addLocation(locationModel: locationModel);
-    getLocations();
+    Future.delayed(Duration(milliseconds: 500), () {
+      getLocations();
+    });
     notifyListeners();
   }
 }

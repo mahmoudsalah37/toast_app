@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
+import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
+import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
+import 'package:toast_app/utils/enums/notifier_state.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
@@ -32,11 +36,16 @@ class _LocationSingleSelectionItemWidgetState
     final locations =
         locationsProvider.locations?.fold((l) => <LocationModel>[], (r) => r) ??
             [];
-    if (locations.isNotEmpty) {
-      selectedLocaion = 0;
-      final location = locations.elementAt(selectedLocaion);
-      locationsProvider.setLocation(location);
-    }
+    Future.delayed(
+      Duration.zero,
+      () {
+        if (locations.isNotEmpty) {
+          selectedLocaion = 0;
+          final location = locations.elementAt(selectedLocaion);
+          locationsProvider.setLocation(location);
+        }
+      },
+    );
   }
 
   @override
@@ -44,26 +53,31 @@ class _LocationSingleSelectionItemWidgetState
     return Expanded(
       child:
           Consumer<LocationsProvider>(builder: (context, locationsProvider, w) {
-        return locationsProvider.locations?.fold(
-                (l) => Text(l.message),
-                (locations) => ListView.builder(
-                      padding: EdgeInsets.zero,
-                      itemCount: locations.length,
-                      itemBuilder: (context, index) {
-                        return LocationCardWidget(
-                          index: index,
-                          onSelected: (selectedLocaion) {
-                            setState(() {
-                              this.selectedLocaion = selectedLocaion;
-                              final location =
-                                  locations.elementAt(selectedLocaion);
-                              locationsProvider.setLocation(location);
-                            });
-                          },
-                        );
-                      },
-                    )) ??
-            Text('');
+        if (locationsProvider.state == NotifierState.loaded)
+          return locationsProvider.locations?.fold(
+                  (l) => Text(l.message),
+                  (locations) => ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: locations.length,
+                        itemBuilder: (context, index) {
+                          return LocationCardWidget(
+                            index: index,
+                            onSelected: (selectedLocaion) {
+                              setState(() {
+                                this.selectedLocaion = selectedLocaion;
+                                final location =
+                                    locations.elementAt(selectedLocaion);
+                                locationsProvider.setLocation(location);
+                              });
+                            },
+                          );
+                        },
+                      )) ??
+              Text('');
+        else
+          return Center(
+            child: CircularProgressIndicator(),
+          );
       }),
     );
   }
@@ -124,7 +138,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                       currentLocation.latitude,
                       currentLocation.longitude,
                     ),
-                    zoom: 12,
+                    zoom: 15,
                   ),
                 ),
               ),
@@ -181,9 +195,9 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   context: context,
                   builder: (context) => ClearItemsCartDialog(
                     title: 'Delete Location?',
-                    onTapYes: () {
-                      locationsProvider
-                          .deleteLocation(currentLocation.id as int);
+                    onTapYes: () async {
+                      await locationsProvider.deleteLocation(
+                          currentLocation.id as int, widget.index);
                       Navigator.pop(context);
                     },
                   ),

@@ -7,15 +7,10 @@ import 'package:toast_app/services/default_service.dart';
 class DeleteLocationService extends DefaultService {
   static const path = '/customer/location/delete';
 
-  Future<void> deleteLocationById({required int id}) async {
+  Future<Response> deleteLocationById({required int id}) async {
     try {
       final apiResponse = await getDataById(path, id);
-
-      if (apiResponse.statusCode == 200) {
-        print('>>>>>> Success');
-      } else {
-        print('>>>>>> failed ${apiResponse.statusCode}');
-      }
+      return apiResponse;
     } on SocketException {
       throw Failure('No Internet connection');
     } on HttpException {

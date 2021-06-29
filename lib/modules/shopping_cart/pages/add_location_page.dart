@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
@@ -169,17 +170,25 @@ class _AddLocationPageState extends State<AddLocationPage> {
                       child: CustomCartYellowButton(
                         onPressed: () async {
                           print('lat= $lat long = $long');
-                          await locationProvider.addLocation(
-                            LocationModel().copyWith(
-                              name: nameTEC.text,
-                              street: streetTEC.text,
-                              apartment: apartTEC.text,
-                              building: floorTEC.text,
-                              latitude: lat,
-                              longitude: long,
-                            ),
-                          );
-                          Navigator.pop(context);
+                          if (nameTEC.text.isEmpty ||
+                              streetTEC.text.isEmpty ||
+                              apartTEC.text.isEmpty ||
+                              floorTEC.text.isEmpty)
+                            Fluttertoast.showToast(
+                                msg: 'Please complete location fields');
+                          else {
+                            await locationProvider.addLocation(
+                              LocationModel().copyWith(
+                                name: nameTEC.text,
+                                street: streetTEC.text,
+                                apartment: apartTEC.text,
+                                building: floorTEC.text,
+                                latitude: lat,
+                                longitude: long,
+                              ),
+                            );
+                            Navigator.pop(context);
+                          }
                         },
                         title: 'Add Address',
                       ),
