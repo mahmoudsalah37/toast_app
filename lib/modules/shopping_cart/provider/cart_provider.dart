@@ -8,6 +8,7 @@ class CartProvider extends ChangeNotifier {
 
   set addProduct(ProductModel product) {
     _cart.products.add(product);
+
     _setTotalPrice();
     notifyListeners();
   }
