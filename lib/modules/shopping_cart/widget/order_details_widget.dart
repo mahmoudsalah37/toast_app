@@ -9,7 +9,7 @@ import '../../../utils/classes/resposive.dart';
 class OrderDetailsWidget extends StatelessWidget {
   late final String orderNumber;
   late final String driverName;
-  late final String driverRate;
+  late final double driverRate;
   late final String driverImg;
   late final VoidCallback onTapOrderDetails;
   late final VoidCallback onTapCallDriver;

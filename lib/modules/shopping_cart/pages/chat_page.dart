@@ -11,7 +11,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:laravel_echo/laravel_echo.dart';
 import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
+import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/message_model.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
 import 'package:toast_app/modules/shopping_cart/widget/chat_app_bar.dart';
 import 'package:uuid/uuid.dart';
 
@@ -44,8 +46,9 @@ class _ChatPageState extends State<ChatPage> {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);
-      if (messageModel.user != 'Author1') _handleRecieveMessage(messageModel);
-      print('${e['data']}');
+      // if (messageModel.user != '')
+      _handleRecieveMessage(messageModel);
+      print('dataaa  = ${e['data']}');
     });
     echo.socket.on('connect', (_) {
       print('connect');
@@ -83,7 +86,7 @@ class _ChatPageState extends State<ChatPage> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return Container(
-          height: res.getHeight(29),
+          height: res.getHeight(26),
           child: Stack(
             children: [
               Align(
@@ -130,11 +133,10 @@ class _ChatPageState extends State<ChatPage> {
                 alignment: Alignment.topCenter,
                 child: Container(
                   width: res.getWidth(20),
-                  height: res.getHeight(1),
+                  height: res.getHeight(.5),
                   decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               )
             ],
@@ -224,7 +226,7 @@ class _ChatPageState extends State<ChatPage> {
     );
     var dio = Dio();
     final response = await dio
-        .get('https://beta.toast.sa/api/message/Author/${message.text}');
+        .get('https://beta.toast.sa/api/message/Author1/${message.text}');
     if (response.statusCode == 200) {
       print('data = ${response.data}');
       print('status = ${response.statusCode}');
@@ -238,14 +240,17 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final driverOfferProvider =
+        Provider.of<DriverOfferProvider>(context, listen: false)
+            .getDriverOfferModel;
     return Scaffold(
       body: Center(
         child: Column(
           children: [
             ChatAppBar(
-              driverName: 'Ahmed ',
-              driverImg: 'assets/test/banner_three.png',
-              driverRate: 4.8,
+              driverName: driverOfferProvider.driverName,
+              driverImg: driverOfferProvider.img,
+              driverRate: driverOfferProvider.driverRate,
             ),
             //TODO: change onSubmit of keyboard of chat textField
             Expanded(

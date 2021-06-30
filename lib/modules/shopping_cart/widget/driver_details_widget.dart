@@ -5,10 +5,10 @@ import '../../../src/styles.dart';
 
 class DriverDetailsWidget extends StatelessWidget {
   final String driverName;
-  final String driverRate;
+  final double driverRate;
   final String driverImg;
-  final String driverPriceOffer;
-  final String driverDeliveryTime;
+  final double driverPriceOffer;
+  final int driverDeliveryTime;
   final String driverDistance;
   final bool haveShadow;
 

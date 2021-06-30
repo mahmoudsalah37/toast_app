@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/place_order/place_order_model.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
 import 'package:toast_app/modules/shopping_cart/services/place_order_service.dart';
 import '../widget/add_coupon_animation_widget.dart';
 import '../widget/cart_app_bar_widget.dart';
@@ -35,6 +36,9 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
+    final driverOfferProvider =
+        Provider.of<DriverOfferProvider>(context, listen: false)
+            .getDriverOfferModel;
     return Scaffold(
       body: Stack(
         children: [
@@ -45,12 +49,12 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
               CustomCartAppBar(title: 'Total Order', indicatorIndex: 3),
               DriverDetailsWidget(
                 haveShadow: true,
-                driverName: 'Ahmed Nasser',
-                driverImg: 'assets/test/banner_three.png',
-                driverRate: '4.8',
-                driverPriceOffer: '90',
-                driverDeliveryTime: '15',
-                driverDistance: '15',
+                driverName: driverOfferProvider.driverName,
+                driverImg: driverOfferProvider.img,
+                driverRate: driverOfferProvider.driverRate,
+                driverPriceOffer: driverOfferProvider.driverDeliveryOffer,
+                driverDeliveryTime: driverOfferProvider.driverDeliveryTime,
+                driverDistance: driverOfferProvider.driverDeliveryDistance,
               ),
               Divider(color: CustomColors.yellowDeepColor, thickness: 2),
               Padding(
@@ -138,16 +142,19 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
                   TotalPriceRowItemWidget(
                       title: 'VAT%', price: cartProvider.getVat),
                   SizedBox(height: 8),
-                  TotalPriceRowItemWidget(title: 'Delivery', price: 20),
+                  TotalPriceRowItemWidget(
+                      title: 'Delivery',
+                      price: driverOfferProvider.driverDeliveryOffer),
                   SizedBox(height: 8),
                   TotalPriceRowItemWidget(title: 'Discount', price: -12),
                   SizedBox(height: 8),
                   TotalPriceRowItemWidget(
                       title: 'Total',
                       price: (cartProvider.getSubtotalPice +
-                          cartProvider.getVat +
-                          20 -
-                          12).floorToDouble()),
+                              cartProvider.getVat +
+                              driverOfferProvider.driverDeliveryOffer -
+                              12)
+                          .floorToDouble()),
                 ],
               ),
               SizedBox(height: res.getHeight(5)),

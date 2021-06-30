@@ -6,10 +6,10 @@ import 'driver_details_widget.dart';
 
 class DriverOffersItemWidget extends StatelessWidget {
   final String driverName;
-  final String driverRate;
+  final double driverRate;
   final String driverImg;
-  final String driverPriceOffer;
-  final String driverDeliveryTime;
+  final double driverPriceOffer;
+  final int driverDeliveryTime;
   final String driverDistance;
   final VoidCallback onTapDecline;
   final VoidCallback onTapAccept;

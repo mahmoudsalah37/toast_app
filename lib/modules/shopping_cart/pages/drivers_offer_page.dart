@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:toast_app/modules/shopping_cart/models/fake_data.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/fake_driver_offer_data.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
 import 'package:toast_app/widgets/loading_indicator.dart';
 
 import '../../../src/colors.dart';
@@ -42,6 +44,8 @@ class _DriverOfferPageState extends State<DriverOfferPage> {
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
+    final driverOfferProvider =
+        Provider.of<DriverOfferProvider>(context, listen: false);
     return Scaffold(
       body: Stack(
         children: [
@@ -106,17 +110,19 @@ class _DriverOfferPageState extends State<DriverOfferPage> {
                       itemCount: driverOfferList.length,
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
-                        final data =driverOfferList.elementAt(index);
+                        final data = driverOfferList.elementAt(index);
                         return DriverOffersItemWidget(
-                          onTapAccept: () => Navigator.pushNamed(
-                              context, Routes.placeOrderPage),
+                          onTapAccept: () {
+                            driverOfferProvider.setDriverOfferModel = data;
+                            Navigator.pushNamed(context, Routes.placeOrderPage);
+                          },
                           onTapDecline: () {},
                           driverName: data.driverName,
                           driverImg: data.img,
-                          driverRate: '${data.driverRate} - Good',
                           driverPriceOffer: data.driverDeliveryOffer,
                           driverDeliveryTime: data.driverDeliveryTime,
                           driverDistance: data.driverDeliveryDistance,
+                          driverRate: data.driverRate,
                         );
                       },
                     ),

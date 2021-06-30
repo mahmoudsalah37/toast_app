@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
 import '../widget/order_details_widget.dart';
 import '../../../src/routes.dart';
 import 'package:url_launcher/url_launcher.dart' as urLauncher;
@@ -18,6 +20,9 @@ class OrderAcceptedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final driverOfferProvider =
+        Provider.of<DriverOfferProvider>(context, listen: false)
+            .getDriverOfferModel;
     return Scaffold(
       body: Stack(
         children: [
@@ -32,9 +37,9 @@ class OrderAcceptedPage extends StatelessWidget {
             ),
           ),
           OrderDetailsWidget(
-            driverImg: 'assets/test/banner_three.png',
-            driverName: 'Ahmed Nasser',
-            driverRate: '4.8',
+            driverImg: driverOfferProvider.img,
+            driverName: driverOfferProvider.driverName,
+            driverRate: driverOfferProvider.driverRate,
             orderNumber: '12312346332',
             onTapCallDriver: () async =>
                 await _makePhoneCall(phoneNumber: '01119193535'),
