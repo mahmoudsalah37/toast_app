@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
@@ -11,6 +12,7 @@ class OrderDetailBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
     return Container(
       height: res.getHeight(73.5),
       child: Stack(
@@ -74,17 +76,16 @@ class OrderDetailBottomSheet extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: 5,
+                      itemCount: cartProvider.getProductLength,
                       itemBuilder: (_, index) {
+                        final data = cartProvider.getProducts.elementAt(index);
                         return OrderedDetailsBottomSheetItem(
-                          orderTitle: 'Super Star',
-                          orderPlaceName: 'Waves Store',
-                          orderDescription: 'Lace-up Snicker Shoe, Green',
-                          orderPrice: '20',
-                          orderQuantity: '2',
-                          backgroundColor: index == 0
-                              ? CustomColors.blueLightColor
-                              : Colors.white,
+                          orderTitle: data.title,
+                          orderPlaceName: '',
+                          orderDescription: data.title,
+                          orderPrice: data.priceModel.price.toString(),
+                          orderQuantity: data.quantity.toString(),
+                          backgroundColor: Colors.white,
                         );
                       },
                     ),
