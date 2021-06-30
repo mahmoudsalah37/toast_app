@@ -12,6 +12,7 @@ import 'package:laravel_echo/laravel_echo.dart';
 import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
 import 'package:toast_app/modules/shopping_cart/models/message_model.dart';
+import 'package:toast_app/modules/shopping_cart/widget/chat_app_bar.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../src/colors.dart';
@@ -43,8 +44,7 @@ class _ChatPageState extends State<ChatPage> {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);
-      if (messageModel.user != 'Author1')
-        _handleRecieveMessage(messageModel);
+      if (messageModel.user != 'Author1') _handleRecieveMessage(messageModel);
       print('${e['data']}');
     });
     echo.socket.on('connect', (_) {
@@ -56,17 +56,19 @@ class _ChatPageState extends State<ChatPage> {
       // _handleRecieveMessage(messageModel);
     });
   }
+
   void _handleRecieveMessage(MessageModel message) async {
     final textMessage = types.TextMessage(
       author: types.User.fromJson({}),
       id: const Uuid().v4(),
       text: message.user! + ':\n' + message.message!,
-      createdAt:(DateTime.now().millisecondsSinceEpoch / 1000).floor() ,
+      createdAt: (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
       // timestamp: (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
     );
 
     _addMessage(textMessage);
   }
+
   void _addMessage(types.Message message) {
     setState(() {
       _messages.insert(0, message);
@@ -187,7 +189,7 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-  void _handleSendPressed(types.PartialText message)async {
+  void _handleSendPressed(types.PartialText message) async {
     final textMessage = types.TextMessage(
       author: _user,
       createdAt: DateTime.now().millisecondsSinceEpoch,
@@ -195,8 +197,8 @@ class _ChatPageState extends State<ChatPage> {
       text: message.text,
     );
     var dio = Dio();
-    final response = await dio.get(
-        'https://beta.toast.sa/api/message/Author/${message.text}');
+    final response = await dio
+        .get('https://beta.toast.sa/api/message/Author/${message.text}');
     if (response.statusCode == 200) {
       print('data = ${response.data}');
       print('status = ${response.statusCode}');
@@ -208,7 +210,6 @@ class _ChatPageState extends State<ChatPage> {
     // _addMessage(textMessage);
   }
 
-
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
@@ -217,47 +218,10 @@ class _ChatPageState extends State<ChatPage> {
       body: Center(
         child: Column(
           children: [
-            Container(
-              width: res.getWidth(100),
-              margin: EdgeInsets.only(
-                  top: res.getHeight(6), left: 10, right: 10, bottom: 10),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              decoration: CustomStyle.containerShadowDecoration,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Icon(Icons.arrow_back_ios,
-                        color: CustomColors.yellowDeepColor),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Ahmed Nasser',
-                        style: theme.textTheme.headline5,
-                      ),
-                      Text(
-                        '★ 4.8',
-                        style: theme.textTheme.headline3!
-                            .copyWith(color: CustomColors.accentColor),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
-                  Container(
-                    width: res.getWidth(16),
-                    height: res.getHeight(6),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/test/banner_three.png'),
-                        ),
-                        shape: BoxShape.circle),
-                  ),
-                ],
-              ),
+            ChatAppBar(
+              driverName: 'Ahmed ',
+              driverImg: 'assets/test/banner_three.png',
+              driverRate: 4.8,
             ),
             //TODO: change onSubmit of keyboard of chat textField
             Expanded(
