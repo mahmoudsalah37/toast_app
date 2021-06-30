@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/home/models/product/product_model.dart';
+
+import '../../home/models/product/product_model.dart';
 import '../models/cart/cart_model.dart';
 
 class CartProvider extends ChangeNotifier {
@@ -8,7 +9,6 @@ class CartProvider extends ChangeNotifier {
 
   set addProduct(ProductModel product) {
     _cart.products.add(product);
-
     _setTotalPrice();
     notifyListeners();
   }

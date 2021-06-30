@@ -1,20 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:group_button/group_button.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/provider/select_product_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/theme.dart';
+import '../../../utils/classes/helper_methods.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../widgets/multi_selecteed_dialog_field_widget.dart';
+import '../../shopping_cart/provider/cart_provider.dart';
 import '../models/addon/addon_model.dart';
 import '../models/product/product_model.dart';
 import '../models/without/without_model.dart';
+import '../provider/select_product_provider.dart';
 
 class MenuItemModalBottomSheet extends StatefulWidget {
   MenuItemModalBottomSheet({required this.product});

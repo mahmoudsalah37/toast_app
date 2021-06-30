@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
 
 import '../../../errors_handler/failure.dart';
 import '../../../extensions/task_extensions.dart';
+import '../../../utils/classes/helper_methods.dart';
 import '../../../utils/enums/notifier_state.dart';
 import '../models/location/location_model.dart';
 import '../services/locations_service.dart';

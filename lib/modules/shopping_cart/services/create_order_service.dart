@@ -1,10 +1,9 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
-import 'package:toast_app/errors_handler/failure.dart';
-import 'package:toast_app/modules/home/models/product/product_model.dart';
-import 'package:toast_app/modules/shopping_cart/models/cart/cart_model.dart';
-import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
-import 'package:toast_app/services/default_service.dart';
+
+import '../../../errors_handler/failure.dart';
+import '../../../services/default_service.dart';
 
 class CreateOrderService extends DefaultService {
   static const path = '/create_order';

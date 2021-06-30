@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../widget/order_details_widget.dart';
-import '../../../src/routes.dart';
 import 'package:url_launcher/url_launcher.dart' as urLauncher;
 
+import '../../../src/routes.dart';
+import '../widget/order_details_widget.dart';
 import 'order_details_bottom_sheet.dart';
 
 class OrderAcceptedPage extends StatelessWidget {

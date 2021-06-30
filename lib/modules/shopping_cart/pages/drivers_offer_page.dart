@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:toast_app/widgets/loading_indicator.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
+import '../../../widgets/loading_indicator.dart';
 import '../widget/cancel_order_dialog_widget.dart';
 import '../widget/custom_estimated_distance_stepper.dart';
 import '../widget/driver_request_item_widget.dart';

@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
-import 'package:toast_app/modules/home/models/product/product_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../home/models/product/product_model.dart';
 
 part 'create_cart_model.freezed.dart';
 part 'create_cart_model.g.dart';
 
 @freezed
-abstract class CreateOrderModel with _$CreateOrderModel {
+class CreateOrderModel with _$CreateOrderModel {
   const factory CreateOrderModel({
     @Default(0) @JsonKey(name: 'vendor_id') int companyId,
     @Default(0) @JsonKey(name: 'user_id') int userId,

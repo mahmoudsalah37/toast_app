@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:toast_app/src/colors.dart';
+
+import '../../src/colors.dart';
 
 class HelperMethods {
   static showToast({

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../src/colors.dart';
 
 class RegisterAppBar extends StatelessWidget {

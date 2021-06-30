@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/shopping_cart/pages/add_location_page.dart';
 
+import '../modules/auth/pages/login_page.dart';
 import '../modules/auth/pages/register_done_page.dart';
 import '../modules/auth/pages/register_personal_info_page.dart';
 import '../modules/auth/pages/register_step_three_page.dart';
 import '../modules/auth/pages/register_verification_code_page.dart';
-import '../modules/auth/pages/login_page.dart';
 import '../modules/auth/pages/splash_page.dart';
 import '../modules/home/pages/home_page.dart';
 import '../modules/home/pages/menu_page.dart';
+import '../modules/shopping_cart/pages/add_location_page.dart';
 import '../modules/shopping_cart/pages/chat_page.dart';
 import '../modules/shopping_cart/pages/drivers_offer_page.dart';
 import '../modules/shopping_cart/pages/order_accepted_page.dart';

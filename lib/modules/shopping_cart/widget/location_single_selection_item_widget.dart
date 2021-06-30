@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
-import 'package:toast_app/modules/shopping_cart/pages/drivers_offer_page.dart';
-import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
-import 'package:toast_app/utils/enums/notifier_state.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/helper_methods.dart';
 import '../../../utils/classes/resposive.dart';
+import '../../../utils/enums/notifier_state.dart';
 import '../models/location/location_model.dart';
 import '../provider/locations_provider.dart';
 import 'clear_cart_items_dialog.dart';
@@ -35,11 +32,12 @@ class _LocationSingleSelectionItemWidgetState
     Future.delayed(
       Duration.zero,
       () {
-        locationsProvider = Provider.of<LocationsProvider>(context, listen: false)
-          ..getLocations();
-        final locations =
-            locationsProvider.locations?.fold((l) => <LocationModel>[], (r) => r) ??
-                [];
+        locationsProvider =
+            Provider.of<LocationsProvider>(context, listen: false)
+              ..getLocations();
+        final locations = locationsProvider.locations
+                ?.fold((l) => <LocationModel>[], (r) => r) ??
+            [];
         if (locations.isNotEmpty) {
           selectedLocaion = 0;
           final location = locations.elementAt(selectedLocaion);

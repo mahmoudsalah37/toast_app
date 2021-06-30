@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+
+import '../src/styles.dart';
+import '../utils/classes/resposive.dart';
 
 class LoadingIndicator extends StatelessWidget {
   @override

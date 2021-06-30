@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../models/location/location_model.dart';
-import '../provider/locations_provider.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
+import '../models/location/location_model.dart';
+import '../provider/locations_provider.dart';
 
 class LocationCardWidget extends StatefulWidget {
   const LocationCardWidget(

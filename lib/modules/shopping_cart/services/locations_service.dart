@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../models/location/Locations_model.dart';
-import '../models/location/location_model.dart';
-
 import '../../../errors_handler/failure.dart';
 import '../../../services/default_service.dart';
+import '../models/location/Locations_model.dart';
+import '../models/location/location_model.dart';
 
 class LocationsService extends DefaultService {
   static const getLocationsPath = '/customer/locations';

@@ -1,11 +1,12 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:toast_app/errors_handler/failure.dart';
-import 'package:toast_app/modules/shopping_cart/models/place_order/place_order_model.dart';
-import 'package:toast_app/services/default_service.dart';
 
-class PlaceOrderService extends DefaultService{
+import '../../../errors_handler/failure.dart';
+import '../../../services/default_service.dart';
+import '../models/place_order/place_order_model.dart';
+
+class PlaceOrderService extends DefaultService {
   static const path = 'customer/driver/accept';
 
   static Future<Response> placeOrder(

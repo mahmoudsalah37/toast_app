@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../src/colors.dart';
-import '../../../utils/classes/resposive.dart';
 
 class RegisterOutlineButton extends StatelessWidget {
   final double? height, width;
@@ -20,7 +19,6 @@ class RegisterOutlineButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final res = Responsive(context);
     ThemeData theme = Theme.of(context);
     return OutlinedButton(
       onPressed: () => onPressed(),

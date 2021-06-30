@@ -1,9 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../../../utils/classes/resposive.dart';
-import '../widget/ordered_details_bottom_sheet_item.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../widget/ordered_details_bottom_sheet_item.dart';
 
 class OrderDetailBottomSheet extends StatelessWidget {
   @override

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:toast_app/modules/auth/model/login/login_model.dart';
-import 'package:toast_app/modules/auth/service/LoginService.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
+
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/helper_methods.dart';
+import '../../../utils/classes/resposive.dart';
+import '../model/login/login_model.dart';
+import '../service/LoginService.dart';
 import '../widgets/custom_outline_button.dart';
 import '../widgets/custom_sign_in_button.dart';
 import '../widgets/register_text_field.dart';
-import '../../../src/colors.dart';
-import '../../../src/routes.dart';
-import '../../../utils/classes/resposive.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -87,10 +88,9 @@ class _LoginPageState extends State<LoginPage> {
                   );
                   Navigator.pushNamed(context, Routes.homePage);
                   HelperMethods.showToast(
-                    msg: 'Welcome ${loginResponse.data['user']['name']}',
-                    gravity: ToastGravity.TOP,
-                    toastLength: Toast.LENGTH_LONG
-                  );
+                      msg: 'Welcome ${loginResponse.data['user']['name']}',
+                      gravity: ToastGravity.TOP,
+                      toastLength: Toast.LENGTH_LONG);
                   print('token = ${loginResponse.data['token']}');
                 },
                 backgroundColor: CustomColors.blueColor,
