@@ -11,7 +11,10 @@ import '../widgets/custom_sign_in_button.dart';
 import '../widgets/register_text_field.dart';
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';
+import '../../../utils/classes/helper_methods.dart';
 import '../../../utils/classes/resposive.dart';
+import '../model/login/login_model.dart';
+import '../service/LoginService.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -32,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       body: ModalProgressHUD(
         inAsyncCall: _isInAsyncCall,
         opacity: 0.5,
-        progressIndicator:LoadingIndicator(),
+        progressIndicator: LoadingIndicator(),
         child: Padding(
           padding: EdgeInsets.all(10),
           child: ListView(
@@ -105,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                           gravity: ToastGravity.TOP,
                           toastLength: Toast.LENGTH_LONG);
                       print('token = ${loginResponse.data['token']}');
-                        setState(() => _isInAsyncCall = false);
+                      setState(() => _isInAsyncCall = false);
                     }
                     setState(() => _isInAsyncCall = false);
                   },

@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 
 class DefaultService {
+  static const domin = 'https://beta.toast.sa';
+  static const baseUrl = '$domin/api';
   static Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'https://beta.toast.sa/api',
+      baseUrl: baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -23,7 +25,7 @@ class DefaultService {
     return response;
   }
 
-   Future<Response> postData(
+  Future<Response> postData(
     String path, {
     Map<String, dynamic>? data,
   }) async {

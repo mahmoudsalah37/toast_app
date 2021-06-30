@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:toast_app/modules/home/models/product/product_model.dart';
+import '../../../home/models/product/product_model.dart';
 
 part 'cart_model.freezed.dart';
 part 'cart_model.g.dart';

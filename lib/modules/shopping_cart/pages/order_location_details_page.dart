@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/create_order/create_cart_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
-import 'package:toast_app/modules/shopping_cart/services/create_order_service.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
-import 'package:toast_app/widgets/loading_indicator.dart';
+import 'package:toast_app/modules/shopping_cart/models/socket_model/socket_model.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
+
+import '../../../src/colors.dart';
+import '../../../src/routes.dart';
+import '../../../utils/classes/helper_methods.dart';
+import '../../../utils/classes/resposive.dart';
+import '../../../widgets/loading_indicator.dart';
+import '../models/create_order/create_cart_model.dart';
+import '../provider/cart_provider.dart';
+import '../provider/locations_provider.dart';
+import '../services/create_order_service.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';
 import '../widget/location_single_selection_item_widget.dart';
-import '../../../src/colors.dart';
-import '../../../src/routes.dart';
-import '../../../utils/classes/resposive.dart';
 
 class OrderLocationDetailsPage extends StatefulWidget {
   @override
@@ -97,6 +99,10 @@ class _OrderLocationDetailsPageState extends State<OrderLocationDetailsPage> {
                       HelperMethods.showToast(msg: 'Order Created');
                       print(
                           'order_channel>>>>>>${createOrderResponse.data['data']['order_channel']}');
+                      final socket =
+                          SocketModel.fromJson(createOrderResponse.data);
+                      Provider.of<DriverSocketProvider>(context, listen: false)
+                          .setSocket = socket;
                     } else {
                       print('something went wrong');
                     }

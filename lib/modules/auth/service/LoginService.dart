@@ -2,13 +2,14 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:toast_app/errors_handler/failure.dart';
-import 'package:toast_app/modules/auth/model/login/login_model.dart';
-import 'package:toast_app/services/default_service.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
+
+import '../../../errors_handler/failure.dart';
+import '../../../services/default_service.dart';
+import '../../../utils/classes/helper_methods.dart';
+import '../model/login/login_model.dart';
 
 class LoginService extends DefaultService {
-  static const path = 'https://beta.toast.sa/api/login';
+  static const path = '/login';
 
   static Future<Response> login({required LoginModel loginModel}) async {
     try {

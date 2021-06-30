@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:toast_app/modules/home/models/addon/addon_model.dart';
-import 'package:toast_app/modules/home/models/product/product_model.dart';
-import 'package:toast_app/modules/home/models/varaiety/varaiety_model.dart';
-import 'package:toast_app/modules/home/models/without/without_model.dart';
+
+import '../models/addon/addon_model.dart';
+import '../models/product/product_model.dart';
+import '../models/varaiety/varaiety_model.dart';
+import '../models/without/without_model.dart';
 
 class SelectProductProvider extends ChangeNotifier {
   ProductModel _lastSelectedProduct = ProductModel();

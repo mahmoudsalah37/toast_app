@@ -6,7 +6,6 @@ import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
 import '../../../utils/enums/notifier_state.dart';
 import '../../../widgets/direct_selected_item_list.dart';
-import '../../shopping_cart/provider/cart_provider.dart';
 import '../provider/categories_provider.dart';
 import '../widgets/badge_widget.dart';
 import '../widgets/home_item_widget.dart';

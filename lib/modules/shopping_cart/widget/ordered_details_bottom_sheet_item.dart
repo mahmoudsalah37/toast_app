@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../utils/classes/resposive.dart';
+
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class OrderedDetailsBottomSheetItem extends StatelessWidget {
   final String orderTitle;

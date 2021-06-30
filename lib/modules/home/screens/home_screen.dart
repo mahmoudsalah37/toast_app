@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 import '../../../src/colors.dart';
-import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
-import '../../shopping_cart/provider/cart_provider.dart';
 import '../models/category_icon_model.dart';
 import '../models/company_model.dart';
-import '../widgets/badge_widget.dart';
 import '../widgets/categories_widget.dart';
 import '../widgets/companies_list_widget.dart';
 import '../widgets/custom_auto_swiper_widget.dart';

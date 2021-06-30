@@ -4,7 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
+
+import '../../../utils/classes/helper_methods.dart';
 
 class MapService {
   static List<Marker> markers = [];
@@ -56,9 +57,7 @@ class MapService {
       controller.animateCamera(
         CameraUpdate.newCameraPosition(newCameraPosition),
       );
-      getCurrentLatLngOfUser().then((value) {
-
-      });
+      getCurrentLatLngOfUser().then((value) {});
       setState();
       return LatLng(position[0].latitude, position[0].longitude);
     } catch (e) {

@@ -2,10 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import '../../../utils/classes/resposive.dart';
-import '../widget/ordered_details_bottom_sheet_item.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
+import '../widget/ordered_details_bottom_sheet_item.dart';
 
 class OrderDetailBottomSheet extends StatelessWidget {
   @override
@@ -82,7 +82,7 @@ class OrderDetailBottomSheet extends StatelessWidget {
                         return OrderedDetailsBottomSheetItem(
                           orderTitle: data.title,
                           orderPlaceName: '',
-                          orderDescription:data.title ,
+                          orderDescription: data.title,
                           orderPrice: data.priceModel.price.toString(),
                           orderQuantity: data.quantity.toString(),
                           backgroundColor: Colors.white,

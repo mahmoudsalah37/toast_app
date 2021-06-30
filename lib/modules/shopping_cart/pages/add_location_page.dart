@@ -1,19 +1,17 @@
 import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/location/location_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/locations_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/map_service.dart';
-import 'package:toast_app/modules/shopping_cart/widget/cart_yellow_button.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/helper_methods.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
-import 'package:geolocator/geolocator.dart' as geoLocator;
-import 'package:geocoding/geocoding.dart';
+
+import '../../../src/styles.dart';
+import '../../../utils/classes/helper_methods.dart';
+import '../../../utils/classes/resposive.dart';
+import '../models/location/location_model.dart';
+import '../provider/locations_provider.dart';
+import '../provider/map_service.dart';
+import '../widget/cart_yellow_button.dart';
 
 class AddLocationPage extends StatefulWidget {
   @override
