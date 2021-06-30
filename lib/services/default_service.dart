@@ -8,7 +8,7 @@ class DefaultService {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization':
-            'Bearer dd6f1RKdIG0190NYF9o2d7xUBf8rCcQ2aZtxWHLC8SthgIEOJq09W0CS3EURq1rUt4xUSlFe4t67t9SI'
+            'Bearer mhF77LK9vtXMvSRdwehvIimr19DMAEwoDL4kfgV4SwwOrQoR9mY9nGaxFY5iVIDK765ldgcGSaFHjIQR'
       },
     ),
   );

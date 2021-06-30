@@ -1,5 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toast_app/modules/shopping_cart/models/place_order/place_order_model.dart';
+import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import 'package:toast_app/modules/shopping_cart/services/place_order_service.dart';
 import '../widget/add_coupon_animation_widget.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';
@@ -17,7 +21,7 @@ class PlaceOrderPage extends StatefulWidget {
 }
 
 class _PlaceOrderPageState extends State<PlaceOrderPage> {
-  int selectedIndex = -1;
+  int selectedIndex = 0;
   TextEditingController couponTEC = TextEditingController(text: '');
 
   _isSelected(int index) {
@@ -30,6 +34,7 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
     ThemeData theme = Theme.of(context);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
     return Scaffold(
       body: Stack(
         children: [
@@ -127,15 +132,22 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
               ),
               TotalPriceWidget(
                 children: [
-                  TotalPriceRowItemWidget(title: 'SubTotal', price: 60),
+                  TotalPriceRowItemWidget(
+                      title: 'SubTotal', price: cartProvider.getSubtotalPice),
                   SizedBox(height: 8),
-                  TotalPriceRowItemWidget(title: 'VAT%', price: 60),
+                  TotalPriceRowItemWidget(
+                      title: 'VAT%', price: cartProvider.getVat),
                   SizedBox(height: 8),
-                  TotalPriceRowItemWidget(title: 'Delivery', price: 60),
+                  TotalPriceRowItemWidget(title: 'Delivery', price: 20),
                   SizedBox(height: 8),
-                  TotalPriceRowItemWidget(title: 'Discount', price: 60),
+                  TotalPriceRowItemWidget(title: 'Discount', price: -12),
                   SizedBox(height: 8),
-                  TotalPriceRowItemWidget(title: 'Total', price: 60),
+                  TotalPriceRowItemWidget(
+                      title: 'Total',
+                      price: (cartProvider.getSubtotalPice +
+                          cartProvider.getVat +
+                          20 -
+                          12).floorToDouble()),
                 ],
               ),
               SizedBox(height: res.getHeight(5)),
@@ -144,13 +156,27 @@ class _PlaceOrderPageState extends State<PlaceOrderPage> {
           Positioned(
             top: res.getHeight(92),
             child: CustomCartYellowButton(
-              title: 'Place Order',
-              onPressed: () =>
-                  Navigator.pushNamed(context, Routes.orderAcceptedPage),
-            ),
+                title: 'Place Order',
+                onPressed: () async {
+                  // final response = await PlaceOrderService.placeOrder(
+                  //   placeOrderModel: PlaceOrderModel(
+                  //     orderId: 3,
+                  //     driverId: 2,
+                  //     deliveryFees: 74,
+                  //   ),
+                  // );
+                  // final get  = PlaceOrderModel.fromJson(response as Map<String,dynamic>);
+                  // final s = get.toJson()[''];
+                  // print('id = ${response.data['data']['id']}');
+                  // print('driverId = ${response.data['data']['driver_id']}');
+                  // print('delivery_fees = ${response.data['data']['delivery_fees']}');
+                  Navigator.pushNamed(context, Routes.orderAcceptedPage);
+                }),
           )
         ],
       ),
     );
   }
 }
+
+class GetResponse {}

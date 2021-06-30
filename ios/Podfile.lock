@@ -51,6 +51,8 @@ PODS:
     - GoogleMaps/Base
   - image_picker (0.0.1):
     - Flutter
+  - modal_progress_hud_nsn (0.0.1):
+    - Flutter
   - open_file (0.0.1):
     - Flutter
   - SDWebImage (5.11.1):
@@ -69,6 +71,7 @@ DEPENDENCIES:
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
   - google_maps_flutter (from `.symlinks/plugins/google_maps_flutter/ios`)
   - image_picker (from `.symlinks/plugins/image_picker/ios`)
+  - modal_progress_hud_nsn (from `.symlinks/plugins/modal_progress_hud_nsn/ios`)
   - open_file (from `.symlinks/plugins/open_file/ios`)
   - url_launcher (from `.symlinks/plugins/url_launcher/ios`)
 
@@ -96,6 +99,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/google_maps_flutter/ios"
   image_picker:
     :path: ".symlinks/plugins/image_picker/ios"
+  modal_progress_hud_nsn:
+    :path: ".symlinks/plugins/modal_progress_hud_nsn/ios"
   open_file:
     :path: ".symlinks/plugins/open_file/ios"
   url_launcher:
@@ -112,6 +117,7 @@ SPEC CHECKSUMS:
   google_maps_flutter: df4e7de95264aa0a2f11aac0fc7e313acb8ffc7e
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   image_picker: 50e7c7ff960e5f58faa4d1f4af84a771c671bc4a
+  modal_progress_hud_nsn: f6fb744cd060653d66ed8f325360ef3650eb2fde
   open_file: 02eb5cb6b21264bd3a696876f5afbfb7ca4f4b7d
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SwiftyGif: 5d4af95df24caf1c570dbbcb32a3b8a0763bc6d7

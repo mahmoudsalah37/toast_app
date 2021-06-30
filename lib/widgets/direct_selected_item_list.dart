@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:direct_select_flutter/direct_select_item.dart';
 import 'package:direct_select_flutter/direct_select_list.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,14 @@ class DirectSelectListWidget extends StatelessWidget {
       this.focusedItemDecoration,
       this.onItemSelectedListener,
       this.onUserTappedListener});
+
   final List<CategoryModel> categories;
   final dynamic Function(CategoryModel, int, BuildContext)?
       onItemSelectedListener;
   final int defaultItemIndex;
   final Decoration? focusedItemDecoration;
   final void Function()? onUserTappedListener;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -31,10 +34,12 @@ class DirectSelectListWidget extends StatelessWidget {
               itemHeight: 60,
               value: v,
               itemBuilder: (_, v) => Center(
-                child: Text(
+                child: AutoSizeText(
                   v.name,
                   style: theme.textTheme.headline6,
                   textAlign: TextAlign.center,
+                  minFontSize: 4,
+                  maxLines: 1,
                 ),
               ),
             ),

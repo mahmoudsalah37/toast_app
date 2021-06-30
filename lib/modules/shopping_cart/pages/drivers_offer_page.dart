@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:toast_app/modules/shopping_cart/models/fake_data.dart';
 import 'package:toast_app/widgets/loading_indicator.dart';
 
 import '../../../src/colors.dart';
@@ -102,19 +103,20 @@ class _DriverOfferPageState extends State<DriverOfferPage> {
                   Container(
                     height: res.getHeight(50),
                     child: ListView.builder(
-                      itemCount: 6,
+                      itemCount: driverOfferList.length,
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
+                        final data =driverOfferList.elementAt(index);
                         return DriverOffersItemWidget(
                           onTapAccept: () => Navigator.pushNamed(
                               context, Routes.placeOrderPage),
                           onTapDecline: () {},
-                          driverName: 'Ahmed Nasser $index',
-                          driverImg: 'assets/test/banner_three.png',
-                          driverRate: '4.8 - Good',
-                          driverPriceOffer: '90',
-                          driverDeliveryTime: '15',
-                          driverDistance: '15',
+                          driverName: data.driverName,
+                          driverImg: data.img,
+                          driverRate: '${data.driverRate} - Good',
+                          driverPriceOffer: data.driverDeliveryOffer,
+                          driverDeliveryTime: data.driverDeliveryTime,
+                          driverDistance: data.driverDeliveryDistance,
                         );
                       },
                     ),

@@ -6,7 +6,7 @@ import 'package:toast_app/modules/shopping_cart/models/place_order/place_order_m
 import 'package:toast_app/services/default_service.dart';
 
 class PlaceOrderService extends DefaultService{
-  static const path = 'customer/driver/accept';
+  static const path = '/customer/driver/accept';
 
   static Future<Response> placeOrder(
       {required PlaceOrderModel placeOrderModel}) async {
