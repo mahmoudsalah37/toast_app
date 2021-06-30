@@ -76,41 +76,67 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _handleAtachmentPressed() {
-    showModalBottomSheet<void>(
+    Responsive res = Responsive(context);
+    showModalBottomSheet(
       context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
       builder: (BuildContext context) {
-        return SizedBox(
-          height: 144,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _handleImageSelection();
-                },
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Photo'),
+        return Container(
+          height: res.getHeight(29),
+          child: Stack(
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  decoration: CustomStyle.containerShadowDecoration,
+                  height: res.getHeight(25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _handleImageSelection();
+                        },
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Photo'),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                          _handleFileSelection();
+                        },
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('File'),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text('Cancel'),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  _handleFileSelection();
-                },
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('File'),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: res.getWidth(20),
+                  height: res.getHeight(1),
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                 ),
-              ),
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Cancel'),
-                ),
-              ),
+              )
             ],
           ),
         );
@@ -212,8 +238,6 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    Responsive res = Responsive(context);
-    ThemeData theme = Theme.of(context);
     return Scaffold(
       body: Center(
         child: Column(
