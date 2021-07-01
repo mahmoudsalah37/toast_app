@@ -78,12 +78,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 CategoryIconModel(
                     icon: 'assets/images/home/make_up_icon.svg',
-                    title: 'vfvfv fvfvf '),
-                CategoryIconModel(
-                    icon: 'assets/images/home/breakfast_icon.svg',
-                    title: 'vvv'), CategoryIconModel(
-                    icon: 'assets/images/home/breakfast_icon.svg',
-                    title: 'vvv'),
+                    title: 'Make up '),
                 CategoryIconModel(
                   icon: 'assets/images/home/pizza_icon.svg',
                   title: 'pizza',
@@ -98,6 +93,10 @@ class HomeScreen extends StatelessWidget {
                 CategoryIconModel(
                   icon: 'assets/images/home/pizza_icon.svg',
                   title: 'pizza',
+                ),
+                CategoryIconModel(
+                  icon: 'assets/images/home/grill_icon.svg',
+                  title: 'grill',
                 ),
               ],
             ),
