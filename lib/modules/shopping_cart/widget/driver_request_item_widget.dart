@@ -51,8 +51,10 @@ class DriverOffersItemWidget extends StatelessWidget {
                 onPressed: onTapDecline,
                 style: OutlinedButton.styleFrom(
                   backgroundColor: Colors.white,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
                   side: BorderSide(color: Colors.red),
-                  shape: StadiumBorder(),
+                  // shape: StadiumBorder(),
                 ),
                 child: Text('Decline',
                     style:
@@ -61,9 +63,11 @@ class DriverOffersItemWidget extends StatelessWidget {
               OutlinedButton(
                 onPressed: onTapAccept,
                 style: OutlinedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 30),
                   backgroundColor: Colors.white,
                   side: BorderSide(color: CustomColors.blueLightColor),
-                  shape: StadiumBorder(),
+                  // shape: StadiumBorder(),
                 ),
                 child: Text('Accept', style: theme.textTheme.subtitle2),
               ),

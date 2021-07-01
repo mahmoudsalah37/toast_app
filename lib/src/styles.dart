@@ -61,9 +61,10 @@ class CustomStyle {
     inputBackgroundColor: CustomColors.yellowDeepColor,
     inputTextColor: Colors.black,
     dateDividerTextStyle: TextStyle(color: Colors.black),
-    inputTextStyle:  TextStyle(color: Colors.green),
-    receivedMessageBodyTextStyle:  TextStyle(color: CustomColors.blueColor),
-    sentMessageBodyTextStyle:   TextStyle(color: Colors.black,fontWeight: FontWeight.w700),
+    inputTextStyle: TextStyle(color: Colors.green),
+    receivedMessageBodyTextStyle: TextStyle(color: CustomColors.blueColor),
+    sentMessageBodyTextStyle:
+        TextStyle(color: Colors.black, fontWeight: FontWeight.w700),
     sendButtonIcon: SvgPicture.asset(
       'assets/images/shopping_cart/send_chat_icon.svg',
     ),
