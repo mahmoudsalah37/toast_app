@@ -47,28 +47,18 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
         children: [
           Container(
             height: res.getHeight(30),
-            child: CachedNetworkImage(
-              imageUrl: 'https:' + widget.product.preview.content,
-              placeholder: (context, url) =>
-                  Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            ),
-            // ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+            child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+              child: CachedNetworkImage(
+                imageUrl: 'https:' + widget.product.preview.content,
+                fit: BoxFit.fill,
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
-              // image: DecorationImage(
-              //   image: Image(
-              //     image: CachedNetworkImage(
-              //       imageUrl: "http://via.placeholder.com/350x150",
-              //       placeholder: (context, url) =>
-              //           new CircularProgressIndicator(),
-              //       errorWidget: (context, url, error) => new Icon(Icons.error),
-              //     ),
-              //   ),
-              // ),
             ),
           ),
           SizedBox(height: 4),

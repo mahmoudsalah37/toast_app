@@ -65,13 +65,17 @@ class MenuItemWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              CachedNetworkImage(
-                imageUrl: 'https:' + img,
-                width: res.getWidth(30),
-                height: res.getHeight(10),
-                placeholder: (context, url) =>
-                    Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                  imageUrl: 'https:' + img,
+                  width: res.getWidth(30),
+                  height: res.getHeight(10),
+                  placeholder: (context, url) =>
+                      Center(child: CircularProgressIndicator()),
+                  fit: BoxFit.fill,
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
             ],
           ),
