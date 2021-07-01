@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../src/theme.dart';
@@ -64,14 +65,13 @@ class MenuItemWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  img,
-                  width: res.getWidth(30),
-                  height: res.getHeight(10),
-                  fit: BoxFit.fill,
-                ),
+              CachedNetworkImage(
+                imageUrl: 'https:' + img,
+                width: res.getWidth(30),
+                height: res.getHeight(10),
+                placeholder: (context, url) =>
+                    Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ],
           ),
