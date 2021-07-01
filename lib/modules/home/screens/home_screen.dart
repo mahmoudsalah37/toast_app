@@ -81,19 +81,24 @@ class HomeScreen extends StatelessWidget {
                     title: 'vfvfv fvfvf '),
                 CategoryIconModel(
                     icon: 'assets/images/home/breakfast_icon.svg',
+                    title: 'vvv'), CategoryIconModel(
+                    icon: 'assets/images/home/breakfast_icon.svg',
                     title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'foods'),
-                CategoryIconModel(icon: '', title: 'makeup'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'vvv'),
-                CategoryIconModel(icon: '', title: 'vfvfv fvfvf '),
-                CategoryIconModel(icon: '', title: 'hi'),
+                CategoryIconModel(
+                  icon: 'assets/images/home/pizza_icon.svg',
+                  title: 'pizza',
+                ),
+                CategoryIconModel(
+                  icon: 'assets/images/home/grill_icon.svg',
+                  title: 'grill',
+                ),
+                CategoryIconModel(
+                    icon: 'assets/images/home/breakfast_icon.svg',
+                    title: 'breakfast'),
+                CategoryIconModel(
+                  icon: 'assets/images/home/pizza_icon.svg',
+                  title: 'pizza',
+                ),
               ],
             ),
           ),
