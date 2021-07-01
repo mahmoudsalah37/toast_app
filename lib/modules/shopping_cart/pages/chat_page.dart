@@ -43,14 +43,12 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    final data =
-        Provider.of<DriverSocketProvider>(context, listen: false).getSocketData;
-    echo.channel(data.orderChannel).listen('.${data.orderEvent}', (e) {
+
+    echo.channel('UserChannel').listen('.UserEvent', (e) {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);
-      // if (messageModel.user != '')
-      _handleRecieveMessage(messageModel);
+      if (messageModel.user != 'Author1') _handleRecieveMessage(messageModel);
       print('dataaa  = ${e['data']}');
     });
     echo.socket.on('connect', (_) {
