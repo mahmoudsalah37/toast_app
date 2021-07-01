@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/home/provider/select_product_provider.dart';
 import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
 
 import 'modules/auth/pages/splash_page.dart';
 import 'modules/home/provider/bottom_navigation_provider.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LocationsProvider()),
         ChangeNotifierProvider(create: (_) => SelectProductProvider()),
         ChangeNotifierProvider(create: (_) => DriverOfferProvider()),
+        ChangeNotifierProvider(create: (_) => DriverSocketProvider()),
       ],
       child: MaterialApp(
         theme: CustomsThemes.defaultThemeData,

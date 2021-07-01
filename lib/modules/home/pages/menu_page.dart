@@ -149,7 +149,7 @@ class _MenuPageState extends State<MenuPage> {
                                   ),
                                 ),
                               ),
-                              img: 'assets/test/banner_three.png',
+                              img: product.preview.content,
                               title: product.title,
                               description: product.metaModel.content,
                               price: '${product.priceModel.price} SAR',

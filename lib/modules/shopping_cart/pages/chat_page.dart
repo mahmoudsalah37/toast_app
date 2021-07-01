@@ -14,6 +14,7 @@ import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
 import 'package:toast_app/modules/shopping_cart/models/message_model.dart';
 import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
+import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
 import 'package:toast_app/modules/shopping_cart/widget/chat_app_bar.dart';
 import 'package:uuid/uuid.dart';
 
@@ -42,7 +43,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    echo.channel('OfferChannel').listen('PlaceOffer_17', (e) {
+    final data =
+        Provider.of<DriverSocketProvider>(context, listen: false).getSocketData;
+    echo.channel(data.orderChannel).listen('.${data.orderEvent}', (e) {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);

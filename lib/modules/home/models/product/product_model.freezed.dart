@@ -33,6 +33,8 @@ class _$ProductModelTearOff {
           List<WithoutModel> withouts = const <WithoutModel>[],
       @JsonKey(name: 'vars')
           List<VaraietyModel> varaieties = const <VaraietyModel>[],
+      @JsonKey(name: 'preview')
+          PreviewModel preview = const PreviewModel(content: ''),
       int quantity = 1,
       double totalAdds = 0,
       double totalPrice = 0}) {
@@ -44,6 +46,7 @@ class _$ProductModelTearOff {
       addons: addons,
       withouts: withouts,
       varaieties: varaieties,
+      preview: preview,
       quantity: quantity,
       totalAdds: totalAdds,
       totalPrice: totalPrice,
@@ -72,6 +75,8 @@ mixin _$ProductModel {
   List<WithoutModel> get withouts => throw _privateConstructorUsedError;
   @JsonKey(name: 'vars')
   List<VaraietyModel> get varaieties => throw _privateConstructorUsedError;
+  @JsonKey(name: 'preview')
+  PreviewModel get preview => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   double get totalAdds => throw _privateConstructorUsedError;
   double get totalPrice => throw _privateConstructorUsedError;
@@ -95,12 +100,14 @@ abstract class $ProductModelCopyWith<$Res> {
       @JsonKey(name: 'addons') List<AddonModel> addons,
       @JsonKey(name: 'withouts') List<WithoutModel> withouts,
       @JsonKey(name: 'vars') List<VaraietyModel> varaieties,
+      @JsonKey(name: 'preview') PreviewModel preview,
       int quantity,
       double totalAdds,
       double totalPrice});
 
   $MetaModelCopyWith<$Res> get metaModel;
   $PriceModelCopyWith<$Res> get priceModel;
+  $PreviewModelCopyWith<$Res> get preview;
 }
 
 /// @nodoc
@@ -120,6 +127,7 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
     Object? addons = freezed,
     Object? withouts = freezed,
     Object? varaieties = freezed,
+    Object? preview = freezed,
     Object? quantity = freezed,
     Object? totalAdds = freezed,
     Object? totalPrice = freezed,
@@ -153,6 +161,10 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
           ? _value.varaieties
           : varaieties // ignore: cast_nullable_to_non_nullable
               as List<VaraietyModel>,
+      preview: preview == freezed
+          ? _value.preview
+          : preview // ignore: cast_nullable_to_non_nullable
+              as PreviewModel,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -181,6 +193,13 @@ class _$ProductModelCopyWithImpl<$Res> implements $ProductModelCopyWith<$Res> {
       return _then(_value.copyWith(priceModel: value));
     });
   }
+
+  @override
+  $PreviewModelCopyWith<$Res> get preview {
+    return $PreviewModelCopyWith<$Res>(_value.preview, (value) {
+      return _then(_value.copyWith(preview: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -198,6 +217,7 @@ abstract class _$ProductModelCopyWith<$Res>
       @JsonKey(name: 'addons') List<AddonModel> addons,
       @JsonKey(name: 'withouts') List<WithoutModel> withouts,
       @JsonKey(name: 'vars') List<VaraietyModel> varaieties,
+      @JsonKey(name: 'preview') PreviewModel preview,
       int quantity,
       double totalAdds,
       double totalPrice});
@@ -206,6 +226,8 @@ abstract class _$ProductModelCopyWith<$Res>
   $MetaModelCopyWith<$Res> get metaModel;
   @override
   $PriceModelCopyWith<$Res> get priceModel;
+  @override
+  $PreviewModelCopyWith<$Res> get preview;
 }
 
 /// @nodoc
@@ -227,6 +249,7 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
     Object? addons = freezed,
     Object? withouts = freezed,
     Object? varaieties = freezed,
+    Object? preview = freezed,
     Object? quantity = freezed,
     Object? totalAdds = freezed,
     Object? totalPrice = freezed,
@@ -260,6 +283,10 @@ class __$ProductModelCopyWithImpl<$Res> extends _$ProductModelCopyWithImpl<$Res>
           ? _value.varaieties
           : varaieties // ignore: cast_nullable_to_non_nullable
               as List<VaraietyModel>,
+      preview: preview == freezed
+          ? _value.preview
+          : preview // ignore: cast_nullable_to_non_nullable
+              as PreviewModel,
       quantity: quantity == freezed
           ? _value.quantity
           : quantity // ignore: cast_nullable_to_non_nullable
@@ -287,6 +314,7 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       @JsonKey(name: 'addons') this.addons = const <AddonModel>[],
       @JsonKey(name: 'withouts') this.withouts = const <WithoutModel>[],
       @JsonKey(name: 'vars') this.varaieties = const <VaraietyModel>[],
+      @JsonKey(name: 'preview') this.preview = const PreviewModel(content: ''),
       this.quantity = 1,
       this.totalAdds = 0,
       this.totalPrice = 0});
@@ -314,6 +342,9 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
   @override
   @JsonKey(name: 'vars')
   final List<VaraietyModel> varaieties;
+  @override
+  @JsonKey(name: 'preview')
+  final PreviewModel preview;
   @JsonKey(defaultValue: 1)
   @override
   final int quantity;
@@ -326,7 +357,7 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ProductModel(id: $id, title: $title, metaModel: $metaModel, priceModel: $priceModel, addons: $addons, withouts: $withouts, varaieties: $varaieties, quantity: $quantity, totalAdds: $totalAdds, totalPrice: $totalPrice)';
+    return 'ProductModel(id: $id, title: $title, metaModel: $metaModel, priceModel: $priceModel, addons: $addons, withouts: $withouts, varaieties: $varaieties, preview: $preview, quantity: $quantity, totalAdds: $totalAdds, totalPrice: $totalPrice)';
   }
 
   @override
@@ -341,6 +372,7 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       ..add(DiagnosticsProperty('addons', addons))
       ..add(DiagnosticsProperty('withouts', withouts))
       ..add(DiagnosticsProperty('varaieties', varaieties))
+      ..add(DiagnosticsProperty('preview', preview))
       ..add(DiagnosticsProperty('quantity', quantity))
       ..add(DiagnosticsProperty('totalAdds', totalAdds))
       ..add(DiagnosticsProperty('totalPrice', totalPrice));
@@ -368,6 +400,9 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
             (identical(other.varaieties, varaieties) ||
                 const DeepCollectionEquality()
                     .equals(other.varaieties, varaieties)) &&
+            (identical(other.preview, preview) ||
+                const DeepCollectionEquality()
+                    .equals(other.preview, preview)) &&
             (identical(other.quantity, quantity) ||
                 const DeepCollectionEquality()
                     .equals(other.quantity, quantity)) &&
@@ -389,6 +424,7 @@ class _$_ProductModel with DiagnosticableTreeMixin implements _ProductModel {
       const DeepCollectionEquality().hash(addons) ^
       const DeepCollectionEquality().hash(withouts) ^
       const DeepCollectionEquality().hash(varaieties) ^
+      const DeepCollectionEquality().hash(preview) ^
       const DeepCollectionEquality().hash(quantity) ^
       const DeepCollectionEquality().hash(totalAdds) ^
       const DeepCollectionEquality().hash(totalPrice);
@@ -413,6 +449,7 @@ abstract class _ProductModel implements ProductModel {
       @JsonKey(name: 'addons') List<AddonModel> addons,
       @JsonKey(name: 'withouts') List<WithoutModel> withouts,
       @JsonKey(name: 'vars') List<VaraietyModel> varaieties,
+      @JsonKey(name: 'preview') PreviewModel preview,
       int quantity,
       double totalAdds,
       double totalPrice}) = _$_ProductModel;
@@ -439,6 +476,9 @@ abstract class _ProductModel implements ProductModel {
   @override
   @JsonKey(name: 'vars')
   List<VaraietyModel> get varaieties => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'preview')
+  PreviewModel get preview => throw _privateConstructorUsedError;
   @override
   int get quantity => throw _privateConstructorUsedError;
   @override

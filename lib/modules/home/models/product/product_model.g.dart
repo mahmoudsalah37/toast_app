@@ -21,6 +21,7 @@ _$_ProductModel _$_$_ProductModelFromJson(Map<String, dynamic> json) {
     varaieties: (json['vars'] as List<dynamic>)
         .map((e) => VaraietyModel.fromJson(e as Map<String, dynamic>))
         .toList(),
+    preview: PreviewModel.fromJson(json['preview'] as Map<String, dynamic>),
     quantity: json['quantity'] as int? ?? 1,
     totalAdds: (json['totalAdds'] as num?)?.toDouble() ?? 0,
     totalPrice: (json['totalPrice'] as num?)?.toDouble() ?? 0,
@@ -36,6 +37,7 @@ Map<String, dynamic> _$_$_ProductModelToJson(_$_ProductModel instance) =>
       'addons': instance.addons,
       'withouts': instance.withouts,
       'vars': instance.varaieties,
+      'preview': instance.preview,
       'quantity': instance.quantity,
       'totalAdds': instance.totalAdds,
       'totalPrice': instance.totalPrice,

@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:group_button/group_button.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
@@ -46,15 +47,28 @@ class _MenuItemModalBottomSheetState extends State<MenuItemModalBottomSheet> {
         children: [
           Container(
             height: res.getHeight(30),
+            child: CachedNetworkImage(
+              imageUrl: 'https:' + widget.product.preview.content,
+              placeholder: (context, url) =>
+                  Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
+            // ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage('assets/test/banner_three.png'),
-              ),
+              // image: DecorationImage(
+              //   image: Image(
+              //     image: CachedNetworkImage(
+              //       imageUrl: "http://via.placeholder.com/350x150",
+              //       placeholder: (context, url) =>
+              //           new CircularProgressIndicator(),
+              //       errorWidget: (context, url, error) => new Icon(Icons.error),
+              //     ),
+              //   ),
+              // ),
             ),
           ),
           SizedBox(height: 4),
