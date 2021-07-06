@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/socket_model/socket_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
+import '../models/socket_model/socket_model.dart';
+import '../provider/driver_socket_provider.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';

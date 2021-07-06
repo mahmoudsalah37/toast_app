@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
+import '../provider/cart_provider.dart';
 import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';

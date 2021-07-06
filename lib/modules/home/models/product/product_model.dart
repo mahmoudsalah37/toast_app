@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:toast_app/modules/home/models/preview/preview_model.dart';
+import '../preview/preview_model.dart';
 
 import '../addon/addon_model.dart';
 import '../meta/meta_model.dart';

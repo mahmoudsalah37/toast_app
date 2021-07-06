@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toast_app/src/colors.dart';
-import 'package:toast_app/src/styles.dart';
-import 'package:toast_app/utils/classes/resposive.dart';
+import '../../../src/colors.dart';
+import '../../../src/styles.dart';
+import '../../../utils/classes/resposive.dart';
 
 class ChatAppBar extends StatelessWidget {
   final String driverName;
@@ -29,8 +29,8 @@ class ChatAppBar extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
-            child: Icon(Icons.arrow_back_ios,
-                color: CustomColors.yellowDeepColor),
+            child:
+                Icon(Icons.arrow_back_ios, color: CustomColors.yellowDeepColor),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.center,
