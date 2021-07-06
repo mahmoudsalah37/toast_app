@@ -1,10 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/place_order/place_order_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/cart_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
-import 'package:toast_app/modules/shopping_cart/services/place_order_service.dart';
+import '../provider/cart_provider.dart';
+import '../provider/driver_offer_provider.dart';
 import '../widget/add_coupon_animation_widget.dart';
 import '../widget/cart_app_bar_widget.dart';
 import '../widget/cart_yellow_button.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/home/provider/select_product_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
+import 'modules/home/provider/select_product_provider.dart';
+import 'modules/shopping_cart/provider/driver_offer_provider.dart';
+import 'modules/shopping_cart/provider/driver_socket_provider.dart';
 
 import 'modules/auth/pages/splash_page.dart';
 import 'modules/home/provider/bottom_navigation_provider.dart';

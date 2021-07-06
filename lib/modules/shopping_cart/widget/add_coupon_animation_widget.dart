@@ -21,7 +21,7 @@ class AddCouponAnimationWidget extends StatefulWidget {
 
 class _AddCouponAnimationWidgetState extends State<AddCouponAnimationWidget>
     with TickerProviderStateMixin {
-  bool _couponBtnVisibility = false;
+  bool couponBtnVisibility = false;
 
   late final AnimationController _controller = AnimationController(
     duration: Duration(milliseconds: 500),
@@ -47,7 +47,7 @@ class _AddCouponAnimationWidgetState extends State<AddCouponAnimationWidget>
         GestureDetector(
           onTap: () {
             setState(() {
-              _couponBtnVisibility = true;
+              couponBtnVisibility = true;
               _controller.forward();
             });
           },
@@ -55,7 +55,7 @@ class _AddCouponAnimationWidgetState extends State<AddCouponAnimationWidget>
             setState(() {
               if (e.delta.dx < 0) {
                 _controller.forward();
-                _couponBtnVisibility = true;
+                couponBtnVisibility = true;
               }
             });
           },

@@ -1,27 +1,20 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:laravel_echo/laravel_echo.dart';
 import 'package:mime/mime.dart';
 import 'package:open_file/open_file.dart';
 import 'package:provider/provider.dart';
-import 'package:toast_app/modules/shopping_cart/models/message_model.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_offer_provider.dart';
-import 'package:toast_app/modules/shopping_cart/provider/driver_socket_provider.dart';
-import 'package:toast_app/modules/shopping_cart/widget/chat_app_bar.dart';
+import '../models/message_model.dart';
+import '../provider/driver_offer_provider.dart';
+import '../widget/chat_app_bar.dart';
+import '../../../packages/laravel_foxico/laravel_foxico.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../src/colors.dart';
 import '../../../src/styles.dart';
 import '../../../utils/classes/resposive.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ChatPage extends StatefulWidget {
   @override
@@ -32,9 +25,8 @@ class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
-  Echo echo = Echo({
+  final echo = Echo({
     'broadcaster': 'socket.io',
-    'client': IO.io,
     'host': 'https://beta.toast.sa:6001',
     "hostname": "beta.toast.sa",
     "port": "6001",
@@ -44,19 +36,19 @@ class _ChatPageState extends State<ChatPage> {
   void initState() {
     super.initState();
 
-    echo.channel('UserChannel').listen('.UserEvent', (e) {
+    echo.channel('UserChannel')?.listen('.UserEvent', (e) {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);
       if (messageModel.user != 'Author1') _handleRecieveMessage(messageModel);
       print('dataaa  = ${e['data']}');
     });
-    echo.socket.on('connect', (_) {
+    echo.socket?.on('connect', (_) {
       print('connect');
       // _handleRecieveMessage(messageModel);
     });
-    echo.socket.on('disconnect', (_) {
-      print('connect');
+    echo.socket?.on('disconnect', (_) {
+      print('disconnect');
       // _handleRecieveMessage(messageModel);
     });
   }
