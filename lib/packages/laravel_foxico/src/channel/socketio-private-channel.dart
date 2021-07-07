@@ -16,7 +16,7 @@ class SocketIoPrivateChannel extends SocketIoChannel implements PrivateChannel {
   /// Trigger client event on the channel.
   SocketIoPrivateChannel whisper(String eventName, dynamic data) {
     socket?.emit('client event', {
-      'channel': this.name,
+      'channel': name,
       'event': 'client-$eventName',
       'data': data,
     });

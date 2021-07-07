@@ -3,7 +3,7 @@
 ///
 abstract class Channel {
   /// The Echo options.
-  Map<String, dynamic> options = {};
+  Map<String, Object?> options = {};
 
   /// Listen for an event on the channel instance.
   Channel listen(String event, Function callback);
