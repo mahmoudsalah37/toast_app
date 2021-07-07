@@ -48,7 +48,7 @@ class SocketIoConnector extends Connector {
   @override
   SocketIoChannel? channel(String name) {
     // if (channels[name] == null) {
-    channels[name] ??= SocketIoChannel(socket, name, options);
+    return channels[name] ??= SocketIoChannel(socket, name, options);
     // }
 
     // return channels[name];
