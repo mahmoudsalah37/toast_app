@@ -58,7 +58,7 @@ class SocketIoConnector extends Connector {
   @override
   SocketIoPrivateChannel? privateChannel(String name) {
     // if (channels['private-$name'] == null) {
-    channels['private-$name'] ??= SocketIoPrivateChannel(
+    return channels['private-$name'] ??= SocketIoPrivateChannel(
       socket,
       'private-$name',
       options,
@@ -72,7 +72,7 @@ class SocketIoConnector extends Connector {
   @override
   SocketIoPresenceChannel? presenceChannel(String name) {
     // if (channels['presence-$name'] == null) {
-    channels['presence-$name'] ??= SocketIoPresenceChannel(
+    return channels['presence-$name'] ??= SocketIoPresenceChannel(
       socket,
       'presence-$name',
       options,
