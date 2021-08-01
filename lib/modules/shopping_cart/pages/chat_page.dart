@@ -40,7 +40,7 @@ class _ChatPageState extends State<ChatPage> {
       print(e);
       final json = e['data'] as Map<String, dynamic>;
       final messageModel = MessageModel.fromJson(json);
-      if (messageModel.user != 'Author1') _handleRecieveMessage(messageModel);
+      if (messageModel.user != 'ahmed') _handleRecieveMessage(messageModel);
       print('dataaa  = ${e['data']}');
     });
     echo.socket?.on('connect', (_) {
@@ -66,6 +66,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _addMessage(types.Message message) {
+    // if(this.mounted)
     setState(() {
       _messages.insert(0, message);
     });
@@ -219,7 +220,7 @@ class _ChatPageState extends State<ChatPage> {
     );
     var dio = Dio();
     final response = await dio
-        .get('https://beta.toast.sa/api/message/Author1/${message.text}');
+        .get('https://beta.toast.sa/api/message/ahmed/${message.text}');
     if (response.statusCode == 200) {
       print('data = ${response.data}');
       print('status = ${response.statusCode}');

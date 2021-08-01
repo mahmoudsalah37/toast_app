@@ -18,7 +18,7 @@ class RegisterDonePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Hero(
-                tag: 'done_page_hero',
+                tag: 'register_hero',
                 child: SvgPicture.asset(
                   'assets/images/bottom_navigation/toast_icon.svg',
                   height: res.getHeight(30),

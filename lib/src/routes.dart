@@ -80,7 +80,7 @@ class Routes {
             builder: (context) => RegisterVerificationCodePage());
       case registerSelectFavoriteCategoryPage:
         return MaterialPageRoute(
-            builder: (context) => RegisterSelectFavorireCategoryPage());
+            builder: (context) => RegisterSelectFavoriteCategoryPage());
       case registerStepDonePage:
         return MaterialPageRoute(builder: (context) => RegisterDonePage());
       case addLocationPage:

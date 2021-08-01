@@ -11,8 +11,11 @@ extension EmailValidator on String {
 }
 
 extension PasswordValidator on String {
+  ///this comment pattern if i need !@#\$&*~ in password
+  //  static const pattern =
+  //       r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
   static const pattern =
-      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+      r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$';
   bool isValidPassword({String pattern = pattern}) {
     return RegExp(pattern).hasMatch(this);
   }

@@ -7,7 +7,8 @@ class RegisterTextField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType inputType;
   final String hint;
-  bool obscureText;
+  final FormFieldValidator<String>? validator;
+  final bool obscureText;
   final Widget? suffixIcon;
 
   RegisterTextField({
@@ -16,6 +17,7 @@ class RegisterTextField extends StatelessWidget {
     required this.hint,
     this.obscureText = false,
     this.suffixIcon,
+    this.validator,
   });
 
   @override
@@ -23,9 +25,10 @@ class RegisterTextField extends StatelessWidget {
     ThemeData theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-      child: TextField(
+      child: TextFormField(
         obscureText: obscureText,
         controller: controller,
+        validator: validator,
         style: theme.textTheme.headline2,
         keyboardType: inputType,
         textInputAction: TextInputAction.next,

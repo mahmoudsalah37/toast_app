@@ -10,7 +10,7 @@ import '../../../utils/classes/helper_methods.dart';
 import '../../../utils/classes/resposive.dart';
 import '../models/location/location_model.dart';
 import '../provider/locations_provider.dart';
-import '../provider/map_service.dart';
+import '../services/map_service.dart';
 import '../widget/cart_yellow_button.dart';
 
 class AddLocationPage extends StatefulWidget {
@@ -46,8 +46,6 @@ class _AddLocationPageState extends State<AddLocationPage> {
     super.initState();
   }
 
-  void setStateFunction() => setState(() {});
-
   @override
   Widget build(BuildContext context) {
     Responsive res = Responsive(context);
@@ -79,30 +77,32 @@ class _AddLocationPageState extends State<AddLocationPage> {
             initialCameraPosition:
                 CameraPosition(target: LatLng(lat, long), zoom: 12),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-            child: TextField(
-              controller: searchTEC,
-              style: theme.textTheme.headline2,
-              textInputAction: TextInputAction.search,
-              onSubmitted: (value) {
-                MapService.searchMap(
-                  mapController: mapController,
-                  searchTEC: searchTEC,
-                  setState: setStateFunction,
-                ).then((value) {
-                  lat = value.latitude;
-                  long = value.longitude;
-                });
-              },
-              decoration: CustomStyle.registerInputDecoration.copyWith(
-                hintText: 'Search...',
-                filled: true,
-                suffixIcon: IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () => searchTEC.clear(),
+          SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                controller: searchTEC,
+                style: theme.textTheme.headline2,
+                textInputAction: TextInputAction.search,
+                onSubmitted: (value) async {
+                  await MapService.searchMap(
+                    mapController: mapController,
+                    searchTEC: searchTEC,
+                  ).then((value) {
+                    lat = value.latitude;
+                    long = value.longitude;
+                  });
+                  setState(() {});
+                },
+                decoration: CustomStyle.registerInputDecoration.copyWith(
+                  hintText: 'Search...',
+                  filled: true,
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () => searchTEC.clear(),
+                  ),
+                  prefixIcon: Icon(Icons.search),
                 ),
-                prefixIcon: Icon(Icons.search),
               ),
             ),
           ),
@@ -185,7 +185,7 @@ class _AddLocationPageState extends State<AddLocationPage> {
     );
   }
 
-  addLocation(LocationsProvider locationProvider) async {
+  void addLocation(LocationsProvider locationProvider) async {
     print('lat= $lat long = $long');
     if (nameTEC.text.isEmpty ||
         streetTEC.text.isEmpty ||

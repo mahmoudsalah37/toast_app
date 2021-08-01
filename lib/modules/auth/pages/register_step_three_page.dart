@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:toast_app/modules/auth/widgets/registration_header_widget.dart';
 
 import '../../../src/colors.dart';
 import '../../../src/routes.dart';
 import '../../../utils/classes/resposive.dart';
-import '../../../widgets/custom_stepper_dots.dart';
 import '../widgets/custom_outline_button.dart';
 import '../widgets/register_app_bar.dart';
 
-class RegisterSelectFavorireCategoryPage extends StatelessWidget {
+class RegisterSelectFavoriteCategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final res = Responsive(context);
@@ -24,30 +23,16 @@ class RegisterSelectFavorireCategoryPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Hero(
-            tag: 'done_page_hero',
-            child: SvgPicture.asset(
-              'assets/images/bottom_navigation/toast_icon.svg',
-              height: res.getHeight(10),
-            ),
-          ),
-          Center(child: CustomStepperDots(indicatorIndex: 3)),
-          SizedBox(height: res.getHeight(4)),
-          Text(
-            'Personalize',
-            style: theme.textTheme.headline1!
-                .copyWith(color: CustomColors.blueColor),
-            textAlign: TextAlign.center,
+          RegistrationHeaderWidget(
+            title: 'Personalize',
+            subtitle:
+                'Pick all your favourite categories to be add it into your \nhome page, so that you can easily reach it.',
+            stepNumber: 3,
+            labelVisibility: false,
           ),
           SizedBox(height: res.getHeight(3)),
           Text(
-            'Pick all your favourite categorie to be add it into your \nhome page, so that you can easily reach it.',
-            style: theme.textTheme.subtitle2,
-            textAlign: TextAlign.center,
-          ),
-          SizedBox(height: res.getHeight(3)),
-          Text(
-            'What is your favourtie categories?',
+            'What is your favourite categories?',
             style: theme.textTheme.headline2!.copyWith(
               color: CustomColors.blueColor,
             ),
@@ -66,8 +51,7 @@ class RegisterSelectFavorireCategoryPage extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Text(e.title.toString(),
-                        style: theme.textTheme.subtitle2),
+                    child: Text(e, style: theme.textTheme.subtitle2),
                   ),
                 )
                 .toList()
@@ -87,24 +71,18 @@ class RegisterSelectFavorireCategoryPage extends StatelessWidget {
   }
 }
 
-class RegisterThreeCategoriesModel {
-  final String? title;
-
-  RegisterThreeCategoriesModel({this.title});
-}
-
-List<RegisterThreeCategoriesModel> categoriesModel = [
-  RegisterThreeCategoriesModel(title: 'Burger'),
-  RegisterThreeCategoriesModel(title: 'Meat'),
-  RegisterThreeCategoriesModel(title: 'Electronics'),
-  RegisterThreeCategoriesModel(title: 'Mexican'),
-  RegisterThreeCategoriesModel(title: 'Fried'),
-  RegisterThreeCategoriesModel(title: 'Burger   3'),
-  RegisterThreeCategoriesModel(title: 'Gifts & Flowers'),
-  RegisterThreeCategoriesModel(title: 'Grilled'),
-  RegisterThreeCategoriesModel(title: 'Pasta'),
-  RegisterThreeCategoriesModel(title: 'Men'),
-  RegisterThreeCategoriesModel(title: 'Clothes'),
-  RegisterThreeCategoriesModel(title: 'Fast Food'),
-  RegisterThreeCategoriesModel(title: 'Sandwich'),
+List<String> categoriesModel = [
+  'Burger',
+  'Meat',
+  'Electronics',
+  'Mexican',
+  'Fried',
+  'Burger   3',
+  'Gifts & Flowers',
+  'Grilled',
+  'Pasta',
+  'Men',
+  'Clothes',
+  'Fast Food',
+  'Sandwich',
 ];

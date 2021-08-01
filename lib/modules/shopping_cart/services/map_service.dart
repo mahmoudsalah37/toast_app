@@ -16,15 +16,10 @@ class MapService {
     required LatLng initialPosition,
   }) async {
     Position position = await getCurrentLatLngOfUser();
-    final GoogleMapController controller = await mapController.future;
-
-    initialPosition = LatLng(position.latitude, position.longitude);
-    final newCameraPosition = CameraPosition(
-      target: LatLng(position.latitude, position.longitude),
-      zoom: 14.4746,
-    );
-    controller.animateCamera(
-      CameraUpdate.newCameraPosition(newCameraPosition),
+    await updateMapCamera(
+      lat: position.latitude,
+      long: position.longitude,
+      mapController: mapController,
     );
   }
 
@@ -35,17 +30,17 @@ class MapService {
   }
 
   ///This method to search then animate camera and add marker on map searched location
-  static Future<LatLng> searchMap(
-      {required Completer<GoogleMapController> mapController,
-      required TextEditingController searchTEC,
-      required Function setState}) async {
+  static Future<LatLng> searchMap({
+    required Completer<GoogleMapController> mapController,
+    required TextEditingController searchTEC,
+  }) async {
     try {
       final position =
           await GeocodingPlatform.instance.locationFromAddress(searchTEC.text);
-      final GoogleMapController controller = await mapController.future;
-      final newCameraPosition = CameraPosition(
-        target: LatLng(position[0].latitude, position[0].longitude),
-        zoom: 14.4746,
+      await updateMapCamera(
+        lat: position[0].latitude,
+        long: position[0].longitude,
+        mapController: mapController,
       );
       markers.isEmpty
           ? addMarker(position[0].latitude, position[0].longitude)
@@ -54,17 +49,27 @@ class MapService {
         position[0].latitude,
         position[0].longitude,
       );
-      controller.animateCamera(
-        CameraUpdate.newCameraPosition(newCameraPosition),
-      );
-      getCurrentLatLngOfUser().then((value) {});
-      setState();
       return LatLng(position[0].latitude, position[0].longitude);
     } catch (e) {
       print('search exception>>>>>>>>>> $e');
       HelperMethods.showToast(msg: 'No address matched with searched text');
       return LatLng(0, 0);
     }
+  }
+
+  static Future<void> updateMapCamera({
+    required double lat,
+    required double long,
+    required Completer<GoogleMapController> mapController,
+  }) async {
+    final GoogleMapController controller = await mapController.future;
+    final newCameraPosition = CameraPosition(
+      target: LatLng(lat, long),
+      zoom: 14.4746,
+    );
+    controller.animateCamera(
+      CameraUpdate.newCameraPosition(newCameraPosition),
+    );
   }
 
   ///this method replace marker which added
