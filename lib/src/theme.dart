@@ -99,13 +99,13 @@ class CustomsThemes {
         fontWeight: FontWeight.w400,
         color: CustomColors.blueLightColor,
       ),
+
       ///color blue,size 12 , weight 500 (blue medium)
       overline: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w500,
         color: CustomColors.blueLightColor,
       ),
-
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
@@ -116,9 +116,6 @@ class CustomsThemes {
             color: Colors.white,
           ),
         ),
-        // overlayColor: MaterialStateProperty.all(
-        //   Colors.transparent,
-        // ),
         foregroundColor: MaterialStateProperty.all(
           CustomColors.primaryColor,
         ),
